@@ -1,0 +1,414 @@
+﻿@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsIndicadorAnual>
+
+@{
+    ViewBag.Title = "Mensuales";
+   
+}
+
+<h2>
+    Informe de seguimiento mensual planta IQUISA Noreste
+    </h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdsIdCia)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdsIdPlanta)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.IdsIdIndicador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesEnero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesFebrero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesMarzo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesAbril)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesMayo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesJunio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesJulio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesAgosto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesSeptiembre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesOctubre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesNoviembre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesDiciembre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsAnual)
+        </th>
+        @*<th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsAnio)
+        </th>
+            @Html.DisplayNameFor(model => model.IdsUsario)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdsIdCia)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdsIdPlanta)
+        </td>*@
+        <td>
+
+            @*@Html.DisplayFor(modelItem => item.IdsIdIndicador)*@
+            @{
+             if (item.IdsIdIndicador == 1)
+             {
+            <p>EFICIENCIA DE TRANSFORMACIÓN</p>
+            }
+
+            if (item.IdsIdIndicador == 2)
+            {
+            <p>Eficiencia Energética</p>
+            }
+            if (item.IdsIdIndicador == 3)
+            {
+            <p>% de Agua Reciclada</p>
+            }
+
+            if (item.IdsIdIndicador == 4)
+            {
+            <p>TOTAL DE AGUAS VERTIDAS m3</p>
+            }
+            if (item.IdsIdIndicador == 5)
+            {
+            <p>TOTAL ENERGÍA DIRECTA Gj</p>
+            }
+
+            if (item.IdsIdIndicador == 6)
+            {
+            <p>TOTAL ENERGÍA INDIRECTA Gj</p>
+            }
+            if (item.IdsIdIndicador == 7)
+            {
+            <p>TOTAL DE RESIDUOS PELIGROSOS TONS</p>
+            }
+
+            if (item.IdsIdIndicador == 8)
+            {
+            <p>TOTAL DE RESIDUOS NO PELIGROSOS TONS</p>
+            }
+            if (item.IdsIdIndicador == 9)
+            {
+            <p>EMISIONES DIRECTAS A LA ATMOSFERA (TONS/MES) COMO CO2e</p>
+            }
+
+            if (item.IdsIdIndicador == 10)
+            {
+            <p>EMISIONES INDIRECTAS A LA ATMOSFERA (TONS/MES) COMO CO2e</p>
+            }
+        }
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.IdsMesEnero)*@
+
+            @{
+                if (item.IdsMesEnero == 1)
+                {
+                    <img align="middle" src="@Url.Content("~/Content/images/completo.png")" />
+                }
+
+                if (item.IdsMesEnero == 2)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"> <img align="middle" src="@Url.Content("~/Content/images/incompleto.png")" /></a>
+                }
+
+                if (item.IdsMesEnero == 3)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/sindatos.png")" /></a>
+                }
+
+              }
+
+        </td>
+        <td>
+           @* @Html.DisplayFor(modelItem => item.IdsMesFebrero)*@
+
+            @{
+                if (item.IdsMesFebrero == 1)
+                {
+                    <img align="middle" src="@Url.Content("~/Content/images/completo.png")" />
+                }
+
+                if (item.IdsMesFebrero == 2)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/incompleto.png")" /></a>
+                }
+
+                if (item.IdsMesFebrero == 3)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/sindatos.png")" /></a>
+                }
+
+              }
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.IdsMesMarzo)*@
+            @{
+                if (item.IdsMesMarzo == 1)
+                {
+                    <img align="middle" src="@Url.Content("~/Content/images/completo.png")" />
+                }
+
+                if (item.IdsMesMarzo == 2)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/incompleto.png")" /></a>
+                }
+
+                if (item.IdsMesMarzo == 3)
+                {
+                        <a href="~/RegistrarMedicion/RegistrarMedicion"> <img align="middle" src="@Url.Content("~/Content/images/sindatos.png")" /></a>
+                }
+
+            }
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.IdsMesAbril)*@
+
+            @{
+                if (item.IdsMesAbril == 1)
+                {
+                    <img align="middle" src="@Url.Content("~/Content/images/completo.png")" />
+                }
+
+                if (item.IdsMesAbril == 2)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/incompleto.png")" /></a>
+                }
+
+                if (item.IdsMesAbril == 3)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/sindatos.png")" /></a>
+                }
+
+            }
+        </td>
+        <td>
+           @* @Html.DisplayFor(modelItem => item.IdsMesMayo)*@
+
+            @{
+                if (item.IdsMesMayo == 1)
+                {
+                    <img align="middle" src="@Url.Content("~/Content/images/completo.png")" />
+                }
+
+                if (item.IdsMesMayo == 2)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/incompleto.png")" /></a>
+                }
+
+                if (item.IdsMesMayo == 3)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/sindatos.png")" /></a>
+                }
+
+            }
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.IdsMesJunio)*@
+            @{
+                if (item.IdsMesJunio == 1)
+                {
+                      <img align="middle" src="@Url.Content("~/Content/images/completo.png")" />
+                }
+
+                if (item.IdsMesJunio == 2)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/incompleto.png")" /></a>
+                }
+
+                if (item.IdsMesJunio == 3)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/sindatos.png")" /></a>
+                  }
+             }
+
+        </td>
+        <td>
+           @* @Html.DisplayFor(modelItem => item.IdsMesJulio)*@
+            @{
+                if (item.IdsMesJulio == 1)
+                {
+                    <img align="middle" src="@Url.Content("~/Content/images/completo.png")" />
+                }
+
+                if (item.IdsMesJulio == 2)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/incompleto.png")" /></a>
+                }
+
+                if (item.IdsMesJulio == 3)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/sindatos.png")" /></a>
+                }
+
+            }
+        </td>
+        <td>
+           @* @Html.DisplayFor(modelItem => item.IdsMesAgosto)*@
+            @{
+                if (item.IdsMesAgosto == 1)
+                {
+                    <img align="middle" src="@Url.Content("~/Content/images/completo.png")" />
+                }
+
+                if (item.IdsMesAgosto == 2)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/incompleto.png")" /></a>
+                }
+
+                if (item.IdsMesAgosto == 3)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/sindatos.png")" /></a>
+                }
+
+            }
+        </td>
+        <td>
+           @* @Html.DisplayFor(modelItem => item.IdsMesSeptiembre)*@
+            @{
+                if (item.IdsMesSeptiembre == 1)
+                {
+                    <img align="middle" src="@Url.Content("~/Content/images/completo.png")" />
+                }
+
+                if (item.IdsMesSeptiembre == 2)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/incompleto.png")" /></a>
+                }
+
+                if (item.IdsMesSeptiembre == 3)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/sindatos.png")" /></a>
+                }
+
+            }
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.IdsMesOctubre)*@
+            @{
+                if (item.IdsMesOctubre == 1)
+                {
+                    <img align="middle" src="@Url.Content("~/Content/images/completo.png")" />
+                }
+
+                if (item.IdsMesOctubre == 2)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/incompleto.png")" /></a>
+                }
+
+                if (item.IdsMesOctubre == 3)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/sindatos.png")" /></a>
+                }
+
+            }
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.IdsMesNoviembre)*@
+            @{
+                if (item.IdsMesNoviembre == 1)
+                {
+                    <img src="@Url.Content("~/Content/images/completo.png")" />
+                }
+
+                if (item.IdsMesNoviembre == 2)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/incompleto.png")" /></a>
+                }
+
+                if (item.IdsMesNoviembre == 3)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/sindatos.png")" /></a>
+                }
+
+            }
+        </td>
+        <td>
+           @* @Html.DisplayFor(modelItem => item.IdsMesDiciembre)*@
+            @{
+                if (item.IdsMesDiciembre == 1)
+                {
+                    <img align="middle" src="@Url.Content("~/Content/images/completo.png")" />
+                }
+
+                if (item.IdsMesDiciembre == 2)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/incompleto.png")" /></a>
+                }
+
+                if (item.IdsMesDiciembre == 3)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/sindatos.png")" /></a>
+                }
+
+            }
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.IdsAnual)*@
+            @{
+                if (item.IdsAnual == 1)
+                {
+                    <img align="middle" src="@Url.Content("~/Content/images/completo.png")" />
+                }
+
+                if (item.IdsAnual == 2)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/incompleto.png")" /></a>
+                }
+
+                if (item.IdsAnual == 3)
+                {
+                    <a href="~/RegistrarMedicion/RegistrarMedicion"><img align="middle" src="@Url.Content("~/Content/images/sindatos.png")" /></a>
+                }
+
+            }
+        </td>
+
+        @*<td>
+         @Html.DisplayFor(modelItem => item.IdsAnio)
+     </td>
+    <td>
+         @Html.DisplayFor(modelItem => item.IdsUsario)
+     </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+        *@
+    </tr>
+}
+
+</table>

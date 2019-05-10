@@ -1,0 +1,89 @@
+﻿@model CYDSA_Sustentabilidad.Models.IdsUsuario
+
+@{
+    ViewBag.Title = "Registrar Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+}
+<br />
+<br />
+
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:#D6EAF8;">
+    <h2>Registrar Usuarios</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+           
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsIdEmpresa, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdsIdEmpresa", (IEnumerable<SelectListItem>)ViewBag.dropdownPlanta, "Seleccione la Planta", new { id = "PlantaId", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.IdsIdEmpresa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsNombreUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdsNombreUsuario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdsNombreUsuario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsCorreo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdsCorreo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdsCorreo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(model => model.IdsPassword, new { htmlAttributes = new { @class = "form-control", @id = "cam1" } })
+                    @Html.ValidationMessageFor(model => model.IdsPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(model => model.IdsPassword, new { htmlAttributes = new { @class = "form-control", @id = "cam2" } })
+                    @Html.ValidationMessageFor(model => model.IdsPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Grabar" class="btn btn-primary  btn-lg" id="boton" />
+                    <a href="/Usuarios/Index" , class='btn btn-primary btn-lg'>Regresar</a>
+                </div>
+            </div>
+        </div>
+
+    }
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+
+    }
+</div>
+
+
+
+<script>
+    $("#boton").click(function (evt) {
+
+        if ($("#cam1").val() != $("#cam2").val()) {
+            evt.preventDefault();
+            alert("La coontraseña no coincide");
+        }
+    });
+</script>

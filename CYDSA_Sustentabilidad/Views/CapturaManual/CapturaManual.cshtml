@@ -1,0 +1,19 @@
+﻿
+@using CYDSA_Sustentabilidad.Models
+@model CYDSA_Sustentabilidad.Models.IdsCatIndicadores
+
+@{
+    ViewBag.Title = "CapturaManual";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CapturaManual</h2>
+
+
+<div>
+    <label>Usuarios: </label>
+    <div>
+        @{Html.DropDownList("IdsDescripcionIndicador", ViewData["Indicadores"] as SelectList, new { @id = "IdsIdIndicador" });
+        }
+    </div>
+</div>

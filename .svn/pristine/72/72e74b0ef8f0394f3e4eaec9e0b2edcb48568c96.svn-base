@@ -1,0 +1,218 @@
+﻿using CYDSA_Sustentabilidad.ADO;
+using CYDSA_Sustentabilidad.Models;
+using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
+using System.Collections;
+using System.Linq;
+
+namespace CYDSA_Sustentabilidad.Controllers
+{
+    public class RegistrarMedicionController : Controller
+    {
+        // GET: RegistraMediciones
+        public ActionResult RegistrarMedicion()
+        {
+            Session["hola"] = "hola2";
+            List<SelectListItem> IdsMes = new List<SelectListItem>()
+            {
+                new SelectListItem { Text = "Enero", Value = "1" },
+                new SelectListItem { Text = "Febrero", Value = "2" },
+                new SelectListItem { Text = "Marzo", Value = "3" },
+                new SelectListItem { Text = "Abril", Value = "4" },
+                new SelectListItem { Text = "Mayo", Value = "5" },
+                new SelectListItem { Text = "Junio", Value = "6" },
+                new SelectListItem { Text = "Julio", Value = "7" },
+                new SelectListItem { Text = "Agosto", Value = "8" },
+                new SelectListItem { Text = "Septiembre", Value = "9" },
+                new SelectListItem { Text = "Octubre", Value = "10" },
+                new SelectListItem { Text = "Noviembre", Value = "11" },
+                new SelectListItem { Text = "Diciembre", Value = "12" },
+
+            };
+            //Assigning generic list to ViewBag
+            ViewBag.Locations = IdsMes;
+            Entities context = new Entities();
+
+            ViewBag.dropdownPlanta = new SelectList(context.IdsCatPlantas.ToList(), "IdsIdPlanta", "IdsDescripcionPlanta");
+
+
+            IndicadoresADO cargaIndicadorADO = new IndicadoresADO();
+            ViewBag.dropdownIndicadores = new SelectList(cargaIndicadorADO.cmbindicadores(), "IdsIdIndicador", "IdsDescripcionIndicador");
+
+
+            MedicionesADO cargaMedicionADO = new MedicionesADO();
+            ViewBag.dropdownMediciones = new SelectList(cargaMedicionADO.cmbmediciones(), "IdsIdMedicion", "IdsDescripcionMedicion");
+
+            ElementosADO cargaElementoADO = new ElementosADO();
+            ViewBag.dropdownElementos = new SelectList(cargaElementoADO.cmbelementos(), "IdsIdElemento", "IdsDescripcionElemento");
+
+            UnidadesADO cargaUnidadesADO = new UnidadesADO();
+            ViewBag.dropdownUnidades = new SelectList(cargaUnidadesADO.cmbunidades(), "IdsIdUnidad", "IdsDescripcionUnidadMedida");
+
+            IdsMediciones enti = new IdsMediciones();
+            enti.IdsAnio = System.DateTime.Now.Year;
+            return View();
+        }
+
+
+        // Post: RegistraMediciones
+        [HttpPost]
+        public ActionResult RegistrarMedicion(IdsMediciones Mediciones) // Mediciones es un arreglo de tipo modelo
+        {
+            try
+            {
+                // Session["CIA"] = Mediciones.IdsIdCia;
+
+
+                List<SelectListItem> IdsMes = new List<SelectListItem>()
+            {
+                new SelectListItem { Text = "Enero", Value = "1" },
+                new SelectListItem { Text = "Febrero", Value = "2" },
+                new SelectListItem { Text = "Marzo", Value = "3" },
+                new SelectListItem { Text = "Abril", Value = "4" },
+                new SelectListItem { Text = "Mayo", Value = "5" },
+                new SelectListItem { Text = "Junio", Value = "6" },
+                new SelectListItem { Text = "Julio", Value = "7" },
+                new SelectListItem { Text = "Agosto", Value = "8" },
+                new SelectListItem { Text = "Septiembre", Value = "9" },
+                new SelectListItem { Text = "Octubre", Value = "10" },
+                new SelectListItem { Text = "Noviembre", Value = "11" },
+                new SelectListItem { Text = "Diciembre", Value = "12" },
+
+            };
+                //Assigning generic list to ViewBag
+                ViewBag.Locations = IdsMes;
+                Entities context = new Entities();
+
+                ViewBag.dropdownPlanta = new SelectList(context.IdsCatPlantas.ToList(), "IdsIdPlanta", "IdsDescripcionPlanta");
+
+
+                IndicadoresADO cargaIndicadorADO = new IndicadoresADO();
+                ViewBag.dropdownIndicadores = new SelectList(cargaIndicadorADO.cmbindicadores(), "IdsIdIndicador", "IdsDescripcionIndicador");
+
+
+                ElementosADO cargaElementoADO = new ElementosADO();
+                ViewBag.dropdownElementos = new SelectList(cargaElementoADO.cmbelementos(), "IdsIdElemento", "IdsDescripcionElemento");
+
+                UnidadesADO cargaUnidadesADO = new UnidadesADO();
+                ViewBag.dropdownUnidades = new SelectList(cargaUnidadesADO.cmbunidades(), "IdsIdUnidad", "IdsDescripcionUnidadMedida");
+                MedicionesADO cargaMedicionADO = new MedicionesADO();
+                ViewBag.dropdownMediciones = new SelectList(cargaMedicionADO.cmbmediciones(Mediciones.IdsIdIndicador), "IdsIdMedicion", "IdsDescripcionMedicion");
+
+            }
+
+            catch (Exception Error)
+            {
+
+            }
+            Session["Medio"] = Mediciones;
+            if (Mediciones.IdsIdIndicador > 0 & Mediciones.IdsIdMedicion > 0)
+            {
+                var IdsIdMedicion = Mediciones.IdsIdMedicion;
+                Mediciones.IdsIdMedicion = 0;
+                return RedirectToAction("ElementosList", new { idMedicion = IdsIdMedicion, idIndicador = Mediciones.IdsIdIndicador, idPlanta = Mediciones.IdsIdPlanta, idCia = 1, });
+
+            }
+            else
+            {
+                return View();
+            }
+
+
+            //  return RedirectToAction("ElementosList", new { idMedicion = Mediciones.IdsIdMedicion ,idIndicador= Mediciones.IdsIdIndicador, idPlanta= Mediciones.IdsIdPlanta, idCia = 1 ,});
+        }
+
+        public ActionResult GetModel(int IdIndicador)
+        {
+            var result = new List<SelectListItem>();
+            for (int i = 0; i < 5; i++)
+            {
+                result.Add(new SelectListItem { Text = string.Format("{0} - {1} - {2}", "hola", "hola2", i), Value = i.ToString() });
+            }
+
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ElementosList(int idMedicion, int idIndicador, int idPlanta, int idCia)
+        {
+
+            Entities context = new Entities();
+
+            var list = context.IdsRelaciones.ToList().Where(x => x.IdsIdMedicion == idMedicion && x.IdsIdIndicadores == idIndicador && x.IdsIdPlanta == idPlanta && x.IdsIdCia == idCia);
+
+            return View(list.ToList());
+        }
+        [HttpPost]
+        public ActionResult ElementosList(IList<IdsRelaciones> entity)
+        {
+            IdsMediciones medicion = Session["Medio"] as IdsMediciones;
+            Entities context = new Entities();
+
+            foreach (var item in entity)
+            {
+                medicion.IdsIdElemento = item.IdsIdElemento;
+                medicion.IdsValorCalculado = item.Valor;
+                medicion.IdsCierreMes = false;
+                medicion.IdsFechaAlta = System.DateTime.Now;
+                medicion.IdsUsuarioAlta = "1";
+                medicion.IdsFechaCambio = System.DateTime.Now;
+                medicion.IdsUsuarioCambio = "1";
+                medicion.IdsIdMedicion = item.IdsIdMedicion;
+                medicion.IdsIdUnidad = item.IdsIdUnidad;
+                context.IdsMediciones.Add(medicion);
+                context.SaveChanges();
+            }
+
+
+
+            return Redirect("/Mensuales/Mensuales");
+
+
+            //IdsMediciones Medio = new IdsMediciones()
+            //{
+            //    IdsIdCia=,
+            //    IdsIdPlanta=,
+            //    IdsMes=,
+            //    IdsAnio=,
+            //    IdsIdIndicador=,
+            //    IdsIdMedicion=,
+            //    IdsIdElemento=,
+            //    IdsValorCalculado=,
+            //    IdsIdUnidad=,
+            //    IdsCierreMes=,
+            //    IdsFechaAlta=,
+            //    IdsUsuarioAlta=,
+            //    IdsFechaCambio=,
+            //    IdsUsuarioCambio=,
+
+
+            //};
+
+
+
+
+
+
+
+            var list = context.IdsRelaciones.ToList().Where(x => x.IdsIdMedicion == medicion.IdsIdMedicion && x.IdsIdIndicadores == medicion.IdsIdIndicador && x.IdsIdPlanta == medicion.IdsIdPlanta && x.IdsIdCia == 1);
+
+            return View(list.ToList());
+        }
+
+        //public ActionResult Create()
+        //{
+
+        //    return View();
+
+        //}
+
+        private IEnumerable GetProfileByModuleID(int v)
+        {
+            throw new NotImplementedException();
+        }
+
+
+    }
+}

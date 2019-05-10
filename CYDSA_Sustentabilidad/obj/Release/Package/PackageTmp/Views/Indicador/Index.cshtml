@@ -1,0 +1,404 @@
+﻿@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsIndicadores>
+
+@{
+    ViewBag.Title = "Indicadores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/jquery.dataTables_themeroller.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/jquery.dataTables.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/demo_table_jui.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/demo_table.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/demo_page.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/jquery-ui-1.10.0.custom.min.css" data-semver="1.10.0" data-require="jqueryui" />
+<link rel="stylesheet" href="~/Content/jquery.dataTables.min.css" data-semver="1.10.13" data-require="jqueryui" />
+
+<script src="~/Scripts/jquery-ui.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.dataTables.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-1.12.4.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-latest.js" type="text/javascript"></script> 
+
+<br />
+<br />
+<br />
+<h2>Indicadores de Sustentabilidad</h2>
+
+<div class="form-horizontal container-fluid col-lg-push-8 img-rounded " style="background-color:#D6EAF8">
+    <div style="background-color:#D6EAF8">
+
+        <br />
+        <div class="col-md-4">
+            @Html.DropDownList("IdPlantaTmp", (IEnumerable<SelectListItem>)ViewBag.dropdownPlanta, "Seleccione la Planta", new { id = "PlantaId", @class = "form-control", @disabled = "disabled" })
+        </div>
+
+        <div class="container form-group col-md-4">
+            @Html.ActionLink("Regresar", "Mensuales", "Mensuales", new { IdPlanta = @ViewBag.IdPlanta, IdAnio = @ViewBag.anio }, new { @class = "btn btn-info", @style = "display:inline" })
+        </div>
+
+        <br />
+        <br />
+
+        <div class="col-md-12">
+            <table class="table ">
+                <tr class="info2">
+
+                    <th>
+                        Mes
+                    </th>
+                    <th>
+                        Año
+                    </th>
+
+                    <th>
+                        Descripcion
+                    </th>
+                    <th>
+                        Unidad
+                    </th>
+                    <th>
+                        Valor
+                    </th>
+                    <th>
+                        Notas
+                    </th>
+
+
+                </tr>
+                <tbody class="tablaAqui"></tbody>
+            </table>
+        </div>
+    </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+          
+            <div class="container form-group col-md-12">
+                <div>
+                    <div class="table-responsive col-md-12">
+                        <table class="table Tabla1 col-md-12">
+                            <tr class="">
+                                <th width="40px">
+                                    @Html.DisplayNameFor(model => model.IdsMes)
+                                </th>
+                                <th width="40px">
+                                    @Html.DisplayNameFor(model => model.IdsAnio)
+                                </th>
+                                <th width="300px">
+                                    @Html.DisplayNameFor(model => model.IdsDescripcionIndicador)
+                                </th>
+                                <th width="150px">
+                                    @Html.DisplayNameFor(model => model.IdsIdUnidad)
+
+
+                                </th>
+                                <th width="100px" style="text-align:right;">
+                                    @Html.DisplayNameFor(model => model.IdsValorDelPeriodo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IdsNotasAdicionales)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                {
+                                <tr>
+
+                                    <td>
+                                        @if (item.IdsMes == 1)
+                                        {
+                                            <span>Enero</span>
+
+                                        }
+                                        @if (item.IdsMes == 2)
+                                        {
+                                            <span>Febrero</span>
+
+                                        }
+                                        @if (item.IdsMes == 3)
+                                        {
+                                            <span>Marzo</span>
+
+                                        }
+                                        @if (item.IdsMes == 4)
+                                        {
+                                            <span>Abril</span>
+
+                                        }
+                                        @if (item.IdsMes == 5)
+                                        {
+                                            <span>Mayo</span>
+
+                                        }
+
+                                        @if (item.IdsMes == 6)
+                                        {
+                                            <span>Junio</span>
+
+                                        }
+                                        @if (item.IdsMes == 7)
+                                        {
+                                            <span>Julio</span>
+
+                                        }
+                                        @if (item.IdsMes == 8)
+                                        {
+                                            <span>Agosto</span>
+
+                                        }
+                                        @if (item.IdsMes == 9)
+                                        {
+                                            <span>Septimbre</span>
+
+                                        }
+                                        @if (item.IdsMes == 10)
+                                        {
+                                            <span>Octubre</span>
+
+                                        }
+                                        @if (item.IdsMes == 11)
+                                        {
+                                            <span>Noviembre</span>
+
+                                        }
+                                        @if (item.IdsMes == 12)
+                                        {
+                                            <span>Diciembre</span>
+
+                                        }
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdsAnio)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdsDescripcionIndicador)
+                                    </td>
+                                    <td>
+                                         @Html.DisplayFor(modelItem => item.IdsCatUnidades.IdsDescripcionUnidadMedida)
+                                      
+                                     
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdsValorDelPeriodo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdsNotasAdicionales)
+                                    </td>
+                                </tr>
+                                            }
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+                                            
+                                            }
+    </div>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $(".info2").hide();
+        @{
+            var aa = (int)Session["IdPlanta"];
+        }
+        @if (aa >= 1)
+               {
+           <Text>
+
+        $(".PorMonto").css("display", "block");
+        </Text>
+            }else   {
+          <Text>
+            $(".PorMonto").css("display", "none");
+        </Text>
+
+            }
+
+
+
+
+
+        $("#AnioId").val(@Session["IdAnio"]);
+        $("#PlantaId").val(@Session["IdPlanta"]);
+
+    });
+
+
+    $(function () {
+        $("#PlantaId, #IdsMes, #IdsIdIndicadores").change(function () {
+
+            var id = 0;
+            var IdMes = 0;
+            var IdAnio = 0;
+
+            if( $("#PlantaId").val()!=""){
+                id = $("#PlantaId").val();
+            }
+            if ($("#IdsMes").val() != "") {
+                IdMes = $("#IdsMes").val();
+            }
+            if ($("#IdsIdIndicadores option:selected").val() != "") {
+                 IdAnio = $("#IdsIdIndicadores option:selected").text();
+
+            }
+
+
+
+
+            var miUrl = '@Url.Action("Index2", "Indicador")'
+            $.ajax({
+                url: "/Indicador/Index2?id=" + id + "&IdMes=" + IdMes + "&IdAnio=" + IdAnio,
+                method: "post",
+                data: id,
+                success: function (result) {
+
+                    $(".Tabla1").remove();
+                    $(".info2").show();
+                    if (result != null) {
+                        $.each(result, function (index, item) {
+
+                            var Indicador = item.IdDescripcion;
+                            var Mes = "";
+                                    if (item.IdsMes == 1)
+                            {
+                                        Mes = "Enero"
+
+                            }
+                                    if (item.IdsMes == 2)
+                            {
+                                        Mes = "Febrero"
+
+                            }
+                                    if (item.IdsMes == 3)
+                            {
+                                        Mes = "Marzo"
+
+                            }
+                                    if (item.IdsMes == 4)
+                            {
+                                        Mes = "Abril"
+
+                            }
+                                    if (item.IdsMes == 5)
+                            {
+                                        Mes = "Mayo"
+
+                            }
+
+                                    if (item.IdsMes == 6)
+                            {
+                                        Mes = "Junio"
+
+                            }
+                                    if (item.IdsMes == 7)
+                                    {
+                                        Mes = "Julio"
+
+                            }
+                                    if (item.IdsMes == 8)
+                            {
+                                        Mes = "Agosto"
+
+                            }
+                                    if (item.IdsMes == 9)
+                            {
+                                        Mes = "Septimbre"
+
+                            }
+                                    if (item.IdsMes == 10)
+                            {
+                                        Mes = "Octubre"
+
+                            }
+                                    if (item.IdsMes == 11)
+                            {
+                                        Mes = "Noviembre"
+
+                            }
+                                    if (item.IdsMes == 12)
+                            {
+                                        Mes = "Diciembre"
+
+                            }
+
+
+                                    
+
+                                    var Unidad = "";
+                                
+
+                                    if (item.IdUnidad == 1)
+                                        {
+                                            Unidad = "Toneladas"
+                                        }
+                                    else if (item.IdUnidad == 2)
+                                        {
+                                            Unidad = "Giga Joules"
+                                        }
+                                    else if (item.IdUnidad == 3)
+                                        {
+                                            Unidad = "MWh"
+                                        }
+                                    else if (item.IdUnidad == 4)
+                                        {
+                                            Unidad = "KWh"
+                                        }
+                                    else if (item.IdUnidad == 5)
+                                        {
+                                            Unidad = "m3"
+                                        }
+                                    else if (item.IdUnidad == 6)
+                                        {
+                                            Unidad = "Toneladas de CO2 Equivalente"
+                                        }
+                                    else if (item.IdUnidad == 7)
+                                        {
+                                            Unidad = "Porcentaje"
+                                        }
+
+
+                                    var tablastring = "<tr class ='Tabla1'> <td>" + Mes + "</td> <td>" + item.Anio + "</td> <td>" + Indicador + "</td> <td>" + Unidad + "</td> <td style='text-align:right;'>" + item.IdsValorDelPeriodo + "</td> <td>" + item.IdsNotas + "</td></tr>"
+
+                            $(".tablaAqui").append(tablastring);
+                        });
+                        $('#PlazaID').text = "Seleciona";
+                    }
+                },
+                async: true
+            });
+        });
+    });
+
+
+
+</script>
+
+
+<style>
+table{
+    background-color:#D6EAF8;
+}
+
+
+tr:hover {
+    color: #17202A;
+    background-color: #85C1E9;
+}
+tr th:hover {
+    color: #fff;
+    background-color: #3498DB;
+}
+th{
+background-color:#3498DB;
+ color: #fff;
+}
+
+</style>

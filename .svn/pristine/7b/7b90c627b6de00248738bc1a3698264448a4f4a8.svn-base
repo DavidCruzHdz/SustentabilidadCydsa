@@ -1,0 +1,192 @@
+﻿@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsMediciones>
+
+@{
+    ViewBag.Title = "ListaMedicion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Mediciones</h2>
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<br />
+<div class="form-horizontal container-fluid col-lg-push-8 img-rounded " style="background-color:#D6EAF8">
+    <div class="panel panel-primary">
+        <div class="panel-body" style="background-color:#D6EAF8">
+          
+            <br/>
+            <table class="table" style="background-color:#D6EAF8">
+                <tr>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.IdsId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsIdCia)
+                    </th>*@
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.IdsIdPlanta)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsMes)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsAnio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsIdIndicador)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsIdMedicion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsIdElemento)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsValorCalculado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsIdUnidad)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.IdsCierreMes)
+                      </th>
+                      <th>
+                        @Html.DisplayNameFor(model => model.IdsFechaAlta)
+                      </th>
+                      <th>
+                        @Html.DisplayNameFor(model => model.IdsUsuarioAlta)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsFechaCambio)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.IdsUsuarioCambio)
+                    </th>*@
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.IdsId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdsIdCia)
+                        </td>*@
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.IdsIdPlanta)
+                        </td>*@
+                        <td>
+     @*                       @Html.DisplayFor(modelItem => item.IdsMes)*@
+
+                            @if (item.IdsMes == 1)
+                            {
+                                <span>Ene</span>
+
+                            }
+                            @if (item.IdsMes == 2)
+                            {
+                                <span>Feb</span>
+
+                            }
+                            @if (item.IdsMes == 3)
+                            {
+                                <span>Mzo</span>
+
+                            }
+                            @if (item.IdsMes == 4)
+                            {
+                                <span>Abr</span>
+
+                            }
+                            @if (item.IdsMes == 5)
+                            {
+                                <span>May</span>
+
+                            }
+
+                            @if (item.IdsMes == 6)
+                            {
+                                <span>Jun</span>
+
+                            }
+                            @if (item.IdsMes == 7)
+                            {
+                                <span>Jul</span>
+
+                            }
+                            @if (item.IdsMes == 8)
+                            {
+                                <span>Ago</span>
+
+                            }
+                            @if (item.IdsMes == 9)
+                            {
+                                <span>Sep</span>
+
+                            }
+                            @if (item.IdsMes == 10)
+                            {
+                                <span>Oct</span>
+
+                            }
+                            @if (item.IdsMes == 11)
+                            {
+                                <span>Nov</span>
+
+                            }
+                            @if (item.IdsMes == 12)
+                            {
+                                <span>Dic</span>
+
+                            }
+
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdsAnio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdsCatIndicadores.IdsDescripcionIndicador)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdsIdMedicion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdsCatElementos.IdsDescripcionElemento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdsValorCalculado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdsCatUnidades.IdsDescripcionUnidadMedida)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.IdsCierreMes)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdsFechaAlta)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdsUsuarioAlta)
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdsFechaCambio)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.IdsUsuarioCambio)
+                        </td>*@
+                        <td>
+                            @Html.ActionLink("Cambios", "EditMedicion", new { id = item.IdsId }) 
+                            @*@Html.ActionLink("Consultar", "Details", new { /* id=item.PrimaryKey */ }) |
+                             @Html.ActionLink("Borrar", "Delete", new { /* id=item.PrimaryKey */ })*@
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+
+</div>

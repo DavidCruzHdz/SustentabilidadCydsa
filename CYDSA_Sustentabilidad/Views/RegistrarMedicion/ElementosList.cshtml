@@ -1,0 +1,181 @@
+﻿@model IList<CYDSA_Sustentabilidad.Models.IdsRelaciones>
+
+
+@{
+    ViewBag.Title = "EditMedicion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/jquery.dataTables_themeroller.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/jquery.dataTables.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/demo_table_jui.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/demo_table.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/demo_page.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/jquery-ui-1.10.0.custom.min.css" data-semver="1.10.0" data-require="jqueryui" />
+<link rel="stylesheet" href="~/Content/jquery.dataTables.min.css" data-semver="1.10.13" data-require="jqueryui" />
+
+<script src="~/Scripts/jquery.min.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-ui.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.dataTables.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-1.12.4.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-latest.js" type="text/javascript"></script> 
+
+
+@using (Html.BeginForm())
+{
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div class="form-horizontal container-fluid col-lg-push-8 img-rounded bg-primary" style="color:#000000; font:caption; background-color:#D6EAF8;">
+        <br />
+         <div>
+            <h4>  CAPTURA DE @ViewBag.medicion DEL MES DE <text> @Session["IdMes"]</text>  DEL AÑO <text> @Session["IdAnio"]</text> </h4>
+        </div>
+
+               <br />
+
+        
+            @Html.AntiForgeryToken()
+            <table class="table table-bordered" style="text-align:center">
+                <tr>
+                    <th style="text-align:center">
+                        Descripciòn de Elemento(s)
+                    </th>
+                   
+                    <th style="text-align:center" >
+                        Nomenclaturas
+                    </th>
+
+                    <th style="text-align:center">
+                        Valor a Capturar
+                    </th>
+
+                    <th style="text-align:center">
+                        Unidad de Medida                       
+                    </th>
+                </tr>
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td style="text-align:center">
+                            @Html.HiddenFor(x => x[i].IdsIdIndicador)
+                            @Html.HiddenFor(x => x[i].IdsIdElemento)
+                            @Html.HiddenFor(x => x[i].IdsIdMedicion)
+                            @Html.HiddenFor(x => x[i].IdsIdUnidad)
+                            @Html.DisplayFor(x => x[i].IdsCatElementos.IdsDescripcionElemento)
+                            
+                        </td>
+
+                        <td style="color:black; text-align:center">
+                            @Html.DisplayFor(x => x[i].IdsCatElementos.IdsNomenclatura)
+                        </td>
+                        
+                        <td  style="color:black; display:block; text-align:center">
+                            @Html.EditorFor(x => x[i].Valor, new { @class = "pmtallocated pull-right valores col-md-10 form-control campo", @Value = "6" })
+                            <br />
+                            @Html.ValidationMessageFor(x => x[i].Valor, "", new { @class = "text-danger" })
+                        </td>
+                        <td style="color:black; "text-align:center">
+                            @Html.DisplayFor(x => x[i].IdsCatUnidades.IdsDescripcionUnidadMedida)
+                        </td>
+
+                    </tr>
+                }
+            </table>
+
+
+
+        <div class="form-group" style="margin-top:5px">
+            <div class="row col-md-12" style="display:inline">
+               
+                <div class="col-md-4" style="display:inline">
+                    <input type="submit" value="Guardar" class="btn btn-primary btn-lg" />
+               
+                    @Html.ActionLink("Regresar", "RegistrarMedicion", "RegistrarMedicion", new { IdIndicador =this.Request["idIndicador"] , IdMes = this.Request["mes"] }, new { @class = "btn btn-primary btn-lg", @style = "display:inline" })
+
+                  
+                </div>
+                <div class="col-md-8" style="display:inline">
+                    <script>
+                                   
+
+                    </script>
+                    @if (@ViewBag.PrecioDolar != null)
+                    {
+                        <h4>Precio dolar: @ViewBag.PrecioDolar</h4>
+                    }
+                </div>
+            </div>
+        </div>
+
+
+
+        </div>
+       }
+
+
+
+ <script type="text/javascript">
+    $(function () {
+      
+
+        $(".text-box").change(function () {
+           
+            if ($(this).val() < 0) {
+                ;
+                $(this).val("");
+                $(this).text("");
+            }
+
+        });
+        $(document).ready(function () {
+            $(".single-line").val("");
+        });
+   
+
+        $("#RegionId").change(function () {
+
+            $("form").submit();
+
+        });
+
+
+        $("#CostoMedicion").change(function () {
+
+            if (this.value() == 14)
+            {
+                $("#PrecioDolar").css("display", "block");
+            }
+            else
+            {
+                $("#PrecioDolar").css("display", "none");
+            }
+
+
+
+            var container = $('#id-container');
+
+			if (container.css('display') == 'none') {
+				container.fadeIn(400);
+			}
+			else {
+				container.fadeOut(400);
+			}
+
+        });
+
+    });
+
+</script>
+
+<style>
+
+    .text-box{
+				text-align:right !important;
+			} 
+</style>

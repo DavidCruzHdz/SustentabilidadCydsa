@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+	<h2 font="bold">
+		Cuidado y Protección del Medio Ambiente
+	</h2>
+	</br>
+	<p class="lead">
+		CYDSA está comprometido con la búsqueda de la excelencia ambiental
+		como una prioridad en la operación diaria de los centros de trabajo. En todas
+		las decisiones y procesos de negocio, se integran los principios de liderazgo
+		ambiental y desarrollo sustentable.
+	</p>
+
+	
+	<p><a href="http://www.cydsa.com/estrategia-de-sustentabilidad/#" class="btn btn-primary btn-lg">Conoce mas &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+		<h2>Administración ambiental</h2>
+		<p>
+			la administración ambiental es un componente de la estrategia
+			de la Empresa para tener mayor eficiencia operativa, reducir costos y
+			generar responsabilidad de valor sostenible en el largo plazo, en los territorios
+			donde opera.
+		</p>
+        <p><a class="btn btn-default" href="http://www.cydsa.com/estrategia-de-sustentabilidad/#">Conoce mas &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+		<h2>Energía Eléctrica y Vapor</h2>
+		<p>
+			Proyectos de Cogeneración de Energía Eléctrica y Vapor. Estos Proyectos integran los 
+			más altos estándares de innovación y eficiencia ecológica para impulsar la creación de 
+			valor compartido y sustentable en el largo plazo.
+		</p>
+        <p><a class="btn btn-default" href="http://www.cydsa.com/estrategia-de-sustentabilidad/#">Conoce mas &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+		<h2>Gestión de riesgos</h2>
+		<p>
+			De forma paralela, CYDSA cuenta con un modelo de gestión de riesgos a
+			través del cual, y desde 1992, se realizan estudios preventivos de identificación
+			de riesgos con tecnologías internacionalmente aceptadas. Con el
+			mismo fin, existen en cada unidad productiva planes y prácticas específicas
+			en materia de seguridad y protección ambiental, que cumplen cabalmente
+			con la normatividad vigente y que permiten una atención rápida de situaciones
+			adversas
+		</p>
+        <p><a class="btn btn-default" href="http://www.cydsa.com/estrategia-de-sustentabilidad/#">Conoce mas &raquo;</a></p>
+    </div>
+</div>

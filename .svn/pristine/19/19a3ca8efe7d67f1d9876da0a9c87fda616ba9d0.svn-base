@@ -1,0 +1,81 @@
+﻿@model IList<CYDSA_Sustentabilidad.Models.IdsRelaciones>
+<h3>Captua de elementos</h3>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+@using (Html.BeginForm())
+{
+
+    
+    @Html.AntiForgeryToken()
+    <table class="table table-bordered">
+        <tr >
+            <th>
+               Descripcion de elemennto
+            </th>
+            <th>
+                Valor
+            </th>
+        </tr>
+        @for(var i = 0; i < Model.Count; i++)
+        {
+        <tr>
+            <td>
+                @Html.HiddenFor(x => x[i].IdsIdElemento)
+                @Html.HiddenFor(x => x[i].IdsIdMedicion)
+                @Html.HiddenFor(x => x[i].IdsIdUnidad)
+                @Html.DisplayFor(x => x[i].IdsCatElementos.IdsDescripcionElemento)
+
+            </td>
+            <td>
+               
+                @Html.EditorFor(x => x[i].Valor)
+            </td>
+        </tr>
+        }
+    </table>
+    <div>
+        <input type="submit" value="Guardar"  class="btn btn-primary" />
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar", "RegistrarMedicion")
+</div>
+
+@*<input id="btnNumeroAleatorio" type="button" value="Guardar" class="btn btn-primary" />*@
+
+@*<script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnNumeroAleatorio').click(function (e) {
+                e.preventDefault();
+
+                var serializedForm = $('form').serialize();
+                //aler("guardando informacion");
+                //aler(serializedForm);
+
+                $.ajax({
+                    type: "POST",                                              // tipo de request que estamos generando
+                    url: './RegistrarMedicion/ElementosList',                    // URL al que vamos a hacer el pedido
+                    data: serializedForm,                                                // data es un arreglo JSON que contiene los parámetros que
+                                                                               // van a ser recibidos por la función del servidor
+                    contentType: "application/json; charset=utf-8",            // tipo de contenido
+                    dataType: "json",                                          // formato de transmición de datos
+                    async: true,                                               // si es asincrónico o no
+                    success: function (resultado) {                            // función que va a ejecutar si el pedido fue exitoso
+                        //aler(resultado.message);
+
+                        if (retultado.status = "ok") {
+
+                            window.location.href = '/Home/Contact';
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) { // función que va a ejecutar si hubo algún tipo de error en el pedido
+                        var error = eval("(" + XMLHttpRequest.responseText + ")");
+                        //aler(error.Message);
+                    }
+                });
+            });
+        });
+</script>*@
+

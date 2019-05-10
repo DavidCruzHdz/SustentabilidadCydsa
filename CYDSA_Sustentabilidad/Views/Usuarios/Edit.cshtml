@@ -1,0 +1,67 @@
+﻿@model CYDSA_Sustentabilidad.Models.IdsUsuario
+<br />
+@{
+    ViewBag.Title = "Modificar Datos de Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+
+<div class="col-md-12 jumbotron" style="color:#000000; font:caption; background-color:#D6EAF8;">
+    <h2>Editar</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Cambio de datos</h4>
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IdsIdUsuario)
+            @Html.HiddenFor(model => model.Estatus)
+            @Html.HiddenFor(model => model.IdsIdEmpresa)
+            @Html.HiddenFor(model => model.IdsRol_id)
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsNombreUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdsNombreUsuario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdsNombreUsuario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsCorreo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdsCorreo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdsCorreo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div >
+                @Html.LabelFor(model => model.IdsPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(model => model.IdsPassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdsPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+              <br />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Grabar" class="btn btn-primary btn-lg" />
+                <a href="/Usuarios/Index" , class='btn btn-primary btn-lg'>Regresar</a>
+            </div>
+        </div>
+    }
+
+
+</div>

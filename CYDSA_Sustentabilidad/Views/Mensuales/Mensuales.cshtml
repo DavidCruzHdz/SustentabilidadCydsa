@@ -1,0 +1,1031 @@
+﻿
+@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsIndicadorAnual>
+
+
+@{
+    ViewBag.Title = "Mensuales";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<h3>
+    SEGUIMIENTO MENSUAL DE INDICADORES
+</h3>
+
+
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/jquery.dataTables_themeroller.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/jquery.dataTables.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/demo_table_jui.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/demo_table.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/demo_page.css" data-semver="1.9.4" data-require="datatables" />
+<link rel="stylesheet" href="~/Content/jquery-ui-1.10.0.custom.min.css" data-semver="1.10.0" data-require="jqueryui" />
+<link rel="stylesheet" href="~/Content/jquery.dataTables.min.css" data-semver="1.10.13" data-require="jqueryui" />
+
+<script src="~/Scripts/jquery-latest.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.min.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-ui.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.dataTables.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-1.12.4.js" type="text/javascript"></script>
+
+
+<div class="container form-group col-md-12" style="background-color:#D6EAF8;">
+
+    <br />
+    <div class="col-md-3 ">
+
+        @Html.DropDownList("IdPlantaTmp", (IEnumerable<SelectListItem>)ViewBag.dropdownPlanta, "Seleccione la Planta", new { id = "PlantaId", @class = "form-control" })
+    </div>
+
+
+    <div class="container form-group col-md-3">
+        @Html.DropDownList("IdAnio", (IEnumerable<SelectListItem>)ViewBag.dropdownAnio, "Seleccione el Año", new { id = "AnioId", @class = "form-control" })
+
+    </div>
+    <div class="container form-group col-md-3">
+        <a href="/MontosPorMes/MontosPorMes?IdPlanta=@Session["IdPlanta"] &IdAnio=@Session["IdAnio"]" , class='btn btn-primary PorMonto'>Ver Por Montos</a>
+    </div>
+
+    <div class="container form-group col-md-3">
+
+    </div>
+
+
+
+
+    <div class="table-responsive col-md-12">
+
+        <form id="myForm" action="/action_page.php">
+            <table class="table  tabla1" style="word-wrap:break-word">
+                <tr style="word-wrap:break-word">
+
+                    <th style="word-wrap:break-word">
+                        @Html.DisplayNameFor(model => model.IdsIdIndicador)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsMesEnero)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsMesFebrero)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsMesMarzo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsMesAbril)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsMesMayo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsMesJunio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsMesJulio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsMesAgosto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsMesSeptiembre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsMesOctubre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsMesNoviembre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsMesDiciembre)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.IdsAnual)
+                        </th>*@
+
+                    <th></th>
+                </tr>
+
+
+
+
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td style="font-size:12px; font-style:normal; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+                            <a href="/IndicadoresDesglose/IndicadoresDesglose?IdIndicador=@item.IdsIdIndicador">@Html.DisplayFor(modelItem => item.IdsCatIndicadores.IdsDescripcionIndicador)</a>
+
+                        </td>
+                        <td>
+
+                            @{
+
+                                if (item.IdsMesEnero == 1)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-ok dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=1&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=1&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                            <li><a href="/Indicador/Index?IdMes=1" class="glyphicon glyphicon-signal"> Recalcular</a></li>
+                                        </ul>
+                                    </div>
+                                }
+
+                                if (item.IdsMesEnero == 2)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=1&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-plus-sign"> Registrar</a></li>
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=1&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=1&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+
+                                        </ul>
+                                    </div>
+                                }
+                                if (item.IdsMesEnero == 3)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=1&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-plus-sign"> Registrar</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=1&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+                                }
+                            }
+                        <td>
+                            @{
+                                if (item.IdsMesFebrero == 1)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-ok dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=2&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=2&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                            <li><a href="/Indicador/Index?IdMes=2" class="glyphicon glyphicon-signal"> Recalcular</a></li>
+                                        </ul>
+                                    </div>
+                                }
+
+                                if (item.IdsMesFebrero == 2)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=2&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=2&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=2&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+                                }
+                                if (item.IdsMesFebrero == 3)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=2&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=2&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+                            }
+                        </td>
+                        <td>
+                            @{
+                                if (item.IdsMesMarzo == 1)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-ok dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=3&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=3&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                            <li><a href="/Indicador/Index?IdMes=1" class="glyphicon glyphicon-signal"> Recalcular</a></li>
+                                        </ul>
+                                    </div>
+                                }
+
+                                if (item.IdsMesEnero == 2)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=3&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-plus-sign"> Registrar</a></li>
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=3&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=3&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+
+                                        </ul>
+                                    </div>
+                                }
+                                if (item.IdsMesEnero == 3)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=3&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-plus-sign"> Registrar</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=3&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+                                }
+                            }
+
+                        </td>
+                        <td>
+                            @{
+                                if (item.IdsMesAbril == 1)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-ok dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=4&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=4&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                            <li><a href="/Indicador/Index?IdMes=4" class="glyphicon glyphicon-signal"> Recalcular</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+
+                                if (item.IdsMesAbril == 2)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=4&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=4&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=4&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+                                if (item.IdsMesAbril == 3)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=4&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=4&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+                                }
+                            }
+                        </td>
+                        <td>
+                            @{
+                                if (item.IdsMesMayo == 1)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-ok dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=5&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=5&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                            <li><a href="/Indicador/Index?IdMes=5" class="glyphicon glyphicon-signal"> Recalcular</a></li>
+                                        </ul>
+                                    </div>
+                                }
+
+                                if (item.IdsMesMayo == 2)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=5&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=5&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=5&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+                                }
+                                if (item.IdsMesMayo == 3)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=5&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=5&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+                                }
+                            }
+                        </td>
+                        <td>
+                            @{
+
+                                if (item.IdsMesJunio == 1)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-ok dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=6&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=6&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                            <li><a href="/Indicador/Index?IdMes=6" class="glyphicon glyphicon-signal"> Recalcular</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+
+                                if (item.IdsMesJunio == 2)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=6&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=6&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=6&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+                                if (item.IdsMesJunio == 3)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=6&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=6&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+                            }
+                        </td>
+                        <td>
+                            @{
+                                if (item.IdsMesJulio == 1)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-ok dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=7&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=7&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                            <li><a href="/Indicador/Index?IdMes=7" class="glyphicon glyphicon-signal"> Recalcular</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+
+                                if (item.IdsMesJulio == 2)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=7&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=7&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=7&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+                                }
+
+                                if (item.IdsMesJulio == 3)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=7&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/Indicador/Index?IdMes=7&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-signal"> Ver Indicadores</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+                            }
+                        </td>
+                        <td>
+                            @{
+                                if (item.IdsMesAgosto == 1)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-ok dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=8&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=8&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                            <li><a href="/Indicador/Index?IdMes=8" class="glyphicon glyphicon-signal"> Recalcular</a></li>
+                                        </ul>
+                                    </div>
+                                }
+
+                                if (item.IdsMesAgosto == 2)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=8&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=8&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=8&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+                                }
+                                if (item.IdsMesAgosto == 3)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=8&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=8&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+
+                                        </ul>
+                                    </div>
+
+                                }
+                            }
+                        </td>
+                        <td>
+                            @{
+                                if (item.IdsMesSeptiembre == 1)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-ok dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=9&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=9&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                            <li><a href="/Indicador/Index?IdMes=9" class="glyphicon glyphicon-signal"> Recalcular</a></li>
+                                        </ul>
+                                    </div>
+                                }
+
+                                if (item.IdsMesSeptiembre == 2)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=9&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=9&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=9&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+                                if (item.IdsMesSeptiembre == 3)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=9&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=9&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+                            }
+                        </td>
+                        <td>
+                            @{
+                                if (item.IdsMesOctubre == 1)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-ok dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=10&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=10&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                            <li><a href="/Indicador/Index?IdMes=10" class="glyphicon glyphicon-signal"> Recalcular</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+
+                                if (item.IdsMesOctubre == 2)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=10&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=10&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=10&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+                                if (item.IdsMesOctubre == 3)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=10&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=10&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+                            }
+                        </td>
+                        <td>
+                            @{
+                                if (item.IdsMesNoviembre == 1)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-ok dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=11&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=11&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                            <li><a href="/Indicador/Index?IdMes=11" class="glyphicon glyphicon-signal"> Recalcular</a></li>
+                                        </ul>
+                                    </div>
+                                }
+
+                                if (item.IdsMesNoviembre == 2)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=11&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=11&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=11&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+                                if (item.IdsMesNoviembre == 3)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=11&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=11&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+                                }
+
+                            }
+                        </td>
+                        <td>
+                            @{
+                                if (item.IdsMesDiciembre == 1)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-ok dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=12&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=12&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                            <li><a href="/Indicador/Index?IdMes=12" class="glyphicon glyphicon-signal"> Recalcular</a></li>
+                                        </ul>
+                                    </div>
+                                }
+
+                                if (item.IdsMesDiciembre == 2)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=12&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/ListarMediciones/ListaMedicion?IdMes=12&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-duplicate"> Cambios</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=12&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+                                }
+                                if (item.IdsMesDiciembre == 3)
+                                {
+                                    <div class="btn-group btn-group-xs" role="group">
+                                        <button type="button" class="btn btn-primary glyphicon glyphicon-folder-open dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/RegistrarMedicion/RegistrarMedicion?IdMes=12&IdIndicador= @item.IdsIdIndicador" class="glyphicon glyphicon-file"> Registrar</a></li>
+                                            <li><a href="/BitacoraMediciones/BitacoraMediciones?IdMes=12&IdIndicador=@item.IdsIdIndicador" class="glyphicon glyphicon-list-alt"> Bitacora</a></li>
+                                        </ul>
+                                    </div>
+
+                                }
+                            }
+                        </td>
+                    </tr>
+                                }
+
+            </table>
+
+        </form>
+
+
+        <table class="table" style="background-color:#D6EAF8;">
+            <tr class="info2">
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsIdIndicador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesEnero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesFebrero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesMarzo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesAbril)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesMayo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesJunio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesJulio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesAgosto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesSeptiembre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesOctubre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesNoviembre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesDiciembre)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.IdsAnual)
+                    </th>
+
+                    <th></th>*@
+            </tr>
+            <tbody class="tablaAqui"></tbody>
+
+        </table>
+        <br />
+        <br />
+        <br />
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+
+
+        $(".info2").hide();
+
+        @if((int)Session["IdPlanta"]<=0)
+        {
+            <text>
+      //  $(".tabla1").css("display", "none");
+        </text>
+        }else     {
+            <text>
+       // $(".tabla3").css("display", "none");
+        </text>
+        }
+
+
+
+        $("#AnioId").val(@Session["IdAnio"]);
+        $("#PlantaId").val(@Session["IdPlanta"]);
+
+        if(@Session["IdPlanta"]==0)
+            $("#PlantaId").val(@Session["idPlantaDF"]);
+
+
+        if(@Session["IdAnio"]==0)
+            $("#AnioId").val(2018);
+
+
+
+    });
+
+    $("#AnioId").change(function () {
+        Buscar();
+    });
+    $("#PlantaId").change(function () {
+        Buscar();
+    });
+
+    // function Busca
+    function Buscar() {
+
+        var IdPlanta = 0;
+        IdPlanta = $("#PlantaId").val();
+
+        var id = 0;
+        var IdAnio = 0;
+        IdAnio = $("#AnioId option:selected").text();
+
+        if (IdPlanta > 0 & IdAnio > 0) {
+            $.ajax({
+                url: "/Mensuales/Index3?IdPlanta=" + IdPlanta + "&IdAnio=" + IdAnio,
+                method: "post",
+                data: id,
+                success: function (result) {
+                    $(".PorMonto").css("display", "block");
+
+                    $(".tabla1").remove();
+                    $(".info2").show();
+
+                    if (result != null) {
+                        $.each(result, function (index, item) {
+
+                            var Indicador = "<a href='/IndicadoresDesglose/IndicadoresDesglose?IdIndicador=" + item.IdsIdIndicador + "'>" + item.IdDescripcion + "</a>";
+
+                            if (item.IdPlanta == "")
+                                item.IdPlanta = -1;
+
+                            if (item.IdsIdIndicador == "")
+                                item.IdsIdIndicador = -1;
+
+
+                            var Enero = "";
+                            if (item.IdsMesEnero == 1) {
+                                Enero = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn btn-primary glyphicon glyphicon-ok dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=1&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=1&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-duplicate'> Cambios</a></li><li><a href='/Indicador/Index?IdMes=1' class='glyphicon glyphicon-signal'> Recalcular</a></li></ul></div>"
+                            }
+
+                            if (item.IdsMesEnero == 2) {
+                                Enero = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-remove dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=1&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-plus-sign'> Registrar</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=1&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-duplicate'> Cambios</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=1&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li>  </ul></div>"
+                            }
+                            if (item.IdsMesEnero == 3) {
+                                Enero = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-folder-open dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'> <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=1&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-file'> Registrar</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=1&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Ver Indicadores</a></li>  </ul></div>"
+                            }
+
+
+                            var Febrero = "";
+                            if (item.IdsMesFebrero == 1) {
+                                Febrero = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn btn-primary glyphicon glyphicon-ok dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=2&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=2&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-duplicate'> Cambios</a></li><li><a href='/Indicador/Index?IdMes=2' class='glyphicon glyphicon-signal'> Recalcular</a></li></ul></div>"
+                            }
+
+                            if (item.IdsMesFebrero == 2) {
+                                Febrero = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-remove dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=2&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-plus-sign'> Registrar</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=2&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-duplicate'> Cambios</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=2&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li>  </ul></div>"
+                            }
+                            if (item.IdsMesFebrero == 3) {
+                                Febrero = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-folder-open dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'> <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=2&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-file'> Registrar</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=2&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Ver Indicadores</a></li>  </ul></div>"
+                            }
+
+
+
+                            var Marzo = "";
+                            if (item.IdsMesMarzo == 1) {
+                                Marzo = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn btn-primary glyphicon glyphicon-ok dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=3&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=3&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-duplicate'> Cambios</a></li><li><a href='/Indicador/Index?IdMes=3' class='glyphicon glyphicon-signal'> Recalcular</a></li></ul></div>"
+                            }
+
+                            if (item.IdsMesMarzo == 2) {
+                                Marzo = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-remove dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=3&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-plus-sign'> Registrar</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=3&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-duplicate'> Cambios</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=3&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li>  </ul></div>"
+                            }
+                            if (item.IdsMesMarzo == 3) {
+                                Marzo = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-folder-open dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'> <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=3&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-file'> Registrar</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=3&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Ver Indicadores</a></li>  </ul></div>"
+                            }
+
+
+
+                            var Abril = "";
+                            if (item.IdsMesAbril == 1) {
+                                Abril = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn btn-primary glyphicon glyphicon-ok dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=4&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=4&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-duplicate'> Cambios</a></li><li><a href='/Indicador/Index?IdMes=4' class='glyphicon glyphicon-signal'> Recalcular</a></li></ul></div>"
+                            }
+
+                            if (item.IdsMesAbril == 2) {
+                                Abril = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-remove dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=4&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-plus-sign'> Registrar</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=4&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-duplicate'> Cambios</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=4&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li>  </ul></div>"
+                            }
+                            if (item.IdsMesAbril == 3) {
+                                Abril = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-folder-open dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'> <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=4&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-file'> Registrar</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=4&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Ver Indicadores</a></li>  </ul></div>"
+                            }
+
+
+                            var Mayo = "";
+                            if (item.IdsMesMayo == 1) {
+                                Mayo = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn btn-primary glyphicon glyphicon-ok dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=5&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=5&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-duplicate'> Cambios</a></li><li><a href='/Indicador/Index?IdMes=5' class='glyphicon glyphicon-signal'> Recalcular</a></li></ul></div>"
+                            }
+
+                            if (item.IdsMesMayo == 2) {
+                                Mayo = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-remove dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=5&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-plus-sign'> Registrar</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=5&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-duplicate'> Cambios</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=5&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li>  </ul></div>"
+                            }
+                            if (item.IdsMesMayo == 3) {
+                                Mayo = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-folder-open dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'> <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=5&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-file'> Registrar</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=5&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Ver Indicadores</a></li>  </ul></div>"
+                            }
+
+
+
+
+
+                            var Junio = "";
+                            if (item.IdsMesJunio == 1) {
+                                Junio = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn btn-primary glyphicon glyphicon-ok dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=6&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=6&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-duplicate'> Cambios</a></li><li><a href='/Indicador/Index?IdMes=6' class='glyphicon glyphicon-signal'> Recalcular</a></li></ul></div>"
+                            }
+
+                            if (item.IdsMesJunio == 2) {
+                                Junio = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-remove dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=6&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-file'> Cambios</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=6&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-duplicate'> Cambios</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=6&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li>  </ul></div>"
+                            }
+                            if (item.IdsMesJunio == 3) {
+                                Junio = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-folder-open dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'> <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=6&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-file'> Registrar</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=6&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Ver Indicadores</a></li>  </ul></div>"
+                            }
+
+
+                            var Julio = "";
+                            if (item.IdsMesJulio == 1) {
+                                Julio = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn btn-primary glyphicon glyphicon-ok dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=7&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=7&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-duplicate'> Cambios</a></li><li><a href='/Indicador/Index?IdMes=7' class='glyphicon glyphicon-signal'> Recalcular</a></li></ul></div>"
+                            }
+
+                            if (item.IdsMesJulio == 2) {
+                                Julio = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-remove dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=7&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-plus-sign'> Registrar</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=7&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-duplicate'> Cambios</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=7&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li>  </ul></div>"
+                            }
+                            if (item.IdsMesJulio == 3) {
+                                Julio = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-folder-open dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'> <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=7&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-file'> Registrar</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=7&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Ver Indicadores</a></li>  </ul></div>"
+                            }
+
+
+                            var Agosto = "";
+                            if (item.IdsMesAgosto == 1) {
+                                Agosto = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn btn-primary glyphicon glyphicon-ok dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=8&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=8&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-duplicate'> Cambios</a></li><li><a href='/Indicador/Index?IdMes=8' class='glyphicon glyphicon-signal'> Recalcular</a></li></ul></div>"
+                            }
+
+                            if (item.IdsMesAgosto == 2) {
+                                Agosto = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-remove dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=8&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-plus-sign'> Registrar</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=8&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-duplicate'> Cambios</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=8&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li>  </ul></div>"
+                            }
+                            if (item.IdsMesAgosto == 3) {
+                                Agosto = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-folder-open dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'> <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=8&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-file'> Registrar</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=8&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Ver Indicadores</a></li>  </ul></div>"
+                            }
+
+
+                            var Septiembre = "";
+                            if (item.IdsMesSeptiembre == 1) {
+                                Septiembre = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn btn-primary glyphicon glyphicon-ok dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=9&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=9&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-duplicate'> Cambios</a></li><li><a href='/Indicador/Index?IdMes=9' class='glyphicon glyphicon-signal'> Recalcular</a></li></ul></div>"
+                            }
+
+                            if (item.IdsMesSeptiembre == 2) {
+                                Septiembre = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-remove dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=9&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-plus-sign'> Registrar</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=9&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-duplicate'> Cambios</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=9&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li>  </ul></div>"
+                            }
+                            if (item.IdsMesSeptiembre == 3) {
+                                Septiembre = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-folder-open dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'> <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=9&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-file'> Registrar</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=9&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Ver Indicadores</a></li>  </ul></div>"
+                            }
+
+
+                            var Octubre = "";
+                            if (item.IdsMesOctubre == 1) {
+                                Octubre = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn btn-primary glyphicon glyphicon-ok dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=10&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=10&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-duplicate'> Cambios</a></li><li><a href='/Indicador/Index?IdMes=10' class='glyphicon glyphicon-signal'> Recalcular</a></li></ul></div>"
+                            }
+
+                            if (item.IdsMesOctubre == 2) {
+                                Octubre = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-remove dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=10&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-plus-sign'> Registrar</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=10&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-duplicate'> Cambios</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=10&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li>  </ul></div>"
+                            }
+                            if (item.IdsMesOctubre == 3) {
+                                Octubre = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-folder-open dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'> <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=10&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-file'> Registrar</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=10&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Ver Indicadores</a></li>  </ul></div>"
+                            }
+
+
+
+                            var Noviembre = "";
+                            if (item.IdsMesNoviembre == 1) {
+                                Noviembre = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn btn-primary glyphicon glyphicon-ok dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=11&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=11&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-duplicate'> Cambios</a></li><li><a href='/Indicador/Index?IdMes=11' class='glyphicon glyphicon-signal'> Recalcular</a></li></ul></div>"
+                            }
+
+                            if (item.IdsMesNoviembre == 2) {
+                                Noviembre = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-remove dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=11&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-plus-sign'> Registrar</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=11&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-duplicate'> Cambios</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=11&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li>  </ul></div>"
+                            }
+                            if (item.IdsMesNoviembre == 3) {
+                                Noviembre = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-folder-open dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'> <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=11&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-file'> Registrar</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=11&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Ver Indicadores</a></li>  </ul></div>"
+                            }
+
+
+                            var Diciembre = "";
+                            if (item.IdsMesDiciembre == 1) {
+                                Diciembre = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn btn-primary glyphicon glyphicon-ok dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=12&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=12&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-duplicate'> Cambios</a></li><li><a href='/Indicador/Index?IdMes=12' class='glyphicon glyphicon-signal'> Recalcular</a></li></ul></div>"
+                            }
+
+                            if (item.IdsMesDiciembre == 2) {
+                                Diciembre = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-remove dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'>  <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=12&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-plus-sign'> Registrar</a></li> <li><a href='/ListarMediciones/ListaMedicion?IdMes=12&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-duplicate'> Cambios</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=12&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Bitacora</a></li>  </ul></div>"
+                            }
+                            if (item.IdsMesDiciembre == 3) {
+                                Diciembre = " <div class='btn-group btn-group-xs' role='group'> <button type='button' class='btn  btn-primary glyphicon glyphicon-folder-open dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>  <span class='caret'></span>  </button>   <ul class='dropdown-menu'> <li><a href='/RegistrarMedicion/RegistrarMedicion?IdMes=12&IdIndicador= " + item.IdsIdIndicador + "'class='glyphicon glyphicon-file'> Registrar</a></li> <li><a href='/BitacoraMediciones/BitacoraMediciones?IdMes=12&IdIndicador=" + item.IdsIdIndicador + "' class='glyphicon glyphicon-list-alt'> Ver Indicadores</a></li>  </ul></div>"
+                            }
+
+                            var tablastring = "<tr class ='tabla1' style='word-wrap:break-word'> <td style='font-size:12px; font-style:normal; font-family:Franklin Gothic Medium, Arial Narrow, Arial, sans-serif'  >" + Indicador + "</td> <td>" + Enero + "</td> <td>" + Febrero + "</td> <td>" + Marzo + "</td> <td>" + Abril + "</td> <td>" + Mayo + "</td> <td>" + Junio + "</td> <td>" + Julio + "</td> <td>" + Agosto + "</td> <td>" + Septiembre + "</td> <td>" + Octubre + "</td> <td>" + Noviembre + "</td> <td>" + Diciembre + "</td></tr>"
+
+                            $(".tablaAqui").append(tablastring);
+                        });//fin siclo
+                        $('#PlazaID').text = "Seleciona";
+                    }
+                },
+                async: true
+            });
+        }
+    }
+</script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $(".info3").hide();
+        Buscar();
+    });
+
+    function Montos() {
+            var IdPlanta = 0;
+            IdPlanta = $("#PlantaId").val();
+
+            var id = 0;
+            var IdAnio = 0;
+            IdAnio = $("#AnioId option:selected").text();
+
+            $.ajax({
+                url: location.origin + "/MontosPorMes/MontosPorMes?IdPlanta=" + IdPlanta + "&IdAnio=" + IdAnio,
+                success: function () {
+                    $("#comment-" + IdPlanta).slideUp("fast");
+                }
+            });
+
+        }
+</script>
+
+
+
+
+<style>
+    table {
+        background-color: #D6EAF8;
+    }
+
+
+    tr:hover {
+        color: #17202A;
+        background-color: #85C1E9;
+    }
+
+    tr th:hover {
+        color: #fff;
+        background-color: #3498DB;
+    }
+
+    th {
+        background-color: #3498DB;
+        color: #fff;
+    }
+</style>    

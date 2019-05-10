@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ee0ed6993c6e46b2ac3ab85713b2ba37" Name="Diagram1">
+        <EntityTypeShape EntityType="BDIndicadoresModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.AspNetRoles" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.AspNetUserClaims" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.AspNetUserLogins" Width="1.5" PointX="10.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.AspNetUsers" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsCatElementos" Width="1.5" PointX="3.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsCatEmpresas" Width="1.5" PointX="6.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsCatFactores" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsCatIndicadores" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsCatMediciones" Width="1.5" PointX="0.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsCatPlantas" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsCatUnidades" Width="1.5" PointX="3.75" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsFormulas" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsIndicadores" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsMediciones" Width="1.5" PointX="6" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsMensualesPorMontos" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsRelaciones" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsTareas" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDIndicadoresModel.IdsIndicadorAnual" Width="1.5" PointX="9" PointY="13.25" IsExpanded="true" />
+        <AssociationConnector Association="BDIndicadoresModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK__IdsMedici__IdsId__178D7CA5" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK_IdsRelaciones_IdsCatElementos1" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK_IdsIndicadorAnual_IdsCatEmpresas3" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK_IdsRelaciones_IdsCatEmpresas1" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK__IdsIndica__IdsId__14B10FFA" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK__IdsIndica__IdsId__1C5231C2" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK__IdsMedici__IdsId__1699586C" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK__IdsMensua__IdsId__26CFC035" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK_IdsIndicadorAnual_IdsCatIndicadores3" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK_IdsRelaciones_IdsCatIndicadores1" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK_IdsRelaciones_IdsCatMediciones1" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK__IdsIndica__IdsId__0B27A5C0" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK__IdsIndica__IdsId__1A69E950" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK__IdsIndica__IdsId__1B5E0D89" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK__IdsMedici__IdsId__15A53433" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK__IdsMensua__IdsId__27C3E46E" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK_IdsIndicadorAnual_IdsCatPlantas3" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK_IdsMediciones_IdsCatPlantas2" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK_IdsRelaciones_IdsCatPlantas1" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK__IdsMedici__IdsId__1881A0DE" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.FK_IdsRelaciones_IdsCatUnidades1" ManuallyRouted="false" />
+        <AssociationConnector Association="BDIndicadoresModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsUsuario>
+@{
+    ViewBag.Title = "Transferencias";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+}
+
+<h2>Transferencia de Materia Prima</h2>
+
+
+    @using (Html.BeginForm("UploadFile", "MateriaPrima", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        @Html.AntiForgeryToken() // si tienes el decorador [ValidateAntiForgeryToken] en tu accion del controlador
+
+         <fieldset>
+            <legend>Migrar informacion</legend>
+
+            <div class="editor-label">
+                Subir la Archivo
+            </div>
+            <div class="editor-field">
+                <input type="File" name="file" id="file" value="Selecciona el archivo" />
+            </div>
+             <br/>
+            <p>
+                <input type="submit" value="Subir archivo" />
+            </p>
+        </fieldset>
+
+    }
+
+
+

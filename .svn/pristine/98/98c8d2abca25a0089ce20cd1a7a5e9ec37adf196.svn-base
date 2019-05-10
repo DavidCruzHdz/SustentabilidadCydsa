@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Contactanos";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+	<p>&nbsp;</p>
+	<p style="box-sizing: border-box; word-break: break-word; word-wrap: break-word; margin-bottom: 15px; margin-top: 0px; color: rgb(74, 74, 74); font-family: Lato; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 249); text-decoration-style: initial; text-decoration-color: initial; font-size: 20px;">
+		Av. Ricardo Margáin Zozaya No. 335<br style="box-sizing: border-box;" />
+		Torre 2 Piso 6, Valle del Campestre<br style="box-sizing: border-box; margin-bottom: 0px;" />
+		66265 San Pedro Garza García, N.L.
+	</p>
+	<p style="box-sizing: border-box; word-break: break-word; word-wrap: break-word; margin-bottom: 0px; margin-top: 0px; color: rgb(74, 74, 74); font-family: Lato; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 249); text-decoration-style: initial; text-decoration-color: initial; font-size: 20px;">
+		<span style="box-sizing: border-box; margin-bottom: 0px; color: rgb(39, 146, 236);"><strong style="box-sizing: border-box; font-weight: bold; margin-bottom: 0px;">T. +52&nbsp;(81) 8152 4500</strong></span>
+	</p>
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>

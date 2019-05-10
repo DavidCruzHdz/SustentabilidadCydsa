@@ -1,0 +1,107 @@
+﻿using CYDSA_Sustentabilidad.ADO;
+using CYDSA_Sustentabilidad.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace CYDSA_Sustentabilidad.Controllers
+{
+    public class ListaMedicionController : Controller
+    {
+        // GET: Indicador
+        public ActionResult ListaMedicion(int? Id=0 )
+        {
+           Entities db = new Entities();
+
+
+
+            List<SelectListItem> IdsMes = new List<SelectListItem>()
+            {
+                new SelectListItem { Text = "Enero", Value = "1" },
+                new SelectListItem { Text = "Febrero", Value = "2" },
+                new SelectListItem { Text = "Marzo", Value = "3" },
+                new SelectListItem { Text = "Abril", Value = "4" },
+                new SelectListItem { Text = "Mayo", Value = "5" },
+                new SelectListItem { Text = "Junio", Value = "6" },
+                new SelectListItem { Text = "Julio", Value = "7" },
+                new SelectListItem { Text = "Agosto", Value = "8" },
+                new SelectListItem { Text = "Septiembre", Value = "9" },
+                new SelectListItem { Text = "Octubre", Value = "10" },
+                new SelectListItem { Text = "Noviembre", Value = "11" },
+                new SelectListItem { Text = "Diciembre", Value = "12" },
+
+            };
+            //Assigning generic list to ViewBag
+            ViewBag.Locations = IdsMes;
+            
+            ViewBag.FiltroMes = Id;
+            //List<IdsIndicadores> lista = db.IdsIndicadores.Where(a => a.IdsMes > 8).ToList();
+
+            return View(db.IdsMediciones.ToList().Where(x =>x.IdsMes == Id || Id == 0 ));
+        }
+
+
+        // get
+        public ActionResult ListaEdit(int? IdMedicion)
+        {
+            Entities db = new Entities();
+
+            //List<IdsIndicadores> lista = db.IdsIndicadores.Where(a => a.IdsMes > 8).ToList();
+
+            return View(db.IdsMediciones.ToList().Where(x => x.IdsIdMedicion == IdMedicion).FirstOrDefault());
+        }
+
+
+        // Post: ListaMedicion
+        [HttpPost]
+        public ActionResult ListaEdit(IdsMediciones Entity)
+        {
+            Entities db = new Entities();
+
+            IdsMedicionesADO context = new IdsMedicionesADO();
+
+            context.Update(Entity);
+
+
+
+
+            return View("ListaMedicion", db.IdsMediciones.ToList());
+        }
+
+
+        public ActionResult Delete(int IdCia, int IdPlanta, int IdMes, int IdAnio, int IdIndicador, int IdMedicion, int IdElemento)
+        {
+            Entities Context = new Entities();
+
+
+
+            IdsMediciones entity = Context.IdsMediciones.Where(x => (x.IdsIdCia == IdCia) && (x.IdsIdPlanta == IdPlanta) && (x.IdsMes == IdMes) && (x.IdsAnio == IdAnio) && (x.IdsIdIndicador == IdIndicador) && (x.IdsIdMedicion == IdMedicion) && (x.IdsIdElemento == IdElemento)).FirstOrDefault();
+            Context.IdsMediciones.Remove(entity);
+            Context.SaveChanges();
+
+            return View("ListaMedicion", Context.IdsMediciones.ToList());
+        }
+
+
+        //        // Post: ListaMedicion
+        //        //[HttpPost]
+        //        public ActionResult QuitarDeLista(int id)
+        //        {
+        //            using (var db = new IdsMedicionesADO context())
+        //            {
+        //                IdsMedicionesADO context = new IdsMedicionesADO();
+
+        ////            IdsMediciones Medicion = db.IdsMediciones.Find()
+        //            db.IdsMediciones.Remove()
+
+        //            context.Delete(Entity);
+
+        //    return View("ListaMedicion");
+        //    }
+        //}
+
+
+    }
+}

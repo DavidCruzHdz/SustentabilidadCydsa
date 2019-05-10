@@ -1,0 +1,399 @@
+﻿@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsMensualesPorMontos>
+
+@{
+    ViewBag.Title = "MontosPorMes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    INFORMACION DE SEGUIMIENTO MENSUAL
+</h3>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+<div class="container form-group col-md-12" style=" background-color:#D6EAF8;">
+
+    <br />
+    <div class="col-md-4 ">
+        @Html.DropDownList("IdPlantaTmp", (IEnumerable<SelectListItem>)ViewBag.dropdownPlanta, "Seleccione la Planta", new { id = "PlantaId", @class = "form-control" })
+    </div>
+
+
+    <div class="container form-group col-md-4">
+        @Html.DropDownList("IdAnio", (IEnumerable<SelectListItem>)ViewBag.dropdownAnio, "Seleccione el Año", new { id = "IdsIdIndicadores", @class = "form-control" })
+
+    </div>
+    <div class="container form-group col-md-4">
+
+        @Html.ActionLink("Recalcular", "Mensuales", "Mensuales", new { @class = "btn   btn-primary" })
+
+    </div>
+
+    <div class="table-responsive col-md-12">
+        <table class="table  tabla1" style="word-wrap:break-word">
+            <tr style="word-wrap:break-word">
+                @*<th>
+                        @Html.DisplayNameFor(model => model.IdsIdCia)
+                    </th>*@
+                @*<th>
+                        @Html.DisplayNameFor(model => model.IdsIdPlanta)
+                    </th>*@
+                <th style="word-wrap:break-word">
+                    @Html.DisplayNameFor(model => model.IdsIdIndicador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesEnero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesFebrero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesMarzo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesAbril)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesMayo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesJunio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesJulio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesAgosto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesSeptiembre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesOctubre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesNoviembre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesDiciembre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsAnual)
+                </th>
+                @*<th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsAnio)
+                    </th>
+                        @Html.DisplayNameFor(model => model.IdsUsario)
+                    </th>*@
+                <th></th>
+            </tr>
+
+
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.IdsIdCia)
+                        </td>*@
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.IdsIdPlanta)
+                        </td>*@
+                    <td>
+
+                        @*@Html.DisplayFor(modelItem => item.IdsIdIndicador)*@
+                        @{
+                            if (item.IdsIdIndicador == 1)
+                            {
+                                <p>EFICIENCIA DE TRANSFORMACIÓN</p>
+                            }
+
+                            if (item.IdsIdIndicador == 2)
+                            {
+                                <p>EFICIENCIA ENERGÈTICA</p>
+                            }
+                            if (item.IdsIdIndicador == 3)
+                            {
+                                <p>% DE AGUA RECICLADA</p>
+                            }
+
+                            if (item.IdsIdIndicador == 4)
+                            {
+                                <p>TOTAL DE AGUAS VERTIDAS</p>
+                            }
+                            if (item.IdsIdIndicador == 5)
+                            {
+                                <p>TOTAL ENERGÍA DIRECTA</p>
+                            }
+
+                            if (item.IdsIdIndicador == 6)
+                            {
+                                <p>TOTAL ENERGÍA INDIRECTA</p>
+                            }
+                            if (item.IdsIdIndicador == 7)
+                            {
+                                <p>TOTAL DE RESIDUOS PELIGROSOS</p>
+                            }
+
+                            if (item.IdsIdIndicador == 8)
+                            {
+                                <p>TOTAL DE RESIDUOS NO PELIGROSOS</p>
+                            }
+                            if (item.IdsIdIndicador == 9)
+                            {
+                                <p>EMISIONES DIRECTAS A LA ATMOSFERA</p>
+                            }
+
+                            if (item.IdsIdIndicador == 10)
+                            {
+                                <p>EMISIONES INDIRECTAS A LA ATMOSFERA</p>
+                                @*<p style="width:500px">TOTAL DE RESIDUOS NO PELIGROSOS TONS</p>*@
+                            }
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdsMesEnero)
+                    </td>
+
+                    <td>
+                       @Html.DisplayFor(modelItem => item.IdsMesFebrero)
+                    </td>
+                    <td>
+                      @Html.DisplayFor(modelItem => item.IdsMesMarzo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdsMesAbril)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdsMesMayo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdsMesJunio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdsMesJulio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdsMesAgosto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdsMesSeptiembre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdsMesOctubre)                       
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdsMesNoviembre)                       
+                    </td>
+                    <td>
+                       @Html.DisplayFor(modelItem => item.IdsMesDiciembre)
+                    </td>
+                    <td>
+                       @Html.DisplayFor(modelItem => item.IdsAnual)                   
+                    </td>
+
+                    @*<td>
+                             @Html.DisplayFor(modelItem => item.IdsAnio)
+                         </td>
+                        <td>
+                             @Html.DisplayFor(modelItem => item.IdsUsario)
+                         </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </td>
+                    *@
+                </tr>
+                            }
+        </table>
+
+
+
+
+        <table class="table " style="   background-color:#D6EAF8;">
+            <tr class="info2">
+
+
+
+                @*<th>
+                        @Html.DisplayNameFor(model => model.IdsIdCia)
+                    </th>*@
+                @*<th>
+                        @Html.DisplayNameFor(model => model.IdsIdPlanta)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsIdIndicador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesEnero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesFebrero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesMarzo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesAbril)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesMayo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesJunio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesJulio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesAgosto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesSeptiembre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesOctubre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesNoviembre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsMesDiciembre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsAnual)
+                </th>
+                @*<th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdsAnio)
+                    </th>
+                        @Html.DisplayNameFor(model => model.IdsUsario)
+                    </th>*@
+                <th></th>
+            </tr>
+            <tbody class="tablaAqui"></tbody>
+        </table>
+
+    </div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".info2").hide();
+    });
+    $(function () {
+        $("#PlantaId, #IdsIdIndicadores").change(function () {
+            var id = 0;
+            id = $("#PlantaId").val();
+
+
+            var IdAnio = 0;
+            IdAnio = $("#IdsIdIndicadores option:selected").text();
+
+            $.ajax({
+                url: "/Mensuales/Index3?id=" + id + "&IdAnio=" + IdAnio,
+                method: "post",
+                data: id,
+                success: function (result) {
+                    $(".tabla1").remove();
+                    $(".info2").show();
+
+                    if (result != null) {
+                        $.each(result, function (index, item) {
+                            var Indicador = "";
+                            if (item.IdsIdIndicador == 1)
+                            {
+                                Indicador = "EFICIENCIA DE TRANSFORMACIÓN";
+                            }
+
+                            if (item.IdsIdIndicador == 2)
+                            {
+                                Indicador = "EFICIENCIA ENERGÈTICA";
+                            }
+                            if (item.IdsIdIndicador == 3)
+                            {
+                                Indicador = "% DE AGUA RECICLADA";
+                            }
+
+                            if (item.IdsIdIndicador == 4)
+                            {
+                                Indicador = "TOTAL DE AGUAS VERTIDAS";
+                            }
+                            if (item.IdsIdIndicador == 5)
+                            {
+                                Indicador = "TOTAL ENERGÍA DIRECTA";
+                            }
+
+                            if (item.IdsIdIndicador == 6)
+                            {
+                                Indicador = "TOTAL ENERGÍA INDIRECTA";
+                            }
+                            if (item.IdsIdIndicador == 7)
+                            {
+                                Indicador = "TOTAL DE RESIDUOS PELIGROSOS";
+                            }
+
+                            if (item.IdsIdIndicador == 8)
+                            {
+                                Indicador = "TOTAL DE RESIDUOS NO PELIGROSOS";
+                            }
+                            if (item.IdsIdIndicador == 9)
+                            {
+                                Indicador = "EMISIONES DIRECTAS A LA ATMOSFERA";
+                            }
+
+                            if (item.IdsIdIndicador == 10)
+                            {
+                                Indicador = "EMISIONES INDIRECTAS A LA ATMOSFERA";
+                            }
+                            
+
+                            var tablastring = "<tr class ='tabla1'> <td>" + Indicador + "</td> <td>" + item.IdsMesEnero + "</td> <td>" + item.IdsMesFebrero + "</td> <td>" + item.IdsMesMarzo + "</td> <td>" + item.IdsMesAbril + "</td> <td>" + item.IdsMesMayo + "</td> <td>" + item.IdsMesJunio + "</td> <td>" + item.IdsMesJulio + "</td> <td>" + item.IdsMesAgosto + "</td> <td>" + item.IdsMesSeptiembre + "</td> <td>" + item.IdsMesOctubre + "</td> <td>" + item.IdsMesNoviembre + "</td> <td>" + item.IdsMesDiciembre + "</td> <td>" + item.IdsMesAnual + "</td></tr>"
+                            //alert(Indicador)
+                            $(".tablaAqui").append(tablastring);
+                        });//fin siclo
+                        $('#PlazaID').text = "Seleciona";
+                    }
+                },
+                async: true
+            });
+            // $("form").submit();
+        });
+    });
+
+
+
+</script>
+
+<style>
+    table {
+        background-color: #D6EAF8;
+    }
+
+
+    tr:hover {
+        color: #17202A;
+        background-color: #85C1E9;
+    }
+
+    tr th:hover {
+        color: #fff;
+        background-color: ##3498DB;
+    }
+
+    th {
+        background-color: #3498DB;
+        color: #fff;
+    }
+</style>

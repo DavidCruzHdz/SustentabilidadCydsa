@@ -1,0 +1,436 @@
+﻿@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsIndicadores>
+
+@{
+    ViewBag.Title = "Indicadores";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Indicadores de Sustentabilidad</h2>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+<div class="form-horizontal container-fluid col-lg-push-8 img-rounded "style="background-color:#D6EAF8">
+  <div style="background-color:#D6EAF8">
+   
+      <br />
+       <div class="col-md-4">
+        @Html.DropDownList("IdPlantaTmp", (IEnumerable<SelectListItem>)ViewBag.dropdownPlanta, "Seleccione la Planta", new { id = "PlantaId", @class = "form-control" })
+    </div>
+
+    <div class="col-md-4">
+        @Html.DropDownList("IdAnio", (IEnumerable<SelectListItem>)ViewBag.dropdownAnio, "Seleccione el Año", new { id = "IdsIdIndicadores", @class = "form-control" })
+    </div>
+
+    <div class="col-md-4">
+        @Html.DropDownList("IdsMes", (IEnumerable<SelectListItem>)ViewBag.Locations, "Seleccione el Mes", new { id = "IdsMes", @class = "form-control" })
+    </div>
+      </div>
+    <br />
+    <br />
+
+    <table class="table ">
+        <tr class="info2">
+         
+            <th>
+                Mes
+            </th>
+            <th>
+                Año
+            </th>
+
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Unidad
+            </th>
+            <th>
+                Valor Calculado
+            </th>
+            <th>
+                Notas
+            </th>
+
+          
+        </tr>
+        <tbody class="tablaAqui">
+
+        </tbody>
+    </table>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="container form-group">
+            <div>
+                <div class="table-responsive">
+                    <table class="table Tabla1">
+                        <tr class="">
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.IdsIdCia )
+                                </th>*@
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.IdsIdPlanta)
+                                </th*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdsMes)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdsAnio)
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.IdsIdIndicador)
+                                </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdsDescripcionIndicador)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdsIdUnidad)
+
+
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdsValorDelPeriodo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdsNotasAdicionales)
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.IdsFechaAlta)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IdsUsuarioAlta)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IdsFechaCambio)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IdsUsuarioCambio)
+                                </th>*@
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                {
+                            <tr>
+
+                                <td>
+                                    @if (item.IdsMes == 1)
+                                    {
+                                        <span>Enero</span>
+
+                                    }
+                                    @if (item.IdsMes == 2)
+                                    {
+                                        <span>Febrero</span>
+
+                                    }
+                                    @if (item.IdsMes == 3)
+                                    {
+                                        <span>Marzo</span>
+
+                                    }
+                                    @if (item.IdsMes == 4)
+                                    {
+                                        <span>Abril</span>
+
+                                    }
+                                    @if (item.IdsMes == 5)
+                                    {
+                                        <span>Mayo</span>
+
+                                    }
+                                 
+                                    @if (item.IdsMes == 6)
+                                    {
+                                    <span>Junio</span>
+                                    
+                                    }
+                                    @if (item.IdsMes == 7)
+                                    {
+                                        <span>Julio</span>
+
+                                    }
+                                    @if (item.IdsMes == 8)
+                                    {
+                                        <span>Agosto</span>
+
+                                    }
+                                    @if (item.IdsMes == 9)
+                                    {
+                                        <span>Septimbre</span>
+
+                                    }
+                                    @if (item.IdsMes == 10)
+                                    {
+                                        <span>Octubre</span>
+
+                                    }
+                                    @if (item.IdsMes == 11)
+                                    {
+                                        <span>Noviembre</span>
+
+                                    }
+                                    @if (item.IdsMes == 12)
+                                    {
+                                        <span>Diciembre</span>
+
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdsAnio)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.IdsIdIndicador)
+                                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdsDescripcionIndicador)
+                                </td>
+                                <td>
+                                    @{
+
+                                        if (item.IdsIdUnidad == 1)
+                                        {
+                                            <span>Toneladas</span>
+                                        }
+                                        else if (item.IdsIdUnidad == 2)
+                                        {
+                                            <span>Giga Joules</span>
+                                        }
+                                        else if (item.IdsIdUnidad == 3)
+                                        {
+                                            <span>MWh</span>
+                                        }
+                                        else if (item.IdsIdUnidad == 4)
+                                        {
+                                            <span>KWh</span>
+                                        }
+                                        else if (item.IdsIdUnidad == 5)
+                                        {
+                                            <span>m3</span>
+                                        }
+                                        else if (item.IdsIdUnidad == 6)
+                                        {
+                                            <span>Toneladas de CO2 Equivalente</span>
+                                        }
+                                        else if (item.IdsIdUnidad == 7)
+                                        {
+                                            <span>Porcentaje</span>
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdsValorDelPeriodo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdsNotasAdicionales)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.IdsFechaAlta)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdsUsuarioAlta)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdsFechaCambio)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdsUsuarioCambio)
+                                    </td>*@
+                                @*<td>
+                                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                    </td>*@
+                            </tr>
+                 }
+                    </table>
+                </div>
+            </div>
+
+        </div>
+     
+                                        }
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".info2").hide();
+    });
+    $(function () {
+        $("#PlantaId, #IdsMes, #IdsIdIndicadores").change(function () {
+            
+            var id = 0;
+            var IdMes = 0;
+            var IdAnio = 0;
+            
+            if( $("#PlantaId").val()!=""){
+                id = $("#PlantaId").val();
+            }
+            if ($("#IdsMes").val() != "") {
+                IdMes = $("#IdsMes").val();
+            }
+            if ($("#IdsIdIndicadores option:selected").val() != "") {
+                 IdAnio = $("#IdsIdIndicadores option:selected").text();
+
+            }
+
+           
+                     
+            
+            var miUrl = '@Url.Action("Index2", "Indicador")'
+            $.ajax({
+                url: "/Indicador/Index2?id=" + id + "&IdMes=" + IdMes + "&IdAnio=" + IdAnio,
+                method: "post",
+                data: id,
+                success: function (result) {
+                    
+                    $(".Tabla1").remove();
+                    $(".info2").show();
+                    if (result != null) {
+                        $.each(result, function (index, item) {
+
+                            var Indicador = "";
+                            if (item.IdsIdIndicador == 1) {
+                                Indicador = "EFICIENCIA DE TRANSFORMACIÓN";
+                            }
+
+                            if (item.IdsIdIndicador == 2) {
+                                Indicador = "EFICIENCIA ENERGÈTICA";
+                            }
+                            if (item.IdsIdIndicador == 3) {
+                                Indicador = "% DE AGUA RECICLADA";
+                            }
+
+                            if (item.IdsIdIndicador == 4) {
+                                Indicador = "TOTAL DE AGUAS VERTIDAS m3";
+                            }
+                            if (item.IdsIdIndicador == 5) {
+                                Indicador = "TOTAL ENERGÍA DIRECTA Gj";
+                            }
+
+                            if (item.IdsIdIndicador == 6) {
+                                Indicador = "TOTAL ENERGÍA INDIRECTA Gj";
+                            }
+                            if (item.IdsIdIndicador == 7) {
+                                Indicador = "TOTAL DE RESIDUOS PELIGROSOS TONS";
+                            }
+
+                            if (item.IdsIdIndicador == 8) {
+                                Indicador = "TOTAL DE RESIDUOS NO PELIGROSOS TONS";
+                            }
+                            if (item.IdsIdIndicador == 9) {
+                                Indicador = "EMISIONES DIRECTAS A LA ATMOSFERA (TONS/MES) COMO CO2e";
+                            }
+
+                            if (item.IdsIdIndicador == 10) {
+                                Indicador = "EMISIONES INDIRECTAS A LA ATMOSFERA (TONS/MES) COMO CO2e";
+                            }
+
+                            var Mes = "";
+                                    if (item.IdsMes == 1)
+                            {
+                                        Mes = "<span>Enero</span>"
+
+                            }
+                                    if (item.IdsMes == 2)
+                            {
+                                        Mes = "<span>Febrero</span>"
+
+                            }
+                                    if (item.IdsMes == 3)
+                            {
+                                        Mes = "<span>Narzo</span>"
+
+                            }
+                                    if (item.IdsMes == 4)
+                            {
+                                        Mes = "<span>Abril</span>"
+
+                            }
+                                    if (item.IdsMes == 5)
+                            {
+                                        Mes = "<span>Mayo</span>"
+
+                            }
+                                 
+                                    if (item.IdsMes == 6)
+                            {
+                                        Mes = "<span>Junio</span>"
+                                    
+                            }
+                                    if (item.IdsMes == 7)
+                                    {
+                                        Mes = "< span>Julio</span>"
+
+                            }
+                                    if (item.IdsMes == 8)
+                            {
+                                        Mes = "<span>Agosto</span>"
+
+                            }
+                                    if (item.IdsMes == 9)
+                            {
+                                        Mes = "<span>Septimbre</span>"
+
+                            }
+                                    if (item.IdsMes == 10)
+                            {
+                                        Mes = "<span>Octubre</span>"
+
+                            }
+                                    if (item.IdsMes == 11)
+                            {
+                                        Mes = "<span>Noviembre</span>"
+
+                            }
+                                    if (item.IdsMes == 12)
+                            {
+                                        Mes = "<span>Diciembre</span>"
+
+                            }
+                                    
+
+                            var tablastring = "<tr class ='Tabla1'> <td>" + Mes + "</td> <td>" + item.Anio + "</td> <td>" + Indicador + "</td> <td>" + item.IdUnidad + "</td> <td>" + item.IdsValorDelPeriodo + "</td> <td>" + item.IdsNotas + "</td></tr>"
+
+                            $(".tablaAqui").append(tablastring);
+                        });
+                        $('#PlazaID').text = "Seleciona";
+                    }
+                },
+                async: true
+            });
+            // $("form").submit();
+        });
+    });
+
+
+    
+</script>
+
+
+<style>
+table{
+    background-color:#D6EAF8;
+}
+
+
+tr:hover {
+    color: #17202A;
+    background-color: #85C1E9;
+}
+tr th:hover {
+    color: #fff;
+    background-color: ##3498DB;
+}
+th{
+background-color:#3498DB;
+ color: #fff;
+}
+
+</style>

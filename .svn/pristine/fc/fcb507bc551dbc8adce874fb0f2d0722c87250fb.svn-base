@@ -1,0 +1,42 @@
+﻿@model IList<CYDSA_Sustentabilidad.Models.IdsRelaciones>
+<h3>Captua de elementos</h3>
+
+@using (Html.BeginForm())
+{
+
+    
+    @Html.AntiForgeryToken()
+    <table class="table table-bordered">
+        <tr >
+            <th>
+               Descripcion de elemennto
+            </th>
+            <th>
+                Valor
+            </th>
+        </tr>
+        @for(var i = 0; i < Model.Count; i++)
+        {
+        <tr>
+            <td>
+                @Html.HiddenFor(x => x[i].IdsIdElemento)
+                @Html.HiddenFor(x => x[i].IdsIdMedicion)
+                @Html.HiddenFor(x => x[i].IdsIdUnidad)
+                @Html.DisplayFor(x => x[i].IdsCatElementos.IdsDescripcionElemento)
+
+            </td>
+            <td>
+               
+                @Html.EditorFor(x => x[i].Valor)
+            </td>
+        </tr>
+        }
+    </table>
+    <div>
+        <input type="submit" value="Guardar"  class="btn btn-primary" />
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar", "RegistrarMedicion")
+</div>

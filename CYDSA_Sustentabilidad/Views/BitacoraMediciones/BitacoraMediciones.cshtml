@@ -1,0 +1,213 @@
+﻿@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsBitacora>
+
+@{
+    ViewBag.Title = "BitacoraMediciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{var VarMes = "";}
+
+
+@if (Model.Count()>=1)
+{
+    
+
+
+if (Model.First().IdsMes == 1)
+{
+    VarMes = "ENERO";
+
+}
+
+if (Model.First().IdsMes == 2)
+{
+    VarMes = "FEBRERO";
+}
+
+if (Model.First().IdsMes == 3)
+{
+    VarMes = "MARZO";
+}
+
+if (Model.First().IdsMes == 4)
+{
+    VarMes = "ABRIL";
+}
+
+if (Model.First().IdsMes == 5)
+{
+    VarMes = "MAYO";
+
+}
+if (Model.First().IdsMes == 6)
+{
+    VarMes = "JUNIO";
+
+}
+
+if (Model.First().IdsMes == 7)
+{
+    VarMes = "JULIO";
+}
+
+if (Model.First().IdsMes == 8)
+{
+    VarMes = "AGOSTO";
+}
+if (Model.First().IdsMes == 9)
+{
+    VarMes = "SEPTIEMBRE";
+
+}
+if (Model.First().IdsMes == 10)
+{
+    VarMes = "OCTUBRE";
+}
+
+if (Model.First().IdsMes == 11)
+{
+    VarMes = "NOVIEMBRE";
+}
+
+if (Model.First().IdsMes == 12)
+{
+    VarMes = "DICIEMBRE";
+}
+
+    <br />
+    <br />
+    <br />
+   
+
+<h2>BITACORA DE @Model.First().IdsCatIndicadores.IdsDescripcionIndicador DE @VarMes DEL AÑO @Model.First().IdsAnio</h2>
+}
+else
+{
+    <br />
+    <br />
+    <br />
+    <h2>BITACORA DE @ViewBag.indicador  DE @ViewBag.mes  DEL AÑO @Session["IdAnio"]</h2>
+}
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+    var table = $('#example').DataTable({
+
+        language: {
+            "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Reglones",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Reglones",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+        }
+    }
+            );
+
+
+    $("#PlantaId").val(@Session["IdPlanta"]);
+});
+</script>
+
+
+<div class="container form-group col-md-12">
+    <br />
+
+    <div class="col-md-1" style="text-align: right;">
+        <H4>Planta:</H4>
+    </div>
+
+    <div class="col-md-3">
+        @Html.DropDownList("IdPlantaTmp", (IEnumerable<SelectListItem>)ViewBag.dropdownPlanta, "Seleccione la Planta", new { id = "PlantaId", @class = "form-control", @disabled = "disabled" })
+    </div>
+
+    <div class="col-md-8"  style="text-align: left;">
+        @Html.ActionLink("Regresar", "Mensuales", "Mensuales", new { IdPlanta = @ViewBag.IdPlanta, IdAnio = @ViewBag.anio }, new { @class = "btn btn-info", @style = "display:inline" })
+    </div>
+ </div>
+
+    <div class="form-horizontal container-fluid col-lg-push-12 img-rounded " style="background-color:#D6EAF8">
+                <table class="table display" style="background-color:#D6EAF8" id="example">
+                    <thead>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdsFechaCambio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NombreUsuario)
+                            </th>
+                             <th>
+                                @Html.DisplayNameFor(model => model.IdsIdMedicion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdsIdElemento)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdsValorCalculado)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdsIdUnidad)
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.ToList())
+            {
+                            <tr font-family:Times New Roman Times serif;>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdsFechaCambio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NombreUsuario)
+                                </td>
+
+                                 <td>
+                                    @Html.DisplayFor(modelItem => item.IdsCatMediciones.IdsDescripcionMedicion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdsCatElementos.IdsDescripcionElemento)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdsValorCalculado)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdsCatUnidades.IdsDescripcionUnidadMedida)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+        <br />
+    </div>
+
+
+    <style>
+        table div {
+            background-color: #D6EAF8 !important;
+        }
+
+        table tr {
+            background-color: #D6EAF8 !important;
+        }
+
+        .sorting_1 {
+            background-color: #D6EAF8 !important;
+        }
+    </style>

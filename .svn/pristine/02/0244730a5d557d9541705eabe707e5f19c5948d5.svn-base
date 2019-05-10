@@ -1,0 +1,165 @@
+﻿@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsMediciones>
+
+@{
+    CYDSA_Sustentabilidad.ADO.IdsMedicionesADO context = new CYDSA_Sustentabilidad.ADO.IdsMedicionesADO();
+    ViewBag.Title = "ListaMedicion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Historial de Mediciones</h2>
+@Html.DropDownList("IdsMes", (IEnumerable<SelectListItem>)ViewBag.Locations, new { id = "ddlLocations", @class = " cboMes form-control" })
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+@*<p>
+    @Html.ActionLink("Agregar Nuevo", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdsIdCia)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.IdsIdPlanta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsAnio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsIdIndicador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsIdMedicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsIdElemento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsValorCalculado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsIdUnidad)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdsFechaAlta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsUsuarioAlta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsFechaCambio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsUsuarioCambio)
+        </th>*@
+        <th></th>
+    </tr>
+   @{
+       int ac = int.Parse(ViewBag.FiltroMes.ToString());
+}
+@foreach (var item in Model.ToList().Where(x=>x.IdsIdMedicion ==ac || @ac == null ) ) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdsIdCia)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsIdPlanta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMes)
+        </td>
+        <td>
+          
+            @Html.DisplayFor(modelItem => item.IdsAnio)
+        </td>
+        <td>
+            <text>
+                @{
+                  string Indicadores=  context.TraerIndicador(item.IdsIdCia, item.IdsIdPlanta, item.IdsIdIndicador);
+                }
+                @Indicadores
+            </text>
+        </td>
+        <td>
+            <text>
+                @{
+                    string Mediciones = context.TraerMedicion(item.IdsIdCia, item.IdsIdPlanta, item.IdsIdMedicion);
+                }
+                @Mediciones
+            </text>
+        </td>
+        <td>
+            <text>
+                @{
+                    string Elemento = context.TraerElemento(item.IdsIdCia, item.IdsIdPlanta, item.IdsIdElemento);
+                }
+                @Mediciones
+            </text>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsValorCalculado)
+        </td>
+        <td>
+            <text>
+                @{
+                    string Unidad = context.TraerUnidad(item.IdsIdCia, item.IdsIdUnidad);
+                }
+                @Mediciones
+            </text>
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdsFechaAlta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsUsuarioAlta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsFechaCambio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsUsuarioCambio)
+        </td>*@
+        <td>
+            @Html.ActionLink("Editar", "ListaEdit", new { IdMedicion = item.IdsIdMedicion}) |
+            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Borrar", "Delete", new {IdCia = item.IdsIdCia, IdPlanta = item.IdsIdPlanta, IdMes = item.IdsMes, IdAnio = item.IdsAnio, IdIndicador = item.IdsIdIndicador, IdMedicion = item.IdsIdMedicion, IdElemento = item.IdsIdElemento })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+
+
+
+<script>
+
+
+    $(".cboMes").change(function () {
+        var a = $(this).val().toString();
+        alert("hola");
+       
+
+         $.ajax({
+                type: 'GET',
+                url: "ListaMedicion?Id=" + $(this).val().toString(),
+                datatype: "html",
+                success: function (data) {
+                    $('#rooms').html(data);
+                }
+            });
+
+
+    });
+
+
+
+
+
+</script>

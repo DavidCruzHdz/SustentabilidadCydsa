@@ -1,0 +1,157 @@
+﻿@model IList<CYDSA_Sustentabilidad.Models.IdsRelaciones>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+@using (Html.BeginForm())
+{
+
+    <br />
+    <div class="form-horizontal container-fluid col-lg-push-8 img-rounded bg-primary">
+        <br />
+         <div>
+            <h4>  CAPTURA DE @ViewBag.medicion DEL MES DE <text> @ViewBag.Mes.ToUpper()</text>  DEL AÑO <text> @ViewBag.anio</text> </h4>
+        </div>
+
+
+        <br />
+            @Html.AntiForgeryToken()
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        Descripcion de elemennto
+                    </th>
+                    <th>
+                        Valor
+                    </th>
+                    <th>
+                        Unidad de Medida
+                    </th>
+                </tr>
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.HiddenFor(x => x[i].IdsIdElemento)
+                            @Html.HiddenFor(x => x[i].IdsIdPlanta)
+                            @Html.HiddenFor(x => x[i].IdsIdMedicion)
+                            @Html.HiddenFor(x => x[i].IdsIdUnidad)
+                            @Html.DisplayFor(x => x[i].IdsCatElementos.IdsDescripcionElemento)
+
+                        </td>
+                        <td  style="color:black">
+                            @Html.EditorFor(x => x[i].Valor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => x[i].IdsCatUnidades.IdsDescripcionUnidadMedida)
+                        </td>
+                        @*<td>*@
+
+                            @*if (IdsIdElemento[i] == 1
+
+                                @*if (item.IdsIdUnidad == 1)
+                                {
+                                <span>Toneladas</span>
+                                }
+                                else if (item.IdsIdUnidad == 2)
+                                {
+                                <span>Giga Joules</span>
+                                }
+                                else if (item.IdsIdUnidad == 3)
+                                {
+                                <span>MWh</span>
+                                }
+                                else if (item.IdsIdUnidad == 4)
+                                {
+                                <span>KWh</span>
+                                }
+                                else if (item.IdsIdUnidad == 5)
+                                {
+                                <span>m3</span>
+                                }
+                                else if (item.IdsIdUnidad == 6)
+                                {
+
+                                <span>Toneladas de CO2 Equivalente</span>
+                                }
+                                else if (item.IdsIdUnidad == 7)
+                                {
+                                <span>Porcentaje</span>
+                                }*@
+
+
+                            @*@Html.DisplayFor(x => x[i].IdsIdUnidad, new { @style = "margin - right:10px" })*@
+
+
+
+                        @*</td>*@
+
+                    </tr>
+                }
+            </table>
+
+        @*<div>
+            <input type="submit" value="Guardar" class="btn btn-info" />
+        </div>*@
+
+
+
+        <div class="form-group" style="margin-top:5px">
+            <div class="row col-md-12" style="display:inline">
+                <div class="col-md-1" style="display:inline">
+                </div>
+                <div class="col-md-3" style="display:inline">
+                    <input type="submit" value="Guardar" class="btn btn-info" />
+                 
+                    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-info", @style = "display:inline" })
+                </div>
+                <div class="col-md-8" style="display:inline">
+                </div>
+            </div>
+        </div>
+
+
+
+        </div>
+       }
+
+        @*<div>
+            @Html.ActionLink("Regresar", "RegistrarMedicion")
+        </div>*@
+
+        @*<input id="btnNumeroAleatorio" type="button" value="Guardar" class="btn btn-primary" />*@
+
+        @*<script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#btnNumeroAleatorio').click(function (e) {
+                            e.preventDefault();
+
+                            var serializedForm = $('form').serialize();
+                            //aler("guardando informacion");
+                            //aler(serializedForm);
+
+                            $.ajax({
+                                type: "POST",                                              // tipo de request que estamos generando
+                                url: './RegistrarMedicion/ElementosList',                    // URL al que vamos a hacer el pedido
+                                data: serializedForm,                                                // data es un arreglo JSON que contiene los parámetros que
+                                                                                           // van a ser recibidos por la función del servidor
+                                contentType: "application/json; charset=utf-8",            // tipo de contenido
+                                dataType: "json",                                          // formato de transmición de datos
+                                async: true,                                               // si es asincrónico o no
+                                success: function (resultado) {                            // función que va a ejecutar si el pedido fue exitoso
+                                    //aler(resultado.message);
+
+                                    if (retultado.status = "ok") {
+
+                                        window.location.href = '/Home/Contact';
+                                    }
+                                },
+                                error: function (XMLHttpRequest, textStatus, errorThrown) { // función que va a ejecutar si hubo algún tipo de error en el pedido
+                                    var error = eval("(" + XMLHttpRequest.responseText + ")");
+                                    //aler(error.Message);
+                                }
+                            });
+                        });
+                    });
+            </script>*@
+

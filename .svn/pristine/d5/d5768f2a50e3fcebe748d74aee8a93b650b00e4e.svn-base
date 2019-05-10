@@ -1,0 +1,132 @@
+﻿using CYDSA_Sustentabilidad.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Net.Http;
+
+
+namespace CYDSA_Sustentabilidad.Controllers
+{
+    public class IndicadorController : Controller
+    {
+        // GET: Indicador
+        public ActionResult Index(int id =0)
+        {
+            Entities db = new Entities();
+
+   
+            Session["hola"] = "hola2";
+            List<SelectListItem> IdsMes = new List<SelectListItem>()
+            {
+                new SelectListItem { Text = "Enero", Value = "1" },
+                new SelectListItem { Text = "Febrero", Value = "2" },
+                new SelectListItem { Text = "Marzo", Value = "3" },
+                new SelectListItem { Text = "Abril", Value = "4" },
+                new SelectListItem { Text = "Mayo", Value = "5" },
+                new SelectListItem { Text = "Junio", Value = "6" },
+                new SelectListItem { Text = "Julio", Value = "7" },
+                new SelectListItem { Text = "Agosto", Value = "8" },
+                new SelectListItem { Text = "Septiembre", Value = "9" },
+                new SelectListItem { Text = "Octubre", Value = "10" },
+                new SelectListItem { Text = "Noviembre", Value = "11" },
+                new SelectListItem { Text = "Diciembre", Value = "12" },
+
+            };
+            IdsMes.Add(new SelectListItem() { Text = "asdfsd Cape", Value = "NC" });
+           
+            //Assigning generic list to ViewBag
+            ViewBag.Locations = IdsMes;
+
+            Entities context = new Entities();
+            ViewBag.dropdownPlanta = new SelectList(context.IdsCatPlantas.ToList(), "IdsIdPlanta", "IdsDescripcionPlanta");
+
+
+            //ViewBag.dropdownAnio = new SelectList(context.IdsIndicadores.ToList(), "IdsIdIndicadores", "IdsAnio");
+
+            List<SelectListItem> IdsAnio = new List<SelectListItem>();
+            var contar = 1;
+
+            foreach (int item  in context.IdsIndicadores.ToList().Select(x => x.IdsAnio).Distinct().ToList())
+            {
+                
+                IdsAnio.Add(new SelectListItem() { Text = item.ToString(), Value = contar.ToString() });
+                contar++;
+            }
+
+            ViewBag.dropdownAnio = IdsAnio;
+
+            //var dropdownAnio = context.IdsIndicadores.ToList().Select(x => x.IdsIdIndicadores).Distinct();
+            //ViewBag.dropdownAnio = new SelectList(dropdownAnio, "IdsIdIndicadores", "IdsAnio", null);
+
+            //List<IdsIndicadores> lista = db.IdsIndicadores.Where(a => a.IdsMes > 8).ToList();
+
+            return View(db.IdsIndicadores.ToList());
+             
+        }
+
+
+       [HttpPost]
+        public JsonResult Index2(int id = 0, int IdMes = 0,int IdAnio =0)
+        {
+            Entities db = new Entities();
+            
+          
+
+            Session["hola"] = "hola2";
+            List<SelectListItem> IdsMes = new List<SelectListItem>()
+            {
+                new SelectListItem { Text = "Enero", Value = "1" },
+                new SelectListItem { Text = "Febrero", Value = "2" },
+                new SelectListItem { Text = "Marzo", Value = "3" },
+                new SelectListItem { Text = "Abril", Value = "4" },
+                new SelectListItem { Text = "Mayo", Value = "5" },
+                new SelectListItem { Text = "Junio", Value = "6" },
+                new SelectListItem { Text = "Julio", Value = "7" },
+                new SelectListItem { Text = "Agosto", Value = "8" },
+                new SelectListItem { Text = "Septiembre", Value = "9" },
+                new SelectListItem { Text = "Octubre", Value = "10" },
+                new SelectListItem { Text = "Noviembre", Value = "11" },
+                new SelectListItem { Text = "Diciembre", Value = "12" },
+
+            };
+            //Assigning generic list to ViewBag
+            ViewBag.Locations = IdsMes;
+            Entities context = new Entities();
+
+            ViewBag.dropdownPlanta = new SelectList(context.IdsCatPlantas.ToList(), "IdsIdPlanta", "IdsDescripcionPlanta");
+            //ViewBag.dropdownAnio = new SelectList(context.IdsIndicadores.ToList(), "IdsIdIndicadores", "IdsAnio");
+            List<SelectListItem> IdsAnio = new List<SelectListItem>();
+            var contar = 1;
+
+            foreach (int item in context.IdsIndicadores.ToList().Select(x => x.IdsAnio).Distinct().ToList())
+            {
+
+                IdsAnio.Add(new SelectListItem() { Text = item.ToString(), Value = contar.ToString() });
+                contar++;
+            }
+
+            ViewBag.dropdownAnio = IdsAnio;
+
+
+
+
+            //var idPlanta = 0;
+            //if(idPlanta!= null)
+            //{
+            //    idPlanta = ViewBag.Planta;
+            //}
+
+
+
+
+            //List<IdsIndicadores> lista = db.IdsIndicadores.Where(a => a.IdsMes > 8).ToList();
+
+            // return View(db.IdsIndicadores.ToList().Where(x=>x.IdsIdCia ==3) ) ;/* .Where(x=>x.IdsIdPlanta == idPlanta || idPlanta ==0));*/
+
+            return Json(db.IdsIndicadores.ToList().Where(x=>(x.IdsIdPlanta==id||id ==0) &( x.IdsMes==IdMes||IdMes==0) &(x.IdsAnio==IdAnio||IdAnio==0) ).Select(x => new { IdsMes = x.IdsMes, Anio = x.IdsAnio, IdsIdIndicador = x.IdsIdIndicadores, IdUnidad = x.IdsIdUnidad, IdsValorDelPeriodo = x.IdsValorDelPeriodo, IdsNotas=x.IdsNotasAdicionales}), JsonRequestBehavior.AllowGet);
+        }
+
+    }
+}

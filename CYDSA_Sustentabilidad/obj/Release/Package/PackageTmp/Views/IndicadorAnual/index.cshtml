@@ -1,0 +1,130 @@
+﻿@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsIndicadorAnual>
+
+@{
+    ViewBag.Title = "index";
+    Layout = "IndicadorAnual";
+}
+
+<h2>index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdsIdCia)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.IdsIdEmpresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsIdIndicador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesEnero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesFebrero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesMarzo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesAbril)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesMayo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesJunio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesJulio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesAgosto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesSeptiembre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesOctubre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesNoviembre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMesDiciembre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsAnio)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdsUsario)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdsIdCia)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsIdEmpresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsIdIndicador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMesEnero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMesFebrero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMesMarzo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMesAbril)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMesMayo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMesJunio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMesJulio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMesAgosto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMesSeptiembre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMesOctubre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMesNoviembre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMesDiciembre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsAnio)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdsUsario)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

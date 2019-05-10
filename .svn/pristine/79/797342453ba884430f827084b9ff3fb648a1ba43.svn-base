@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDIndicadoresModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsCatElementos">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsCatElementos">
+        <MappingFragment StoreEntitySet="IdsCatElementos">
+          <ScalarProperty Name="IdsIdElemento" ColumnName="IdsIdElemento" />
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsNomenclatura" ColumnName="IdsNomenclatura" />
+          <ScalarProperty Name="IdsIdentificador" ColumnName="IdsIdentificador" />
+          <ScalarProperty Name="IdsDescripcionElemento" ColumnName="IdsDescripcionElemento" />
+          <ScalarProperty Name="IdsUnidad" ColumnName="IdsUnidad" />
+          <ScalarProperty Name="IdsNotas" ColumnName="IdsNotas" />
+          <ScalarProperty Name="IdsFechaAlta" ColumnName="IdsFechaAlta" />
+          <ScalarProperty Name="IdsUsuarioAlta" ColumnName="IdsUsuarioAlta" />
+          <ScalarProperty Name="IdsFechaCambio" ColumnName="IdsFechaCambio" />
+          <ScalarProperty Name="IdsUsuarioCambio" ColumnName="IdsUsuarioCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsCatEmpresas">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsCatEmpresas">
+        <MappingFragment StoreEntitySet="IdsCatEmpresas">
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsDescripcionEmpresa" ColumnName="IdsDescripcionEmpresa" />
+          <ScalarProperty Name="IdsFechaAlta" ColumnName="IdsFechaAlta" />
+          <ScalarProperty Name="IdsUsuarioAlta" ColumnName="IdsUsuarioAlta" />
+          <ScalarProperty Name="IdsFechaCambio" ColumnName="IdsFechaCambio" />
+          <ScalarProperty Name="IdsUsuarioCambio" ColumnName="IdsUsuarioCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsCatFactores">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsCatFactores">
+        <MappingFragment StoreEntitySet="IdsCatFactores">
+          <ScalarProperty Name="IdsIdFactor" ColumnName="IdsIdFactor" />
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsIdPlanta" ColumnName="IdsIdPlanta" />
+          <ScalarProperty Name="IdsAnio" ColumnName="IdsAnio" />
+          <ScalarProperty Name="IdsDescripcionFactor" ColumnName="IdsDescripcionFactor" />
+          <ScalarProperty Name="IdsValorFactor" ColumnName="IdsValorFactor" />
+          <ScalarProperty Name="IdsTipo" ColumnName="IdsTipo" />
+          <ScalarProperty Name="IdsFechaAlta" ColumnName="IdsFechaAlta" />
+          <ScalarProperty Name="IdsUsuarioAlta" ColumnName="IdsUsuarioAlta" />
+          <ScalarProperty Name="IdsFechaCambio" ColumnName="IdsFechaCambio" />
+          <ScalarProperty Name="IdsUsuarioCambio" ColumnName="IdsUsuarioCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsCatIndicadores">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsCatIndicadores">
+        <MappingFragment StoreEntitySet="IdsCatIndicadores">
+          <ScalarProperty Name="IdsIdIndicador" ColumnName="IdsIdIndicador" />
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsIdPlanta" ColumnName="IdsIdPlanta" />
+          <ScalarProperty Name="IdsDescripcionIndicador" ColumnName="IdsDescripcionIndicador" />
+          <ScalarProperty Name="IdsIdUnidad" ColumnName="IdsIdUnidad" />
+          <ScalarProperty Name="IdsNotasAdicionales" ColumnName="IdsNotasAdicionales" />
+          <ScalarProperty Name="IdsFechaAlta" ColumnName="IdsFechaAlta" />
+          <ScalarProperty Name="IdsUsuarioAlta" ColumnName="IdsUsuarioAlta" />
+          <ScalarProperty Name="IdsFechaCambio" ColumnName="IdsFechaCambio" />
+          <ScalarProperty Name="IdsUsuarioCambio" ColumnName="IdsUsuarioCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsCatMediciones">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsCatMediciones">
+        <MappingFragment StoreEntitySet="IdsCatMediciones">
+          <ScalarProperty Name="IdsIdMedicion" ColumnName="IdsIdMedicion" />
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsIdPlanta" ColumnName="IdsIdPlanta" />
+          <ScalarProperty Name="IdsIdIndicador" ColumnName="IdsIdIndicador" />
+          <ScalarProperty Name="IdsDescripcionMedicion" ColumnName="IdsDescripcionMedicion" />
+          <ScalarProperty Name="IdsFechaAlta" ColumnName="IdsFechaAlta" />
+          <ScalarProperty Name="IdsUsuarioAlta" ColumnName="IdsUsuarioAlta" />
+          <ScalarProperty Name="IdsFechaCambio" ColumnName="IdsFechaCambio" />
+          <ScalarProperty Name="IdsUsuarioCambio" ColumnName="IdsUsuarioCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsCatPlantas">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsCatPlantas">
+        <MappingFragment StoreEntitySet="IdsCatPlantas">
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsIdPlanta" ColumnName="IdsIdPlanta" />
+          <ScalarProperty Name="IdsDescripcionPlanta" ColumnName="IdsDescripcionPlanta" />
+          <ScalarProperty Name="IdsFechaAlta" ColumnName="IdsFechaAlta" />
+          <ScalarProperty Name="IdsUsuarioAlta" ColumnName="IdsUsuarioAlta" />
+          <ScalarProperty Name="IdsFechaCambio" ColumnName="IdsFechaCambio" />
+          <ScalarProperty Name="IdsUsuarioCambio" ColumnName="IdsUsuarioCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsCatUnidades">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsCatUnidades">
+        <MappingFragment StoreEntitySet="IdsCatUnidades">
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsIdPlanta" ColumnName="IdsIdPlanta" />
+          <ScalarProperty Name="IdsIdUnidad" ColumnName="IdsIdUnidad" />
+          <ScalarProperty Name="IdsDescripcionUnidadMedida" ColumnName="IdsDescripcionUnidadMedida" />
+          <ScalarProperty Name="IdsFechaAlta" ColumnName="IdsFechaAlta" />
+          <ScalarProperty Name="IdsUsuarioAlta" ColumnName="IdsUsuarioAlta" />
+          <ScalarProperty Name="IdsFechaCambio" ColumnName="IdsFechaCambio" />
+          <ScalarProperty Name="IdsUsuarioCambio" ColumnName="IdsUsuarioCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsFormulas">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsFormulas">
+        <MappingFragment StoreEntitySet="IdsFormulas">
+          <ScalarProperty Name="IdsConsecutivo" ColumnName="IdsConsecutivo" />
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsIdPlanta" ColumnName="IdsIdPlanta" />
+          <ScalarProperty Name="IdsIdaCalcular" ColumnName="IdsIdaCalcular" />
+          <ScalarProperty Name="IdsIdElemento" ColumnName="IdsIdElemento" />
+          <ScalarProperty Name="IdsOrden" ColumnName="IdsOrden" />
+          <ScalarProperty Name="IdsValor" ColumnName="IdsValor" />
+          <ScalarProperty Name="IdsTipoOperador" ColumnName="IdsTipoOperador" />
+          <ScalarProperty Name="IdsIdRaiz" ColumnName="IdsIdRaiz" />
+          <ScalarProperty Name="IdsIndicadorOrigen" ColumnName="IdsIndicadorOrigen" />
+          <ScalarProperty Name="IdsTipoDato" ColumnName="IdsTipoDato" />
+          <ScalarProperty Name="IdsUnidad" ColumnName="IdsUnidad" />
+          <ScalarProperty Name="IdsStatus" ColumnName="IdsStatus" />
+          <ScalarProperty Name="IdsFechaAlta" ColumnName="IdsFechaAlta" />
+          <ScalarProperty Name="IdsUsuarioAlta" ColumnName="IdsUsuarioAlta" />
+          <ScalarProperty Name="IdsFechaCambio" ColumnName="IdsFechaCambio" />
+          <ScalarProperty Name="IdsUsuarioCambio" ColumnName="IdsUsuarioCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsIndicadores">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsIndicadores">
+        <MappingFragment StoreEntitySet="IdsIndicadores">
+          <ScalarProperty Name="IdsIdRegistro" ColumnName="IdsIdRegistro" />
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsIdPlanta" ColumnName="IdsIdPlanta" />
+          <ScalarProperty Name="IdsMes" ColumnName="IdsMes" />
+          <ScalarProperty Name="IdsAnio" ColumnName="IdsAnio" />
+          <ScalarProperty Name="IdsIdIndicadores" ColumnName="IdsIdIndicadores" />
+          <ScalarProperty Name="IdsDescripcionIndicador" ColumnName="IdsDescripcionIndicador" />
+          <ScalarProperty Name="IdsIdUnidad" ColumnName="IdsIdUnidad" />
+          <ScalarProperty Name="IdsValorDelPeriodo" ColumnName="IdsValorDelPeriodo" />
+          <ScalarProperty Name="IdsNotasAdicionales" ColumnName="IdsNotasAdicionales" />
+          <ScalarProperty Name="IdsFechaAlta" ColumnName="IdsFechaAlta" />
+          <ScalarProperty Name="IdsUsuarioAlta" ColumnName="IdsUsuarioAlta" />
+          <ScalarProperty Name="IdsFechaCambio" ColumnName="IdsFechaCambio" />
+          <ScalarProperty Name="IdsUsuarioCambio" ColumnName="IdsUsuarioCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsMediciones">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsMediciones">
+        <MappingFragment StoreEntitySet="IdsMediciones">
+          <ScalarProperty Name="IdsId" ColumnName="IdsId" />
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsIdPlanta" ColumnName="IdsIdPlanta" />
+          <ScalarProperty Name="IdsMes" ColumnName="IdsMes" />
+          <ScalarProperty Name="IdsAnio" ColumnName="IdsAnio" />
+          <ScalarProperty Name="IdsIdIndicador" ColumnName="IdsIdIndicador" />
+          <ScalarProperty Name="IdsIdMedicion" ColumnName="IdsIdMedicion" />
+          <ScalarProperty Name="IdsIdElemento" ColumnName="IdsIdElemento" />
+          <ScalarProperty Name="IdsValorCalculado" ColumnName="IdsValorCalculado" />
+          <ScalarProperty Name="IdsIdUnidad" ColumnName="IdsIdUnidad" />
+          <ScalarProperty Name="IdsCierreMes" ColumnName="IdsCierreMes" />
+          <ScalarProperty Name="IdsFechaAlta" ColumnName="IdsFechaAlta" />
+          <ScalarProperty Name="IdsUsuarioAlta" ColumnName="IdsUsuarioAlta" />
+          <ScalarProperty Name="IdsFechaCambio" ColumnName="IdsFechaCambio" />
+          <ScalarProperty Name="IdsUsuarioCambio" ColumnName="IdsUsuarioCambio" />
+          <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsMensualesPorMontos">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsMensualesPorMontos">
+        <MappingFragment StoreEntitySet="IdsMensualesPorMontos">
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsIdPlanta" ColumnName="IdsIdPlanta" />
+          <ScalarProperty Name="IdsIdIndicador" ColumnName="IdsIdIndicador" />
+          <ScalarProperty Name="IdsMesEnero" ColumnName="IdsMesEnero" />
+          <ScalarProperty Name="IdsMesFebrero" ColumnName="IdsMesFebrero" />
+          <ScalarProperty Name="IdsMesMarzo" ColumnName="IdsMesMarzo" />
+          <ScalarProperty Name="IdsMesAbril" ColumnName="IdsMesAbril" />
+          <ScalarProperty Name="IdsMesMayo" ColumnName="IdsMesMayo" />
+          <ScalarProperty Name="IdsMesJunio" ColumnName="IdsMesJunio" />
+          <ScalarProperty Name="IdsMesJulio" ColumnName="IdsMesJulio" />
+          <ScalarProperty Name="IdsMesAgosto" ColumnName="IdsMesAgosto" />
+          <ScalarProperty Name="IdsMesSeptiembre" ColumnName="IdsMesSeptiembre" />
+          <ScalarProperty Name="IdsMesOctubre" ColumnName="IdsMesOctubre" />
+          <ScalarProperty Name="IdsMesNoviembre" ColumnName="IdsMesNoviembre" />
+          <ScalarProperty Name="IdsMesDiciembre" ColumnName="IdsMesDiciembre" />
+          <ScalarProperty Name="IdsAnual" ColumnName="IdsAnual" />
+          <ScalarProperty Name="IdsAnio" ColumnName="IdsAnio" />
+          <ScalarProperty Name="IdsUsuario" ColumnName="IdsUsuario" />
+          <ScalarProperty Name="IdsIdRegistro" ColumnName="IdsIdRegistro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsRelaciones">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsRelaciones">
+        <MappingFragment StoreEntitySet="IdsRelaciones">
+          <ScalarProperty Name="IdsId" ColumnName="IdsId" />
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsIdPlanta" ColumnName="IdsIdPlanta" />
+          <ScalarProperty Name="IdsIdIndicadores" ColumnName="IdsIdIndicadores" />
+          <ScalarProperty Name="IdsIdMedicion" ColumnName="IdsIdMedicion" />
+          <ScalarProperty Name="IdsIdElemento" ColumnName="IdsIdElemento" />
+          <ScalarProperty Name="IdsIdUnidad" ColumnName="IdsIdUnidad" />
+          <ScalarProperty Name="IdsTipoDeCalculo" ColumnName="IdsTipoDeCalculo" />
+          <ScalarProperty Name="IdsStatus" ColumnName="IdsStatus" />
+          <ScalarProperty Name="IdsFechaAlta" ColumnName="IdsFechaAlta" />
+          <ScalarProperty Name="IdsUsuarioAlta" ColumnName="IdsUsuarioAlta" />
+          <ScalarProperty Name="IdsFechaCambio" ColumnName="IdsFechaCambio" />
+          <ScalarProperty Name="IdsUsuarioCambio" ColumnName="IdsUsuarioCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsTareas">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsTareas">
+        <MappingFragment StoreEntitySet="IdsTareas">
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsPlanta" ColumnName="IdsPlanta" />
+          <ScalarProperty Name="IdsMes" ColumnName="IdsMes" />
+          <ScalarProperty Name="IdsAnio" ColumnName="IdsAnio" />
+          <ScalarProperty Name="IdsIdElemento" ColumnName="IdsIdElemento" />
+          <ScalarProperty Name="IdsIdTarea" ColumnName="IdsIdTarea" />
+          <ScalarProperty Name="IdsDescripciondeTarea" ColumnName="IdsDescripciondeTarea" />
+          <ScalarProperty Name="IdsIdUsuario" ColumnName="IdsIdUsuario" />
+          <ScalarProperty Name="IdsTiempoEstimadoHR" ColumnName="IdsTiempoEstimadoHR" />
+          <ScalarProperty Name="IdsTiempoEstimadoDias" ColumnName="IdsTiempoEstimadoDias" />
+          <ScalarProperty Name="IdsFechaInicio" ColumnName="IdsFechaInicio" />
+          <ScalarProperty Name="IdsFechaTermino" ColumnName="IdsFechaTermino" />
+          <ScalarProperty Name="IdsFechaAlta" ColumnName="IdsFechaAlta" />
+          <ScalarProperty Name="IdsUsuarioAlta" ColumnName="IdsUsuarioAlta" />
+          <ScalarProperty Name="IdsFechaCambio" ColumnName="IdsFechaCambio" />
+          <ScalarProperty Name="IdsUsuarioCambio" ColumnName="IdsUsuarioCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdsIndicadorAnual">
+      <EntityTypeMapping TypeName="BDIndicadoresModel.IdsIndicadorAnual">
+        <MappingFragment StoreEntitySet="IdsIndicadorAnual">
+          <ScalarProperty Name="IdsIdCia" ColumnName="IdsIdCia" />
+          <ScalarProperty Name="IdsIdPlanta" ColumnName="IdsIdPlanta" />
+          <ScalarProperty Name="IdsIdIndicador" ColumnName="IdsIdIndicador" />
+          <ScalarProperty Name="IdsMesEnero" ColumnName="IdsMesEnero" />
+          <ScalarProperty Name="IdsMesFebrero" ColumnName="IdsMesFebrero" />
+          <ScalarProperty Name="IdsMesMarzo" ColumnName="IdsMesMarzo" />
+          <ScalarProperty Name="IdsMesAbril" ColumnName="IdsMesAbril" />
+          <ScalarProperty Name="IdsMesMayo" ColumnName="IdsMesMayo" />
+          <ScalarProperty Name="IdsMesJunio" ColumnName="IdsMesJunio" />
+          <ScalarProperty Name="IdsMesJulio" ColumnName="IdsMesJulio" />
+          <ScalarProperty Name="IdsMesAgosto" ColumnName="IdsMesAgosto" />
+          <ScalarProperty Name="IdsMesSeptiembre" ColumnName="IdsMesSeptiembre" />
+          <ScalarProperty Name="IdsMesOctubre" ColumnName="IdsMesOctubre" />
+          <ScalarProperty Name="IdsMesNoviembre" ColumnName="IdsMesNoviembre" />
+          <ScalarProperty Name="IdsMesDiciembre" ColumnName="IdsMesDiciembre" />
+          <ScalarProperty Name="IdsAnual" ColumnName="IdsAnual" />
+          <ScalarProperty Name="IdsAnio" ColumnName="IdsAnio" />
+          <ScalarProperty Name="IdsUsuario" ColumnName="IdsUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="BDIndicadoresModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BDIndicadoresModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BDIndicadoresModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BDIndicadoresModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BDIndicadoresModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDIndicadoresModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BDIndicadoresModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDIndicadoresModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BDIndicadoresModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BDIndicadoresModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="SpIndicadoresMonitoreoPorMes" FunctionName="BDIndicadoresModel.Store.SpIndicadoresMonitoreoPorMes" />
+    <FunctionImportMapping FunctionImportName="SpIndicadoresMonitoreoPorMes3" FunctionName="BDIndicadoresModel.Store.SpIndicadoresMonitoreoPorMes3" />
+    <FunctionImportMapping FunctionImportName="SpIndicadoresMonitoreoPorMesBAK" FunctionName="BDIndicadoresModel.Store.SpIndicadoresMonitoreoPorMesBAK" />
+    <FunctionImportMapping FunctionImportName="SpMensualesPorMontos" FunctionName="BDIndicadoresModel.Store.SpMensualesPorMontos" />
+    <FunctionImportMapping FunctionImportName="SpSelIndicadoresCYDSA" FunctionName="BDIndicadoresModel.Store.SpSelIndicadoresCYDSA" />
+    <FunctionImportMapping FunctionImportName="SpSelIndicadoresCYDSA_Bak" FunctionName="BDIndicadoresModel.Store.SpSelIndicadoresCYDSA_Bak" />
+  </EntityContainerMapping>
+</Mapping>

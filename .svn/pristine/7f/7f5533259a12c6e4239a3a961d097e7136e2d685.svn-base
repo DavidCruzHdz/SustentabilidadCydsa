@@ -1,0 +1,110 @@
+﻿@model CYDSA_Sustentabilidad.Models.IdsMediciones
+
+@{
+    ViewBag.Title = "EditMedicion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editar Mediciones</h2>
+
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(x=>x.IdsId)
+    <div class="form-horizontal container-fluid col-lg-push-8 img-rounded " style="background-color:#D6EAF8">
+        <div style="background-color:#D6EAF8">
+
+            <h4>Captura de Mediciones en Forma Manual</h4>
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsIdPlanta, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdsIdPlanta", (IEnumerable<SelectListItem>)ViewBag.dropdownPlanta, "Seleccione la Planta", new { id = "IdsIdPlanta", @class = "form-control", @disabled = "disabled" })
+
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsAnio, htmlAttributes: new { @class = "control-label col-md-2", @disabled = "disabled" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdsAnio, "Seleccione Año", new { @class = "form-control", @id = "Anio", @disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.IdsAnio, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsMes, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdsMes", (IEnumerable<SelectListItem>)ViewBag.Locations, "Seleccione el Mes", new { id = "ddlLocations", @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsIdIndicador, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdsIdIndicador", (SelectList)ViewBag.dropdownIndicadores, "Seleccione Indicador", htmlAttributes: new { @class = "form-control  perfil required", @id = "RegionId", @disabled = "disabled" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsIdMedicion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdsIdMedicion", (SelectList)ViewBag.dropdownMediciones, "Seleccione Medicion", htmlAttributes: new { @class = " cboMedicion form-control  perfil required", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsValorCalculado, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.IdsValorCalculado);
+                </div>
+            </div>
+          
+
+            <div class="form-group">
+            @Html.LabelFor(model => model.IdsIdUnidad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdsIdUnidad", (SelectList)ViewBag.dropdownUnidades, "Seleccione Unidad de Medida", htmlAttributes: new { @class = "form-control  perfil required" })
+            </div>
+        </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+
+
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+
+                    @* <script>alert("Los datos se guardaron correctamente");</script>*@
+                </div>
+
+                <div class="col-md-offset-2 col-md-10">
+
+                    @* <script>alert("Los datos se guardaron correctamente");</script>*@
+                    @Html.ActionLink("Regresar", "Index")
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+}
+
+
+
+

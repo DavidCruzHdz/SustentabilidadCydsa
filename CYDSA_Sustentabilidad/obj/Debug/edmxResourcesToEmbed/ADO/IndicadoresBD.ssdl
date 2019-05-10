@@ -1,0 +1,1080 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDIndicadoresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BDIndicadores.dbo.Adjunto' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Adjunto">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Alumno_id" />
+      <PropertyRef Name="Archivo" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Alumno_id" Type="int" Nullable="false" />
+    <Property Name="Archivo" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IdsBitacora">
+    <Key>
+      <PropertyRef Name="IdsId" />
+    </Key>
+    <Property Name="IdsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsIdPlanta" Type="int" Nullable="false" />
+    <Property Name="IdsMes" Type="int" Nullable="false" />
+    <Property Name="IdsAnio" Type="int" Nullable="false" />
+    <Property Name="IdsIdIndicador" Type="int" Nullable="false" />
+    <Property Name="IdsIdMedicion" Type="int" Nullable="false" />
+    <Property Name="IdsIdElemento" Type="int" Nullable="false" />
+    <Property Name="IdsIdUnidad" Type="int" Nullable="false" />
+    <Property Name="IdsTipoDeCalculo" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="IdsValorCalculado" Type="float" Nullable="false" />
+    <Property Name="IdsPrecioDolar" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="IdsStatus" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="IdsFechaCambio" Type="datetime" />
+    <Property Name="IdsUsuarioCambio" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="IdsCatElementos">
+    <Key>
+      <PropertyRef Name="IdsIdElemento" />
+    </Key>
+    <Property Name="IdsIdElemento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsNomenclatura" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="IdsIdentificador" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="IdsDescripcionElemento" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdsUnidad" Type="int" Nullable="false" />
+    <Property Name="IdsNotas" Type="varchar(max)" />
+    <Property Name="IdsFechaAlta" Type="datetime" />
+    <Property Name="IdsUsuarioAlta" Type="varchar" MaxLength="12" />
+    <Property Name="IdsFechaCambio" Type="datetime" />
+    <Property Name="IdsUsuarioCambio" Type="varchar" MaxLength="12" />
+    <Property Name="IdsTipoCambio" Type="bit" />
+  </EntityType>
+  <EntityType Name="IdsCatEmpresas">
+    <Key>
+      <PropertyRef Name="IdsIdCia" />
+    </Key>
+    <Property Name="IdsIdCia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdsDescripcionEmpresa" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdsFechaAlta" Type="datetime" />
+    <Property Name="IdsUsuarioAlta" Type="varchar" MaxLength="12" />
+    <Property Name="IdsFechaCambio" Type="datetime" />
+    <Property Name="IdsUsuarioCambio" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="IdsCatFactores">
+    <Key>
+      <PropertyRef Name="IdsIdFactor" />
+    </Key>
+    <Property Name="IdsIdFactor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsIdPlanta" Type="int" Nullable="false" />
+    <Property Name="IdsAnio" Type="int" Nullable="false" />
+    <Property Name="IdsDescripcionFactor" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdsValorFactor" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdsTipo" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="IdsFechaAlta" Type="datetime" />
+    <Property Name="IdsUsuarioAlta" Type="varchar" MaxLength="12" />
+    <Property Name="IdsFechaCambio" Type="datetime" />
+    <Property Name="IdsUsuarioCambio" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="IdsCatIndicadores">
+    <Key>
+      <PropertyRef Name="IdsIdIndicador" />
+    </Key>
+    <Property Name="IdsIdIndicador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsDescripcionIndicador" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdsIdUnidad" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdsNotasAdicionales" Type="varchar(max)" />
+    <Property Name="IdsFechaAlta" Type="datetime" />
+    <Property Name="IdsUsuarioAlta" Type="varchar" MaxLength="12" />
+    <Property Name="IdsFechaCambio" Type="datetime" />
+    <Property Name="IdsUsuarioCambio" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="IdsCatMediciones">
+    <Key>
+      <PropertyRef Name="IdsIdMedicion" />
+    </Key>
+    <Property Name="IdsIdMedicion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsIdPlanta" Type="int" Nullable="false" />
+    <Property Name="IdsIdIndicador" Type="int" Nullable="false" />
+    <Property Name="IdsDescripcionMedicion" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdsFechaAlta" Type="datetime" />
+    <Property Name="IdsUsuarioAlta" Type="varchar" MaxLength="12" />
+    <Property Name="IdsFechaCambio" Type="datetime" />
+    <Property Name="IdsUsuarioCambio" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="IdsCatPlantas">
+    <Key>
+      <PropertyRef Name="IdsIdPlanta" />
+    </Key>
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsIdPlanta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdsDescripcionPlanta" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdsFechaAlta" Type="datetime" />
+    <Property Name="IdsUsuarioAlta" Type="varchar" MaxLength="12" />
+    <Property Name="IdsFechaCambio" Type="datetime" />
+    <Property Name="IdsUsuarioCambio" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="IdsCatUnidades">
+    <Key>
+      <PropertyRef Name="IdsIdUnidad" />
+    </Key>
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsIdPlanta" Type="int" Nullable="false" />
+    <Property Name="IdsIdUnidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdsDescripcionUnidadMedida" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdsFechaAlta" Type="datetime" />
+    <Property Name="IdsUsuarioAlta" Type="varchar" MaxLength="12" />
+    <Property Name="IdsFechaCambio" Type="datetime" />
+    <Property Name="IdsUsuarioCambio" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="IdsFormulas">
+    <Key>
+      <PropertyRef Name="IdsConsecutivo" />
+    </Key>
+    <Property Name="IdsConsecutivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsIdPlanta" Type="int" Nullable="false" />
+    <Property Name="IdsIdaCalcular" Type="int" Nullable="false" />
+    <Property Name="IdsIdElemento" Type="int" Nullable="false" />
+    <Property Name="IdsOrden" Type="int" Nullable="false" />
+    <Property Name="IdsValor" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdsTipoOperador" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="IdsIdRaiz" Type="int" Nullable="false" />
+    <Property Name="IdsIndicadorOrigen" Type="int" Nullable="false" />
+    <Property Name="IdsTipoDato" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="IdsUnidad" Type="int" Nullable="false" />
+    <Property Name="IdsStatus" Type="bit" Nullable="false" />
+    <Property Name="IdsFechaAlta" Type="datetime" />
+    <Property Name="IdsUsuarioAlta" Type="varchar" MaxLength="12" />
+    <Property Name="IdsFechaCambio" Type="datetime" />
+    <Property Name="IdsUsuarioCambio" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BDIndicadores.dbo.IdsIndicadorAnual' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="IdsIndicadorAnual">
+    <Key>
+      <PropertyRef Name="IdsIdCia" />
+      <PropertyRef Name="IdsIdPlanta" />
+      <PropertyRef Name="IdsIdIndicador" />
+    </Key>
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsIdPlanta" Type="int" Nullable="false" />
+    <Property Name="IdsIdIndicador" Type="int" Nullable="false" />
+    <Property Name="IdsMesEnero" Type="int" />
+    <Property Name="IdsMesFebrero" Type="int" />
+    <Property Name="IdsMesMarzo" Type="int" />
+    <Property Name="IdsMesAbril" Type="int" />
+    <Property Name="IdsMesMayo" Type="int" />
+    <Property Name="IdsMesJunio" Type="int" />
+    <Property Name="IdsMesJulio" Type="int" />
+    <Property Name="IdsMesAgosto" Type="int" />
+    <Property Name="IdsMesSeptiembre" Type="int" />
+    <Property Name="IdsMesOctubre" Type="int" />
+    <Property Name="IdsMesNoviembre" Type="int" />
+    <Property Name="IdsMesDiciembre" Type="int" />
+    <Property Name="IdsAnual" Type="int" />
+    <Property Name="IdsAnio" Type="int" />
+    <Property Name="IdsUsuario" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="IdsIndicadores">
+    <Key>
+      <PropertyRef Name="IdsIdRegistro" />
+    </Key>
+    <Property Name="IdsIdRegistro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsIdPlanta" Type="int" Nullable="false" />
+    <Property Name="IdsMes" Type="int" Nullable="false" />
+    <Property Name="IdsAnio" Type="int" Nullable="false" />
+    <Property Name="IdsIdIndicador" Type="int" Nullable="false" />
+    <Property Name="IdsDescripcionIndicador" Type="varchar(max)" />
+    <Property Name="IdsIdUnidad" Type="int" Nullable="false" />
+    <Property Name="IdsValorDelPeriodo" Type="float" Nullable="false" />
+    <Property Name="IdsNotasAdicionales" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdsFechaAlta" Type="datetime" />
+    <Property Name="IdsUsuarioAlta" Type="varchar" MaxLength="12" />
+    <Property Name="IdsFechaCambio" Type="datetime" />
+    <Property Name="IdsUsuarioCambio" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="IdsMediciones">
+    <Key>
+      <PropertyRef Name="IdsId" />
+    </Key>
+    <Property Name="IdsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsIdPlanta" Type="int" Nullable="false" />
+    <Property Name="IdsMes" Type="int" Nullable="false" />
+    <Property Name="IdsAnio" Type="int" Nullable="false" />
+    <Property Name="IdsIdIndicador" Type="int" Nullable="false" />
+    <Property Name="IdsIdMedicion" Type="int" Nullable="false" />
+    <Property Name="IdsIdElemento" Type="int" Nullable="false" />
+    <Property Name="IdsValorCalculado" Type="float" Nullable="false" />
+    <Property Name="IdsIdUnidad" Type="int" Nullable="false" />
+    <Property Name="IdsCierreMes" Type="bit" Nullable="false" />
+    <Property Name="IdsFechaAlta" Type="datetime" />
+    <Property Name="IdsUsuarioAlta" Type="varchar" MaxLength="12" />
+    <Property Name="IdsFechaCambio" Type="datetime" />
+    <Property Name="IdsUsuarioCambio" Type="varchar" MaxLength="12" />
+    <Property Name="IdEstatus" Type="bit" />
+    <Property Name="IdsPrecioDolar" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="IdsNotasAdicionales" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IdsMensualesPorMontos">
+    <Key>
+      <PropertyRef Name="IdsIdRegistro" />
+    </Key>
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsIdPlanta" Type="int" Nullable="false" />
+    <Property Name="IdsIdIndicador" Type="int" Nullable="false" />
+    <Property Name="IdsMesEnero" Type="float" />
+    <Property Name="IdsMesFebrero" Type="float" />
+    <Property Name="IdsMesMarzo" Type="float" />
+    <Property Name="IdsMesAbril" Type="float" />
+    <Property Name="IdsMesMayo" Type="float" />
+    <Property Name="IdsMesJunio" Type="float" />
+    <Property Name="IdsMesJulio" Type="float" />
+    <Property Name="IdsMesAgosto" Type="float" />
+    <Property Name="IdsMesSeptiembre" Type="float" />
+    <Property Name="IdsMesOctubre" Type="float" />
+    <Property Name="IdsMesNoviembre" Type="float" />
+    <Property Name="IdsMesDiciembre" Type="float" />
+    <Property Name="IdsAnual" Type="float" />
+    <Property Name="IdsAnio" Type="int" />
+    <Property Name="IdsUsuario" Type="varchar" MaxLength="12" />
+    <Property Name="IdsIdRegistro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IdsRelaciones">
+    <Key>
+      <PropertyRef Name="IdsId" />
+    </Key>
+    <Property Name="IdsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsIdPlanta" Type="int" Nullable="false" />
+    <Property Name="IdsIdIndicador" Type="int" Nullable="false" />
+    <Property Name="IdsIdMedicion" Type="int" Nullable="false" />
+    <Property Name="IdsIdElemento" Type="int" Nullable="false" />
+    <Property Name="IdsIdUnidad" Type="int" Nullable="false" />
+    <Property Name="IdsTipoDeCalculo" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="IdsStatus" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="IdsFechaAlta" Type="datetime" />
+    <Property Name="IdsUsuarioAlta" Type="varchar" MaxLength="12" />
+    <Property Name="IdsFechaCambio" Type="datetime" />
+    <Property Name="IdsUsuarioCambio" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="IdsTareas">
+    <Key>
+      <PropertyRef Name="IdsIdTarea" />
+    </Key>
+    <Property Name="IdsIdCia" Type="int" Nullable="false" />
+    <Property Name="IdsPlanta" Type="int" Nullable="false" />
+    <Property Name="IdsMes" Type="int" Nullable="false" />
+    <Property Name="IdsAnio" Type="int" Nullable="false" />
+    <Property Name="IdsIdElemento" Type="int" Nullable="false" />
+    <Property Name="IdsIdTarea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdsDescripciondeTarea" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdsIdUsuario" Type="int" Nullable="false" />
+    <Property Name="IdsTiempoEstimadoHR" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="IdsTiempoEstimadoDias" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="IdsFechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="IdsFechaTermino" Type="datetime" />
+    <Property Name="IdsFechaAlta" Type="datetime" />
+    <Property Name="IdsUsuarioAlta" Type="varchar" MaxLength="12" />
+    <Property Name="IdsFechaCambio" Type="datetime" />
+    <Property Name="IdsUsuarioCambio" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="Permiso">
+    <Key>
+      <PropertyRef Name="PermisoID" />
+    </Key>
+    <Property Name="PermisoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Modulo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PermisoDenegadoPorRol">
+    <Key>
+      <PropertyRef Name="RolID" />
+      <PropertyRef Name="PermisoID" />
+    </Key>
+    <Property Name="RolID" Type="int" Nullable="false" />
+    <Property Name="PermisoID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BDIndicadores.dbo.Usuario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Rol_id" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Correo" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Rol_id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__IdsBitaco__IdsId__51851410">
+    <End Role="IdsCatIndicadores" Type="Self.IdsCatIndicadores" Multiplicity="1" />
+    <End Role="IdsBitacora" Type="Self.IdsBitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatIndicadores">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Principal>
+      <Dependent Role="IdsBitacora">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsBitaco__IdsId__52793849">
+    <End Role="IdsCatMediciones" Type="Self.IdsCatMediciones" Multiplicity="1" />
+    <End Role="IdsBitacora" Type="Self.IdsBitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatMediciones">
+        <PropertyRef Name="IdsIdMedicion" />
+      </Principal>
+      <Dependent Role="IdsBitacora">
+        <PropertyRef Name="IdsIdMedicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsBitaco__IdsId__536D5C82">
+    <End Role="IdsCatElementos" Type="Self.IdsCatElementos" Multiplicity="1" />
+    <End Role="IdsBitacora" Type="Self.IdsBitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatElementos">
+        <PropertyRef Name="IdsIdElemento" />
+      </Principal>
+      <Dependent Role="IdsBitacora">
+        <PropertyRef Name="IdsIdElemento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsBitaco__IdsId__546180BB">
+    <End Role="IdsCatUnidades" Type="Self.IdsCatUnidades" Multiplicity="1" />
+    <End Role="IdsBitacora" Type="Self.IdsBitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatUnidades">
+        <PropertyRef Name="IdsIdUnidad" />
+      </Principal>
+      <Dependent Role="IdsBitacora">
+        <PropertyRef Name="IdsIdUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsBitaco__IdsId__5555A4F4">
+    <End Role="IdsCatPlantas" Type="Self.IdsCatPlantas" Multiplicity="1" />
+    <End Role="IdsBitacora" Type="Self.IdsBitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatPlantas">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Principal>
+      <Dependent Role="IdsBitacora">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsIndica__IdsId__4AD81681">
+    <End Role="IdsCatPlantas" Type="Self.IdsCatPlantas" Multiplicity="1" />
+    <End Role="IdsIndicadorAnual" Type="Self.IdsIndicadorAnual" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatPlantas">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Principal>
+      <Dependent Role="IdsIndicadorAnual">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsIndica__IdsId__4BCC3ABA">
+    <End Role="IdsCatIndicadores" Type="Self.IdsCatIndicadores" Multiplicity="1" />
+    <End Role="IdsIndicadorAnual" Type="Self.IdsIndicadorAnual" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatIndicadores">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Principal>
+      <Dependent Role="IdsIndicadorAnual">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsIndica__IdsId__5832119F">
+    <End Role="IdsCatPlantas" Type="Self.IdsCatPlantas" Multiplicity="1" />
+    <End Role="IdsIndicadores" Type="Self.IdsIndicadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatPlantas">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Principal>
+      <Dependent Role="IdsIndicadores">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsIndica__IdsId__592635D8">
+    <End Role="IdsCatPlantas" Type="Self.IdsCatPlantas" Multiplicity="1" />
+    <End Role="IdsIndicadores" Type="Self.IdsIndicadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatPlantas">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Principal>
+      <Dependent Role="IdsIndicadores">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsIndica__IdsId__5A1A5A11">
+    <End Role="IdsCatIndicadores" Type="Self.IdsCatIndicadores" Multiplicity="1" />
+    <End Role="IdsIndicadores" Type="Self.IdsIndicadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatIndicadores">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Principal>
+      <Dependent Role="IdsIndicadores">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsMedici__IdsId__5CF6C6BC">
+    <End Role="IdsCatPlantas" Type="Self.IdsCatPlantas" Multiplicity="1" />
+    <End Role="IdsMediciones" Type="Self.IdsMediciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatPlantas">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Principal>
+      <Dependent Role="IdsMediciones">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsMedici__IdsId__5DEAEAF5">
+    <End Role="IdsCatIndicadores" Type="Self.IdsCatIndicadores" Multiplicity="1" />
+    <End Role="IdsMediciones" Type="Self.IdsMediciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatIndicadores">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Principal>
+      <Dependent Role="IdsMediciones">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsMedici__IdsId__5EDF0F2E">
+    <End Role="IdsCatElementos" Type="Self.IdsCatElementos" Multiplicity="1" />
+    <End Role="IdsMediciones" Type="Self.IdsMediciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatElementos">
+        <PropertyRef Name="IdsIdElemento" />
+      </Principal>
+      <Dependent Role="IdsMediciones">
+        <PropertyRef Name="IdsIdElemento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsMedici__IdsId__5FD33367">
+    <End Role="IdsCatUnidades" Type="Self.IdsCatUnidades" Multiplicity="1" />
+    <End Role="IdsMediciones" Type="Self.IdsMediciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatUnidades">
+        <PropertyRef Name="IdsIdUnidad" />
+      </Principal>
+      <Dependent Role="IdsMediciones">
+        <PropertyRef Name="IdsIdUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsMedici__IdsId__60C757A0">
+    <End Role="IdsCatMediciones" Type="Self.IdsCatMediciones" Multiplicity="1" />
+    <End Role="IdsMediciones" Type="Self.IdsMediciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatMediciones">
+        <PropertyRef Name="IdsIdMedicion" />
+      </Principal>
+      <Dependent Role="IdsMediciones">
+        <PropertyRef Name="IdsIdMedicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsMensua__IdsId__47FBA9D6">
+    <End Role="IdsCatIndicadores" Type="Self.IdsCatIndicadores" Multiplicity="1" />
+    <End Role="IdsMensualesPorMontos" Type="Self.IdsMensualesPorMontos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatIndicadores">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Principal>
+      <Dependent Role="IdsMensualesPorMontos">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IdsMensua__IdsId__48EFCE0F">
+    <End Role="IdsCatPlantas" Type="Self.IdsCatPlantas" Multiplicity="1" />
+    <End Role="IdsMensualesPorMontos" Type="Self.IdsMensualesPorMontos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatPlantas">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Principal>
+      <Dependent Role="IdsMensualesPorMontos">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdsIndicadorAnual_IdsCatEmpresas3">
+    <End Role="IdsCatEmpresas" Type="Self.IdsCatEmpresas" Multiplicity="1" />
+    <End Role="IdsIndicadorAnual" Type="Self.IdsIndicadorAnual" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatEmpresas">
+        <PropertyRef Name="IdsIdCia" />
+      </Principal>
+      <Dependent Role="IdsIndicadorAnual">
+        <PropertyRef Name="IdsIdCia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdsIndicadorAnual_IdsCatIndicadores3">
+    <End Role="IdsCatIndicadores" Type="Self.IdsCatIndicadores" Multiplicity="1" />
+    <End Role="IdsIndicadorAnual" Type="Self.IdsIndicadorAnual" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatIndicadores">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Principal>
+      <Dependent Role="IdsIndicadorAnual">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdsIndicadorAnual_IdsCatPlantas3">
+    <End Role="IdsCatPlantas" Type="Self.IdsCatPlantas" Multiplicity="1" />
+    <End Role="IdsIndicadorAnual" Type="Self.IdsIndicadorAnual" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatPlantas">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Principal>
+      <Dependent Role="IdsIndicadorAnual">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdsMediciones_IdsCatPlantas2">
+    <End Role="IdsCatPlantas" Type="Self.IdsCatPlantas" Multiplicity="1" />
+    <End Role="IdsMediciones" Type="Self.IdsMediciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatPlantas">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Principal>
+      <Dependent Role="IdsMediciones">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdsRelaciones_IdsCatElementos1">
+    <End Role="IdsCatElementos" Type="Self.IdsCatElementos" Multiplicity="1" />
+    <End Role="IdsRelaciones" Type="Self.IdsRelaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatElementos">
+        <PropertyRef Name="IdsIdElemento" />
+      </Principal>
+      <Dependent Role="IdsRelaciones">
+        <PropertyRef Name="IdsIdElemento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdsRelaciones_IdsCatEmpresas1">
+    <End Role="IdsCatEmpresas" Type="Self.IdsCatEmpresas" Multiplicity="1" />
+    <End Role="IdsRelaciones" Type="Self.IdsRelaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatEmpresas">
+        <PropertyRef Name="IdsIdCia" />
+      </Principal>
+      <Dependent Role="IdsRelaciones">
+        <PropertyRef Name="IdsIdCia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdsRelaciones_IdsCatIndicadores1">
+    <End Role="IdsCatIndicadores" Type="Self.IdsCatIndicadores" Multiplicity="1" />
+    <End Role="IdsRelaciones" Type="Self.IdsRelaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatIndicadores">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Principal>
+      <Dependent Role="IdsRelaciones">
+        <PropertyRef Name="IdsIdIndicador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdsRelaciones_IdsCatMediciones1">
+    <End Role="IdsCatMediciones" Type="Self.IdsCatMediciones" Multiplicity="1" />
+    <End Role="IdsRelaciones" Type="Self.IdsRelaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatMediciones">
+        <PropertyRef Name="IdsIdMedicion" />
+      </Principal>
+      <Dependent Role="IdsRelaciones">
+        <PropertyRef Name="IdsIdMedicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdsRelaciones_IdsCatPlantas1">
+    <End Role="IdsCatPlantas" Type="Self.IdsCatPlantas" Multiplicity="1" />
+    <End Role="IdsRelaciones" Type="Self.IdsRelaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatPlantas">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Principal>
+      <Dependent Role="IdsRelaciones">
+        <PropertyRef Name="IdsIdPlanta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IdsRelaciones_IdsCatUnidades1">
+    <End Role="IdsCatUnidades" Type="Self.IdsCatUnidades" Multiplicity="1" />
+    <End Role="IdsRelaciones" Type="Self.IdsRelaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IdsCatUnidades">
+        <PropertyRef Name="IdsIdUnidad" />
+      </Principal>
+      <Dependent Role="IdsRelaciones">
+        <PropertyRef Name="IdsIdUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermisoDenegadoPorRol_Permiso">
+    <End Role="Permiso" Type="Self.Permiso" Multiplicity="1" />
+    <End Role="PermisoDenegadoPorRol" Type="Self.PermisoDenegadoPorRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permiso">
+        <PropertyRef Name="PermisoID" />
+      </Principal>
+      <Dependent Role="PermisoDenegadoPorRol">
+        <PropertyRef Name="PermisoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermisoDenegadoPorRol_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="PermisoDenegadoPorRol" Type="Self.PermisoDenegadoPorRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PermisoDenegadoPorRol">
+        <PropertyRef Name="RolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="BorraEspacios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="StringToClean" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SpIndicadoresMonitoreoPorMes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCia" Type="int" Mode="In" />
+    <Parameter Name="IdPlanta" Type="int" Mode="In" />
+    <Parameter Name="Anio" Type="int" Mode="In" />
+    <Parameter Name="Usuario" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SpIndicadoresMonitoreoPorMes3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCia" Type="int" Mode="In" />
+    <Parameter Name="IdPlanta" Type="int" Mode="In" />
+    <Parameter Name="Anio" Type="int" Mode="In" />
+    <Parameter Name="Usuario" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SpIndicadoresMonitoreoPorMesBAK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCia" Type="int" Mode="In" />
+    <Parameter Name="IdPlanta" Type="int" Mode="In" />
+    <Parameter Name="Anio" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SpMensualesPorMontos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCia" Type="int" Mode="In" />
+    <Parameter Name="IdPlanta" Type="int" Mode="In" />
+    <Parameter Name="Anio" Type="int" Mode="In" />
+    <Parameter Name="Usuario" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SpMensualesPorMontos2_bak" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SpMensualesPorMontos2.bak">
+    <Parameter Name="IdCia" Type="int" Mode="In" />
+    <Parameter Name="IdPlanta" Type="int" Mode="In" />
+    <Parameter Name="Anio" Type="int" Mode="In" />
+    <Parameter Name="Usuario" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SpSelIndicadoresCYDSA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCia" Type="int" Mode="In" />
+    <Parameter Name="IdPlanta" Type="int" Mode="In" />
+    <Parameter Name="Mes" Type="int" Mode="In" />
+    <Parameter Name="Anio" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SpSelIndicadoresCYDSA2_Bak" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCia" Type="int" Mode="In" />
+    <Parameter Name="IdPlanta" Type="int" Mode="In" />
+    <Parameter Name="Mes" Type="int" Mode="In" />
+    <Parameter Name="Anio" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SpSelIndicadoresCYDSA3_Bak" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SpSelIndicadoresCYDSA3.Bak">
+    <Parameter Name="IdCia" Type="int" Mode="In" />
+    <Parameter Name="IdPlanta" Type="int" Mode="In" />
+    <Parameter Name="Mes" Type="int" Mode="In" />
+    <Parameter Name="Anio" Type="int" Mode="In" />
+  </Function>
+  <Function Name="udfTrim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="StringToClean" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="BDIndicadoresModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsBitacora" EntityType="Self.IdsBitacora" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsCatElementos" EntityType="Self.IdsCatElementos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsCatEmpresas" EntityType="Self.IdsCatEmpresas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsCatFactores" EntityType="Self.IdsCatFactores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsCatIndicadores" EntityType="Self.IdsCatIndicadores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsCatMediciones" EntityType="Self.IdsCatMediciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsCatPlantas" EntityType="Self.IdsCatPlantas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsCatUnidades" EntityType="Self.IdsCatUnidades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsFormulas" EntityType="Self.IdsFormulas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsIndicadores" EntityType="Self.IdsIndicadores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsMediciones" EntityType="Self.IdsMediciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsMensualesPorMontos" EntityType="Self.IdsMensualesPorMontos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsRelaciones" EntityType="Self.IdsRelaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IdsTareas" EntityType="Self.IdsTareas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PermisoDenegadoPorRol" EntityType="Self.PermisoDenegadoPorRol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Adjunto" EntityType="Self.Adjunto" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Adjunto].[id] AS [id], 
+    [Adjunto].[Alumno_id] AS [Alumno_id], 
+    [Adjunto].[Archivo] AS [Archivo]
+    FROM [dbo].[Adjunto] AS [Adjunto]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="IdsIndicadorAnual" EntityType="Self.IdsIndicadorAnual" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [IdsIndicadorAnual].[IdsIdCia] AS [IdsIdCia], 
+    [IdsIndicadorAnual].[IdsIdPlanta] AS [IdsIdPlanta], 
+    [IdsIndicadorAnual].[IdsIdIndicador] AS [IdsIdIndicador], 
+    [IdsIndicadorAnual].[IdsMesEnero] AS [IdsMesEnero], 
+    [IdsIndicadorAnual].[IdsMesFebrero] AS [IdsMesFebrero], 
+    [IdsIndicadorAnual].[IdsMesMarzo] AS [IdsMesMarzo], 
+    [IdsIndicadorAnual].[IdsMesAbril] AS [IdsMesAbril], 
+    [IdsIndicadorAnual].[IdsMesMayo] AS [IdsMesMayo], 
+    [IdsIndicadorAnual].[IdsMesJunio] AS [IdsMesJunio], 
+    [IdsIndicadorAnual].[IdsMesJulio] AS [IdsMesJulio], 
+    [IdsIndicadorAnual].[IdsMesAgosto] AS [IdsMesAgosto], 
+    [IdsIndicadorAnual].[IdsMesSeptiembre] AS [IdsMesSeptiembre], 
+    [IdsIndicadorAnual].[IdsMesOctubre] AS [IdsMesOctubre], 
+    [IdsIndicadorAnual].[IdsMesNoviembre] AS [IdsMesNoviembre], 
+    [IdsIndicadorAnual].[IdsMesDiciembre] AS [IdsMesDiciembre], 
+    [IdsIndicadorAnual].[IdsAnual] AS [IdsAnual], 
+    [IdsIndicadorAnual].[IdsAnio] AS [IdsAnio], 
+    [IdsIndicadorAnual].[IdsUsuario] AS [IdsUsuario]
+    FROM [dbo].[IdsIndicadorAnual] AS [IdsIndicadorAnual]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Usuario].[id] AS [id], 
+    [Usuario].[Rol_id] AS [Rol_id], 
+    [Usuario].[Nombre] AS [Nombre], 
+    [Usuario].[Correo] AS [Correo], 
+    [Usuario].[Password] AS [Password]
+    FROM [dbo].[Usuario] AS [Usuario]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__IdsBitaco__IdsId__51851410" Association="Self.FK__IdsBitaco__IdsId__51851410">
+      <End Role="IdsCatIndicadores" EntitySet="IdsCatIndicadores" />
+      <End Role="IdsBitacora" EntitySet="IdsBitacora" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsBitaco__IdsId__52793849" Association="Self.FK__IdsBitaco__IdsId__52793849">
+      <End Role="IdsCatMediciones" EntitySet="IdsCatMediciones" />
+      <End Role="IdsBitacora" EntitySet="IdsBitacora" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsBitaco__IdsId__536D5C82" Association="Self.FK__IdsBitaco__IdsId__536D5C82">
+      <End Role="IdsCatElementos" EntitySet="IdsCatElementos" />
+      <End Role="IdsBitacora" EntitySet="IdsBitacora" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsBitaco__IdsId__546180BB" Association="Self.FK__IdsBitaco__IdsId__546180BB">
+      <End Role="IdsCatUnidades" EntitySet="IdsCatUnidades" />
+      <End Role="IdsBitacora" EntitySet="IdsBitacora" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsBitaco__IdsId__5555A4F4" Association="Self.FK__IdsBitaco__IdsId__5555A4F4">
+      <End Role="IdsCatPlantas" EntitySet="IdsCatPlantas" />
+      <End Role="IdsBitacora" EntitySet="IdsBitacora" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsIndica__IdsId__4AD81681" Association="Self.FK__IdsIndica__IdsId__4AD81681">
+      <End Role="IdsCatPlantas" EntitySet="IdsCatPlantas" />
+      <End Role="IdsIndicadorAnual" EntitySet="IdsIndicadorAnual" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsIndica__IdsId__4BCC3ABA" Association="Self.FK__IdsIndica__IdsId__4BCC3ABA">
+      <End Role="IdsCatIndicadores" EntitySet="IdsCatIndicadores" />
+      <End Role="IdsIndicadorAnual" EntitySet="IdsIndicadorAnual" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsIndica__IdsId__5832119F" Association="Self.FK__IdsIndica__IdsId__5832119F">
+      <End Role="IdsCatPlantas" EntitySet="IdsCatPlantas" />
+      <End Role="IdsIndicadores" EntitySet="IdsIndicadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsIndica__IdsId__592635D8" Association="Self.FK__IdsIndica__IdsId__592635D8">
+      <End Role="IdsCatPlantas" EntitySet="IdsCatPlantas" />
+      <End Role="IdsIndicadores" EntitySet="IdsIndicadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsIndica__IdsId__5A1A5A11" Association="Self.FK__IdsIndica__IdsId__5A1A5A11">
+      <End Role="IdsCatIndicadores" EntitySet="IdsCatIndicadores" />
+      <End Role="IdsIndicadores" EntitySet="IdsIndicadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsMedici__IdsId__5CF6C6BC" Association="Self.FK__IdsMedici__IdsId__5CF6C6BC">
+      <End Role="IdsCatPlantas" EntitySet="IdsCatPlantas" />
+      <End Role="IdsMediciones" EntitySet="IdsMediciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsMedici__IdsId__5DEAEAF5" Association="Self.FK__IdsMedici__IdsId__5DEAEAF5">
+      <End Role="IdsCatIndicadores" EntitySet="IdsCatIndicadores" />
+      <End Role="IdsMediciones" EntitySet="IdsMediciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsMedici__IdsId__5EDF0F2E" Association="Self.FK__IdsMedici__IdsId__5EDF0F2E">
+      <End Role="IdsCatElementos" EntitySet="IdsCatElementos" />
+      <End Role="IdsMediciones" EntitySet="IdsMediciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsMedici__IdsId__5FD33367" Association="Self.FK__IdsMedici__IdsId__5FD33367">
+      <End Role="IdsCatUnidades" EntitySet="IdsCatUnidades" />
+      <End Role="IdsMediciones" EntitySet="IdsMediciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsMedici__IdsId__60C757A0" Association="Self.FK__IdsMedici__IdsId__60C757A0">
+      <End Role="IdsCatMediciones" EntitySet="IdsCatMediciones" />
+      <End Role="IdsMediciones" EntitySet="IdsMediciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsMensua__IdsId__47FBA9D6" Association="Self.FK__IdsMensua__IdsId__47FBA9D6">
+      <End Role="IdsCatIndicadores" EntitySet="IdsCatIndicadores" />
+      <End Role="IdsMensualesPorMontos" EntitySet="IdsMensualesPorMontos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IdsMensua__IdsId__48EFCE0F" Association="Self.FK__IdsMensua__IdsId__48EFCE0F">
+      <End Role="IdsCatPlantas" EntitySet="IdsCatPlantas" />
+      <End Role="IdsMensualesPorMontos" EntitySet="IdsMensualesPorMontos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdsIndicadorAnual_IdsCatEmpresas3" Association="Self.FK_IdsIndicadorAnual_IdsCatEmpresas3">
+      <End Role="IdsCatEmpresas" EntitySet="IdsCatEmpresas" />
+      <End Role="IdsIndicadorAnual" EntitySet="IdsIndicadorAnual" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdsIndicadorAnual_IdsCatIndicadores3" Association="Self.FK_IdsIndicadorAnual_IdsCatIndicadores3">
+      <End Role="IdsCatIndicadores" EntitySet="IdsCatIndicadores" />
+      <End Role="IdsIndicadorAnual" EntitySet="IdsIndicadorAnual" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdsIndicadorAnual_IdsCatPlantas3" Association="Self.FK_IdsIndicadorAnual_IdsCatPlantas3">
+      <End Role="IdsCatPlantas" EntitySet="IdsCatPlantas" />
+      <End Role="IdsIndicadorAnual" EntitySet="IdsIndicadorAnual" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdsMediciones_IdsCatPlantas2" Association="Self.FK_IdsMediciones_IdsCatPlantas2">
+      <End Role="IdsCatPlantas" EntitySet="IdsCatPlantas" />
+      <End Role="IdsMediciones" EntitySet="IdsMediciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdsRelaciones_IdsCatElementos1" Association="Self.FK_IdsRelaciones_IdsCatElementos1">
+      <End Role="IdsCatElementos" EntitySet="IdsCatElementos" />
+      <End Role="IdsRelaciones" EntitySet="IdsRelaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdsRelaciones_IdsCatEmpresas1" Association="Self.FK_IdsRelaciones_IdsCatEmpresas1">
+      <End Role="IdsCatEmpresas" EntitySet="IdsCatEmpresas" />
+      <End Role="IdsRelaciones" EntitySet="IdsRelaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdsRelaciones_IdsCatIndicadores1" Association="Self.FK_IdsRelaciones_IdsCatIndicadores1">
+      <End Role="IdsCatIndicadores" EntitySet="IdsCatIndicadores" />
+      <End Role="IdsRelaciones" EntitySet="IdsRelaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdsRelaciones_IdsCatMediciones1" Association="Self.FK_IdsRelaciones_IdsCatMediciones1">
+      <End Role="IdsCatMediciones" EntitySet="IdsCatMediciones" />
+      <End Role="IdsRelaciones" EntitySet="IdsRelaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdsRelaciones_IdsCatPlantas1" Association="Self.FK_IdsRelaciones_IdsCatPlantas1">
+      <End Role="IdsCatPlantas" EntitySet="IdsCatPlantas" />
+      <End Role="IdsRelaciones" EntitySet="IdsRelaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IdsRelaciones_IdsCatUnidades1" Association="Self.FK_IdsRelaciones_IdsCatUnidades1">
+      <End Role="IdsCatUnidades" EntitySet="IdsCatUnidades" />
+      <End Role="IdsRelaciones" EntitySet="IdsRelaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermisoDenegadoPorRol_Permiso" Association="Self.FK_PermisoDenegadoPorRol_Permiso">
+      <End Role="Permiso" EntitySet="Permiso" />
+      <End Role="PermisoDenegadoPorRol" EntitySet="PermisoDenegadoPorRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermisoDenegadoPorRol_Rol" Association="Self.FK_PermisoDenegadoPorRol_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="PermisoDenegadoPorRol" EntitySet="PermisoDenegadoPorRol" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,210 @@
+﻿@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsMediciones>
+
+@{
+    ViewBag.Title = "ListaMedicion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Count() >= 1)
+{
+var VarMes = "";
+ if (Model.First().IdsMes == 1)
+{
+    VarMes = "ENERO";
+
+}
+ if (Model.First().IdsMes == 2)
+{
+    VarMes = "FEBRERO";
+}
+
+ if (Model.First().IdsMes == 3)
+{
+    VarMes = "MARZO";
+}
+
+ if (Model.First().IdsMes == 4)
+{
+    VarMes = "ABRIL";
+}
+
+ if (Model.First().IdsMes == 5)
+{
+    VarMes = "MAYO";
+
+}
+ if (Model.First().IdsMes == 6)
+{
+    VarMes = "JUNIO";
+
+}
+
+ if (Model.First().IdsMes == 7)
+{
+    VarMes = "JULIO";
+}
+
+ if (Model.First().IdsMes == 8)
+{
+    VarMes = "AGOSTO";
+}
+ if (Model.First().IdsMes == 9)
+{
+    VarMes = "SEPTIEMBRE";
+
+}
+ if (Model.First().IdsMes == 10)
+{
+    VarMes = "OCTUBRE";
+}
+
+ if (Model.First().IdsMes == 11)
+{
+    VarMes = "NOVIEMBRE";
+}
+
+ if (Model.First().IdsMes == 12)
+{
+    VarMes = "DICIEMBRE";
+}
+
+<br />
+<br />
+<br />
+<h4>LISTADO DEL INDICADOR DE @Model.First().IdsCatIndicadores.IdsDescripcionIndicador DEL MES DE @VarMes DEL AÑO @Model.First().IdsAnio</h4>
+    }
+    else
+    {
+        <br />
+        <h4>LISTADO DEL INDICADOR DE @ViewBag.indicador DEL MES DE @ViewBag.mes DEL AÑO @Session["IdAnio"]</h4>
+        
+
+    }
+
+
+<script type="text/javascript" class="init">
+    $(document).ready(function() {
+        var table = $('#example').DataTable({
+
+            language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Reglones",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Reglones",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+            }
+        }
+            );
+
+
+} );
+</script>
+
+<div class="form-horizontal container-fluid col-lg-push-8 img-rounded " style="background-color:#D6EAF8">
+    <br />
+    <div class="panel panel-primary">
+        <div class="panel-body" style="background-color:#D6EAF8">
+
+            <table class="table display" style="background-color:#D6EAF8"  id="example">
+               
+                <thead>
+
+                    
+                    <tr>
+      
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdsIdMedicion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdsCatElementos.IdsNomenclatura)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdsIdElemento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdsValorCalculado)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdsIdUnidad)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    @foreach (var item in Model)
+            {
+                        <tr font-family:Times New Roman Times serif;>
+     
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdsCatMediciones.IdsDescripcionMedicion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdsCatElementos.IdsNomenclatura)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdsCatElementos.IdsDescripcionElemento)
+                            </td>
+                            <td style="text-align:right;">
+                                @Html.DisplayFor(modelItem => item.IdsValorCalculado)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdsCatUnidades.IdsDescripcionUnidadMedida)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Cambios", "EditMedicion", new { id = item.IdsId, IdPlanta = @ViewBag.IdPlanta, IdAnio = @ViewBag.anio, IdMes = item.IdsMes, IdIndicador = item.IdsIdIndicador })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+            @Html.ActionLink("Regresar", "Mensuales", "Mensuales", new { IdPlanta = @ViewBag.IdPlanta, IdAnio = @ViewBag.anio }, new { @class = "btn btn-info", @style = "display:inline" })
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<style>
+
+    table div { 
+background-color:#D6EAF8    !important
+
+    }
+      table tr   { 
+background-color:#D6EAF8    !important
+
+
+
+   
+    }
+       .sorting_1
+        { 
+background-color:#D6EAF8    !important
+
+
+
+   
+    }
+
+    
+</style>

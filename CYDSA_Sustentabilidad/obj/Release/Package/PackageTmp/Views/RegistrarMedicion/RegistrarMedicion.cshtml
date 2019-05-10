@@ -1,0 +1,208 @@
+﻿
+@model  CYDSA_Sustentabilidad.Models.IdsMediciones
+
+@{
+    ViewBag.Title = "Registro de Mediciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    CYDSA_Sustentabilidad.ADO.MedicionesADO contex = new CYDSA_Sustentabilidad.ADO.MedicionesADO();
+}
+
+
+<head>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/jquery.dataTables_themeroller.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/jquery.dataTables.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/demo_table_jui.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/demo_table.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/demo_page.css" data-semver="1.9.4" data-require="datatables" />
+    <link rel="stylesheet" href="~/Content/jquery-ui-1.10.0.custom.min.css" data-semver="1.10.0" data-require="jqueryui" />
+    <link rel="stylesheet" href="~/Content/jquery.dataTables.min.css" data-semver="1.10.13" data-require="jqueryui" />
+
+    <script src="~/Scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-ui.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-1.12.4.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-latest.js" type="text/javascript"></script> 
+</head>
+
+   
+ 
+       @if (ViewBag.Error != null)
+       {
+        <script>
+            alert("@ViewBag.Error.ToString()");
+           
+        </script>
+       }
+        
+<script>
+   
+        $("form").submit();
+   
+</script>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="form-horizontal container-fluid col-lg-push-8 img-rounded bg-primary " style="color:#000000; font:caption; background-color:#D6EAF8;">
+
+            <h3>Captura de Mediciones en Forma Manual</h3>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(x => x.IdsAnio)
+            @Html.HiddenFor(x => x.IdsMes)
+            @Html.HiddenFor(x=>x.IdsIdIndicador)
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsAnio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdsAnio", (IEnumerable<SelectListItem>)ViewBag.Anios, "Seleccione el Año", new { id = "RegAnio", @class = "form-control", @disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.IdsAnio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsMes, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdsMes", (IEnumerable<SelectListItem>)ViewBag.Locations, "Seleccione el Mes", new { id = "ddlLocations", @class = "form-control", @disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.IdsMes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.IdsIdIndicador, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdsIdIndicador", (SelectList)ViewBag.dropdownIndicadores, "Seleccione Indicador", htmlAttributes: new { @class = "form-control  perfil required", @id = "RegionId", @disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.IdsIdIndicador, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdsIdMedicion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdsIdMedicion", (SelectList)ViewBag.dropdownMediciones, "Seleccione Medición", htmlAttributes: new { @class = " cboMedicion form-control  perfil required", @id = "CostoMedicion" })
+                    @Html.ValidationMessageFor(model => model.IdsIdMedicion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">                
+                @Html.LabelFor(model => model.IdsPrecioDolar, htmlAttributes: new { @class = "control-label col-md-2 dolar"  })
+                <div class="col-md-10 " style="color:black" id="">
+                    @Html.EditorFor(model => model.IdsPrecioDolar, "Teclee el Tipo de Cambio", new { @class = "form-control dolar"})
+                    @Html.ValidationMessageFor(model => model.IdsPrecioDolar, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group" style="margin-top:35px">
+                <div class="row col-md-12" style="display:inline">
+                    <div class="col-md-2" style="display:inline">
+                    </div>
+                    <div class="col-md-10" style="display:inline">
+                        <input type="submit" value="Buscar" class="btn btn-primary btn-lg" style="display:inline; " />                       
+                        @Html.ActionLink("Regresar", "Mensuales","Mensuales", null, new { @class = "btn btn-primary btn-lg", @style = "display:inline" })
+                    </div>
+
+                </div>
+            </div>
+ 
+        </div>
+ 
+  }
+
+
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+                  
+                   $("#IdsPrecioDolar").css("display", "none");
+                    $(".dolar").css("display", "none");
+                    
+                });
+                $(function () {
+
+                    $("#CostoMedicion").change(function () {
+                      
+                   
+                        if ($("#CostoMedicion").val() == 14)
+                        {
+                         
+                            $("#IdsPrecioDolar").css("display", "block");
+                            $(".dolar").css("display", "block");
+                        }
+                        else {
+                           
+                            $("#IdsPrecioDolar").css("display", "none");
+                            $(".dolar").css("display", "none");
+                        }
+
+
+
+                        var container = $('#id-container');
+
+                        if (container.css('display') == 'none') {
+                            container.fadeIn(400);
+                        }
+                        else {
+                            container.fadeOut(400);
+                        }
+
+                    });
+
+                });
+
+            </script>
+
+
+
+            <style>
+                table {
+                    background-color: #D6EAF8;
+                }
+
+
+                tr:hover {
+                    color: #17202A;
+                    background-color: #85C1E9;
+                }
+
+                tr th:hover {
+                    color: #fff;
+                    background-color: #3498DB;
+                }
+
+                th {
+                    background-color: #3498DB;
+                    color: #fff;
+                }
+            </style>
+
+
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+
+                    $('#btn-estado').on('click', function () {
+
+                        var container = $('#id-container');
+
+                        if (container.css('display') == 'none') {
+                            container.fadeIn(400);
+                        }
+                        else {
+                            container.fadeOut(400);
+                        }
+                    });
+                })
+
+            </script>

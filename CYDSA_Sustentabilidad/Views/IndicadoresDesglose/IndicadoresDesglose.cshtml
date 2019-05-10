@@ -1,0 +1,122 @@
+﻿@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsDesgloseIndicadores>
+
+
+@{
+    ViewBag.Title = "IndicadoresDesglose";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container form-group col-md-12 jumbotron" style="color:#000000; font:caption; background-color:#D6EAF8;">
+    <h3>DESGLOSE DEL INDICADOR @Model.First().IdsCatIndicadores.IdsDescripcionIndicador DEL AÑO @Session["IdAnio"]</h3>
+
+
+
+    <div class="col-md-1" style="text-align: right;">
+        <H4>Planta:</H4>
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+            $("#PlantaId").val(@Session["IdPlanta"]);
+        });
+    </script>
+
+    <div class="col-md-3">
+        @Html.DropDownList("IdPlantaTmp", (IEnumerable<SelectListItem>)ViewBag.dropdownPlanta, "Seleccione la Planta", new { id = "PlantaId", @class = "form-control", @disabled = "disabled" })
+
+    </div>
+
+    <div class="col-md-4" style="text-align: left;">
+        @Html.ActionLink("Regresar", "Mensuales", "Mensuales", new { IdPlanta = @ViewBag.IdPlanta, IdAnio = @ViewBag.anio }, new { @class = "btn btn-info", @style = "display:inline" })
+    </div>
+    <div class="col-md-4" style="text-align: left;">
+    </div>
+
+    <div lass="container form-group col-md-12">
+
+        <table class="table">
+            <tr>                
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsIdMedicion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsIdElemento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsIdUnidad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdsTipoDeCalculo)
+                </th>
+                
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+
+                        @if (item.IdsIdElemento != null)
+                        {
+                            <span> </span>
+
+                        }
+                        else
+                        {
+
+                            @Html.DisplayFor(modelItem => item.IdsCatMediciones.IdsDescripcionMedicion)
+                        }
+                    </td>
+                    <td>
+                        @if (item.IdsIdElemento != null)
+                        {
+                            @Html.DisplayFor(modelItem => item.IdsCatElementos.IdsDescripcionElemento)
+
+                        }
+                        else
+                        {
+                            <span> </span>
+
+                        }
+                    </td>
+                    <td>
+
+                        @if (item.IdsIdUnidad != null)
+                        {
+                            @Html.DisplayFor(modelItem => item.IdsCatUnidades.IdsDescripcionUnidadMedida)
+
+                        }
+                        else
+                        {
+                            <span> </span>
+
+                        }
+
+                    </td>
+                    <td>
+                        @if (item.IdsTipoDeCalculo == "M")
+                        {
+                            <span>MANUAL</span>
+
+                        }
+                        @if (item.IdsTipoDeCalculo == "A")
+                        {
+                            <span>AUTOMATICO</span>
+
+                        }
+
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
+</div>
+
+

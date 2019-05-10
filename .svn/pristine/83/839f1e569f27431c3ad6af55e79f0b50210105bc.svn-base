@@ -1,0 +1,63 @@
+﻿using CYDSA_Sustentabilidad.Models;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Net;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace CYDSA_Sustentabilidad.Controllers
+{
+    public class IndicadorAnualController : Controller
+    {
+        // GET: IndicadorAnual
+        Entities db = new Entities();
+
+        public ActionResult index()
+        {
+            var a = db.IdsIndicadorAnual.ToList();
+            return View(a);
+        }
+        public ActionResult IndicadorAnual()
+        {
+           
+                var IdsIdCia = 1;
+                var IdsIdPlanta = 2;
+                int IdsAnio = 2018;
+                var IdsUsuario = 1;
+
+
+                //var posts = context.Posts.SqlQuery("dbo.SpIndicadoresMonitoreoPorMes").ToList();
+            
+
+
+            //var Restdata = context.IdsIndicadorAnual.SqlQuery("[dbo].[SpIndicadoresMonitoreoPorMes] @IdCia, @IdPlanta, @Anio", new SqlParameter("IdsIdCia", IdsIdCia), new SqlParameter("IdsIdPlanta", IdsIdPlanta), new SqlParameter("IdsIdAnio", IdsAnio)).ToList();
+            var Restdata = db.SpIndicadoresMonitoreoPorMes(IdsIdCia, IdsIdPlanta, IdsAnio, IdsUsuario);
+                //.SpIndicadoresMonitoreoPorMes(IdsIdCia, IdsIdPlanta,IdsAnio);
+                
+                //var data = context.IdsIndicadorAnual.SqlQuery("[dbo].[SpIndicadoresMonitoreoPorMes] @Anio", new SqlParameter("IdsIdAnio", Anio)).ToList();
+                //return View(context.IdsIndicadorAnual.ToList());
+
+                return View(db.IdsIndicadorAnual.ToList());
+                //var data = context.IdsIndicadorAnual.SqlQuery("SpIndicadoresMonitoreoPorMes @IdCia, @IdPlanta, @Anio, @Usuario",
+                //    new SqlParameter("IdsIdCia", IdCia),
+                //    new SqlParameter("IdsIdPlanta", IdPlanta),
+                //    new SqlParameter("IdsIdAnio", Anio),
+                //    new SqlParameter("IdsUsuario", Usuario)).ToList();
+
+
+                //var retSet = context.IdsIndicadorAnual.SqlQuery(
+                //"EXEC SpIndicadoresMonitoreoPorMes @IdCia, @IdPlanta, @Anio, @Usuario",
+                //new SqlParameter("IdsIdCia", IdCia),
+                //new SqlParameter("IdsIdPlanta", IdPlanta),
+                //new SqlParameter("IdsIdAnio", Anio),
+                //new SqlParameter("IdsUsuario", Usuario)
+
+            
+
+            //return View(db.Guests);
+        }
+    }
+}

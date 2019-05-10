@@ -1,0 +1,112 @@
+﻿@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsBitacora>
+
+@{
+    ViewBag.Title = "Bitacora";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>Bitacora</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdsIdCia)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsAnio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsTipoDeCalculo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsValorCalculado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsPrecioDolar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsFechaCambio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsUsuarioCambio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsCatIndicadores.IdsDescripcionIndicador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsCatMediciones.IdsDescripcionMedicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsCatElementos.IdsNomenclatura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsCatUnidades.IdsDescripcionUnidadMedida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsCatEmpresas.IdsDescripcionEmpresa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdsIdCia)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsMes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsAnio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsTipoDeCalculo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsValorCalculado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsPrecioDolar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsFechaCambio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsUsuarioCambio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsCatIndicadores.IdsDescripcionIndicador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsCatMediciones.IdsDescripcionMedicion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsCatElementos.IdsNomenclatura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsCatUnidades.IdsDescripcionUnidadMedida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsCatEmpresas.IdsDescripcionEmpresa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdsId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdsId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdsId })
+        </td>
+    </tr>
+}
+
+</table>

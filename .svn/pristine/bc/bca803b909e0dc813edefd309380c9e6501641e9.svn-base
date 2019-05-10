@@ -1,0 +1,26 @@
+﻿using CYDSA_Sustentabilidad.ADO;
+using CYDSA_Sustentabilidad.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace CYDSA_Sustentabilidad.ADO
+{
+    public class UnidadesADO
+    {
+
+        Entities Context;  // esta es la alias de la base de datos
+    public UnidadesADO()
+    {
+        Context = new Entities();
+    }
+
+    public IEnumerable<IdsCatUnidades> cmbunidades() // este metodo carga combo
+    {
+        return Context.IdsCatUnidades.ToList();
+        //.IdsCatMedicion.ToList();
+    }
+
+    }
+}

@@ -1,0 +1,144 @@
+﻿@model CYDSA_Sustentabilidad.Models.IdsMediciones
+
+@{
+    ViewBag.Title = "EditMedicion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(x=>x.IdsId)
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="form-horizontal container-fluid col-lg-push-8 img-rounded " style="color:#000000; font:caption; background-color:#D6EAF8;">
+       
+        <div >
+            <h2>Cambiar Mediciones</h2>
+            <br />
+           
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(x=> x.IdsIdElemento)
+
+          
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdsIdEmpresa, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("IdsIdPlanta", (IEnumerable<SelectListItem>)ViewBag.dropdownPlanta, "Seleccione la Planta", new { id = "IdsIdPlanta", @class = "form-control", @disabled = "disabled"    })
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdsAnio, htmlAttributes: new { @class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.DropDownList("IdsAnio", (IEnumerable<SelectListItem>)ViewBag.Anios, "Seleccione el Año", new { @id = "CmbAnio", @class = "form-control", @disabled = "disabled" })
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdsMes, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("IdsMes", (IEnumerable<SelectListItem>)ViewBag.Locations, "Seleccione el Mes", new { id = "ddlLocations", @class = "form-control", @disabled = "disabled" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdsIdIndicador, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("IdsIdIndicador", (SelectList)ViewBag.dropdownIndicadores, "Seleccione Indicador", htmlAttributes: new { @class = "form-control  perfil required", @id = "RegionId", @disabled = "disabled" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdsIdMedicion, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("IdsIdMedicion", (SelectList)ViewBag.dropdownMediciones, "Seleccione Medicion", htmlAttributes: new { @class = " cboMedicion form-control  perfil required", @disabled = "disabled" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdsIdElemento, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("IdsIdElemento", (SelectList)ViewBag.dropdownElementos, "Seleccione Elementos", htmlAttributes: new { @class = "form-control  perfil required", @disabled = "disabled" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdsValorCalculado, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10" >
+                        @Html.EditorFor(x => x.IdsValorCalculado, new { @class = "pmtallocated pull-right valores col-md-10 form-control; text-align:right" })
+                        <br />
+                        @Html.ValidationMessageFor(x => x.IdsValorCalculado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdsIdUnidad, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("IdsIdUnidad", (SelectList)ViewBag.dropdownUnidades, "Seleccione Unidad de Medida", htmlAttributes: new { @class = "form-control  perfil required" })
+                    </div>
+                </div>
+           
+                    <div class="form-group" >
+                     
+                            @Html.LabelFor(model => model.IdsNotasAdicionales, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10" style=" word-wrap: break-word" >
+                                @Html.TextAreaFor(x => x.IdsNotasAdicionales, new {  @class = "textArea",@style= "widt:500px;" })
+                                <br />
+                                @Html.ValidationMessageFor(x => x.IdsNotasAdicionales, "", new { @class = "text-danger" })
+                            </div>
+                         
+                        </div>
+              
+
+                <div class="form-group">
+                    <div class="col-md-12">
+
+
+                        <input type="submit" value="Guardar" class="btn btn-primary" />
+
+                        @Html.ActionLink("Regresar", null, null, new { id = 1 }, new { @class = "btn   btn-primary", href = Request.UrlReferrer.ToString() + "?IdMes = " + @ViewBag.IdMes + " & IdIndicador = " + @ViewBag.IdIndicador })
+
+
+                    </div>
+
+                </div>
+
+            </div>
+    </div>
+}
+
+
+
+
+<style>
+    .textArea{ 
+        height:170px;
+        width: 3000px  !important;
+        word-wrap: break-word;
+
+    }
+
+    .editor-field textarea {
+    width : 400px;
+    height : 100px;
+}
+</style>

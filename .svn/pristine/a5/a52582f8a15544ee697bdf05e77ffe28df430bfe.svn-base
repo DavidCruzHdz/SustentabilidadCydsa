@@ -1,0 +1,181 @@
+﻿using CYDSA_Sustentabilidad.ADO;
+using CYDSA_Sustentabilidad.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace CYDSA_Sustentabilidad.Controllers
+{
+    public class ListarMedicionesController : Controller
+    {
+        // GET: ListarMediciones
+        public ActionResult ListaMedicion()
+        {
+            Entities db = new Entities();
+
+            return View(db.IdsMediciones.ToList());
+        }
+
+        // GET: ListarMediciones/Details/5
+        public ActionResult ConsultaMedicion(int id)
+        {
+            return View();
+        }
+
+        // GET: ListarMediciones/Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
+
+        // POST: ListarMediciones/Create
+
+        //public ActionResult Create(FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add insert logic here
+
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
+
+        
+        // GET: ListarMediciones/Edit/5
+        public ActionResult EditMedicion(int id)
+        {
+            Entities context = new Entities();
+
+            List<SelectListItem> IdsMes = new List<SelectListItem>()
+            {
+                new SelectListItem { Text = "Enero", Value = "1" },
+                new SelectListItem { Text = "Febrero", Value = "2" },
+                new SelectListItem { Text = "Marzo", Value = "3" },
+                new SelectListItem { Text = "Abril", Value = "4" },
+                new SelectListItem { Text = "Mayo", Value = "5" },
+                new SelectListItem { Text = "Junio", Value = "6" },
+                new SelectListItem { Text = "Julio", Value = "7" },
+                new SelectListItem { Text = "Agosto", Value = "8" },
+                new SelectListItem { Text = "Septiembre", Value = "9" },
+                new SelectListItem { Text = "Octubre", Value = "10" },
+                new SelectListItem { Text = "Noviembre", Value = "11" },
+                new SelectListItem { Text = "Diciembre", Value = "12" },
+
+            };
+            //Assigning generic list to ViewBag
+            ViewBag.Locations = IdsMes;
+     
+
+            ViewBag.dropdownPlanta = new SelectList(context.IdsCatPlantas.ToList(), "IdsIdPlanta", "IdsDescripcionPlanta");
+
+
+            IndicadoresADO cargaIndicadorADO = new IndicadoresADO();
+            ViewBag.dropdownIndicadores = new SelectList(cargaIndicadorADO.cmbindicadores(), "IdsIdIndicador", "IdsDescripcionIndicador");
+
+
+            MedicionesADO cargaMedicionADO = new MedicionesADO();
+            ViewBag.dropdownMediciones = new SelectList(cargaMedicionADO.cmbmediciones(), "IdsIdMedicion", "IdsDescripcionMedicion");
+
+            ElementosADO cargaElementoADO = new ElementosADO();
+            ViewBag.dropdownElementos = new SelectList(cargaElementoADO.cmbelementos(), "IdsIdElemento", "IdsDescripcionElemento");
+
+            UnidadesADO cargaUnidadesADO = new UnidadesADO();
+            ViewBag.dropdownUnidades = new SelectList(cargaUnidadesADO.cmbunidades(), "IdsIdUnidad", "IdsDescripcionUnidadMedida");
+
+            
+            return View(context.IdsMediciones.Find(id));
+        }
+
+        // POST: ListarMediciones/Edit/5
+        [HttpPost]
+        public ActionResult EditMedicion(IdsMediciones entity)
+        {
+
+            Entities context = new Entities();
+
+            List<SelectListItem> IdsMes = new List<SelectListItem>()
+            {
+                new SelectListItem { Text = "Enero", Value = "1" },
+                new SelectListItem { Text = "Febrero", Value = "2" },
+                new SelectListItem { Text = "Marzo", Value = "3" },
+                new SelectListItem { Text = "Abril", Value = "4" },
+                new SelectListItem { Text = "Mayo", Value = "5" },
+                new SelectListItem { Text = "Junio", Value = "6" },
+                new SelectListItem { Text = "Julio", Value = "7" },
+                new SelectListItem { Text = "Agosto", Value = "8" },
+                new SelectListItem { Text = "Septiembre", Value = "9" },
+                new SelectListItem { Text = "Octubre", Value = "10" },
+                new SelectListItem { Text = "Noviembre", Value = "11" },
+                new SelectListItem { Text = "Diciembre", Value = "12" },
+
+            };
+            //Assigning generic list to ViewBag
+            ViewBag.Locations = IdsMes;
+
+             UnidadesADO cargaUnidadesADO = new UnidadesADO();
+            ViewBag.dropdownUnidades = new SelectList(cargaUnidadesADO.cmbunidades(), "IdsIdUnidad", "IdsDescripcionUnidadMedida");
+
+            ViewBag.dropdownPlanta = new SelectList(context.IdsCatPlantas.ToList(), "IdsIdPlanta", "IdsDescripcionPlanta");
+
+
+            IndicadoresADO cargaIndicadorADO = new IndicadoresADO();
+            ViewBag.dropdownIndicadores = new SelectList(cargaIndicadorADO.cmbindicadores(), "IdsIdIndicador", "IdsDescripcionIndicador");
+
+
+            MedicionesADO cargaMedicionADO = new MedicionesADO();
+            ViewBag.dropdownMediciones = new SelectList(cargaMedicionADO.cmbmediciones(), "IdsIdMedicion", "IdsDescripcionMedicion");
+
+            ElementosADO cargaElementoADO = new ElementosADO();
+            ViewBag.dropdownElementos = new SelectList(cargaElementoADO.cmbelementos(), "IdsIdElemento", "IdsDescripcionElemento");
+
+                       try
+            {
+                // TODO: Add update logic here
+               
+                IdsMediciones entity2 = new IdsMediciones();
+                entity2 = context.IdsMediciones.Find(entity.IdsId);
+                entity2.IdsValorCalculado = entity.IdsValorCalculado;
+                entity2.IdsIdUnidad = entity.IdsIdUnidad;
+                context.IdsMediciones.Attach(entity2);
+                context.Entry(entity2).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+                Entities db = new Entities();
+
+
+                return RedirectToAction("ListaMedicion", db.IdsMediciones.ToList());
+            }
+            catch(Exception e)
+            {
+                return View();
+            }
+        }
+
+        // GET: ListarMediciones/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: ListarMediciones/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+    }
+}

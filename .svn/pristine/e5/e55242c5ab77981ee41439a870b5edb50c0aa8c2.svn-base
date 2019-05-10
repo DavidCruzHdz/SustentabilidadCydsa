@@ -1,0 +1,89 @@
+﻿using CYDSA_Sustentabilidad.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace CYDSA_Sustentabilidad.Controllers
+{
+    public class MensualesController : Controller
+    {
+        // GET: Mensuales
+        // GET: IndicadorAnual
+        Entities db = new Entities();
+
+        public ActionResult Mensuales()
+        {
+            var IdsIdCia = 1;
+            var IdsIdPlanta = 2;
+            int IdsAnio2 = 2018;
+            var IdsUsuario = 1;
+
+            Entities context = new Entities();
+            context.SpIndicadoresMonitoreoPorMes(IdsIdCia, IdsIdPlanta, IdsAnio2, IdsUsuario);
+            ViewBag.dropdownPlanta = new SelectList(context.IdsCatPlantas.ToList(), "IdsIdPlanta", "IdsDescripcionPlanta");
+            //  ViewBag.dropdownAnio = new SelectList(context.IdsIndicadores.ToList(), "IdsIdIndicadores", "IdsAnio");
+            List<SelectListItem> IdsAnio = new List<SelectListItem>();
+            var contar = 1;
+
+            foreach (int item in context.IdsIndicadores.ToList().Select(x => x.IdsAnio).Distinct().ToList())
+            {
+
+                IdsAnio.Add(new SelectListItem() { Text = item.ToString(), Value = contar.ToString() });
+                contar++;
+            }
+
+            ViewBag.dropdownAnio = IdsAnio;
+
+            //var Restdata = context.IdsIndicadorAnual.SqlQuery("[dbo].[SpIndicadoresMonitoreoPorMes] @IdCia, @IdPlanta, @Anio", new SqlParameter("IdsIdCia", IdsIdCia), new SqlParameter("IdsIdPlanta", IdsIdPlanta), new SqlParameter("IdsIdAnio", IdsAnio)).ToList();
+            var Restdata = db.SpIndicadoresMonitoreoPorMes(IdsIdCia, IdsIdPlanta, IdsAnio2, IdsUsuario);
+            return View(db.IdsIndicadorAnual.ToList());
+
+        }
+
+
+        [HttpPost]
+        public JsonResult Index3(int id = 0,  int IdAnio = 0)
+        {
+            Entities db = new Entities();
+
+
+            
+            Entities context = new Entities();
+
+            ViewBag.dropdownPlanta = new SelectList(context.IdsCatPlantas.ToList(), "IdsIdPlanta", "IdsDescripcionPlanta");
+            //ViewBag.dropdownAnio = new SelectList(context.IdsIndicadores.ToList(), "IdsIdIndicadores", "IdsAnio");
+            List<SelectListItem> IdsAnio = new List<SelectListItem>();
+            var contar = 1;
+
+            foreach (int item in context.IdsIndicadores.ToList().Select(x => x.IdsAnio).Distinct().ToList())
+            {
+
+                IdsAnio.Add(new SelectListItem() { Text = item.ToString(), Value = contar.ToString() });
+                contar++;
+            }
+
+            ViewBag.dropdownAnio = IdsAnio;
+
+
+
+
+            //var idPlanta = 0;
+            //if(idPlanta!= null)
+            //{
+            //    idPlanta = ViewBag.Planta;
+            //}
+
+
+
+
+            //List<IdsIndicadores> lista = db.IdsIndicadores.Where(a => a.IdsMes > 8).ToList();
+
+            // return View(db.IdsIndicadores.ToList().Where(x=>x.IdsIdCia ==3) ) ;/* .Where(x=>x.IdsIdPlanta == idPlanta || idPlanta ==0));*/
+            var a = db.IdsIndicadorAnual.ToList().Where(x => (x.IdsIdPlanta == id || id == 0) & (x.IdsAnio == IdAnio || IdAnio == 0));
+            return Json(db.IdsIndicadorAnual.ToList().Where(x => (x.IdsIdPlanta == id || id == 0)  & (x.IdsAnio == IdAnio || IdAnio == 0)).Select(x => new { IdsIdIndicador = x.IdsIdIndicador, IdsMesEnero = x.IdsMesEnero, IdsMesFebrero = x.IdsMesFebrero, IdsMesMarzo = x.IdsMesMarzo, IdsMesAbril = x.IdsMesAbril, IdsMesMayo = x.IdsMesMayo, IdsMesJunio = x.IdsMesJunio, IdsMesJulio = x.IdsMesJulio, IdsMesAgosto = x.IdsMesAgosto, IdsMesSeptiembre = x.IdsMesSeptiembre, IdsMesOctubre = x.IdsMesOctubre, IdsMesNoviembre = x.IdsMesNoviembre, IdsMesDiciembre = x.IdsMesDiciembre}), JsonRequestBehavior.AllowGet);
+        }
+
+    }
+}

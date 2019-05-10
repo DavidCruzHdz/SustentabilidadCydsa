@@ -1,0 +1,147 @@
+﻿@model IEnumerable<CYDSA_Sustentabilidad.Models.IdsIndicadores>
+
+@{
+    ViewBag.Title = "Indicadores de IQUISA Noreste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Indicadores de Sustentabilidad de IQUISA Noreste</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdsIdCia )
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdsIdPlanta)
+        </th*@>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsMes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsAnio)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdsIdIndicador)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.IdsDescripcionIndicador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsIdUnidad)
+
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsValorDelPeriodo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsNotasAdicionales)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IdsFechaAlta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsUsuarioAlta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsFechaCambio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdsUsuarioCambio)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdsIdCia)
+        </td>*@
+        @*<td>
+          @Html.DisplayFor(modelItem => item.IdsIdPlanta)
+
+   
+        </td>*@
+        <td>
+            @*@Html.DisplayFor(modelItem => item.IdsMes)*@
+
+                  @{
+                    if (item.IdsMes == 6)
+                      {
+                          <span>Junio</span>
+                      }
+                }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsAnio)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdsIdIndicador)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsDescripcionIndicador)
+        </td>
+        <td>
+            @{
+      
+                if (item.IdsIdUnidad == 1)
+                {
+                    <span>Toneladas</span>
+                }
+                else if (item.IdsIdUnidad == 2)
+                {
+                    <span>Giga Joules</span>
+                }
+                else if (item.IdsIdUnidad == 3)
+                {
+                    <span>MWh</span>
+                }
+                else if (item.IdsIdUnidad == 4)
+                {
+                    <span>KWh</span>
+                }
+                else if (item.IdsIdUnidad == 5)
+                {
+                    <span>m3</span>
+                }
+                else if (item.IdsIdUnidad == 6)
+                {
+                    <span>Toneladas de CO2 Equivalente</span>
+                }
+                else if (item.IdsIdUnidad == 7)
+                {
+                    <span>Porcentaje</span>
+                }
+            }
+       </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsValorDelPeriodo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsNotasAdicionales)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IdsFechaAlta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsUsuarioAlta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsFechaCambio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdsUsuarioCambio)
+        </td>*@
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+    </tr>
+}
+
+</table>
